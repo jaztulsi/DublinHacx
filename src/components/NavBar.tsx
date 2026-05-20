@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Link, useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import logo from "@/assets/dublin-hacx-logo.svg";
 import { useAuth } from "@/hooks/useAuth";
@@ -16,6 +16,7 @@ export function NavBar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
   const { session } = useAuth();
 
   useEffect(() => {
@@ -27,6 +28,17 @@ export function NavBar() {
 
   const scrollTo = (id: string) => {
     setOpen(false);
+    // Section anchors only exist on the home page. From any other route
+    // (login, signup, register, dashboard…), route home and let the router
+    // scroll to the section via the hash.
+    if (pathname !== "/") {
+      navigate({
+        to: "/",
+        hash: id,
+        hashScrollIntoView: { behavior: "smooth", block: "start" },
+      });
+      return;
+    }
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };

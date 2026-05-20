@@ -14,6 +14,24 @@ export type Database = {
   }
   public: {
     Tables: {
+      document_signatures: {
+        Row: {
+          user_id: string
+          document_key: string
+          signed_at: string
+        }
+        Insert: {
+          user_id: string
+          document_key: string
+          signed_at?: string
+        }
+        Update: {
+          user_id?: string
+          document_key?: string
+          signed_at?: string
+        }
+        Relationships: []
+      }
       registrations: {
         Row: {
           code_of_conduct: boolean

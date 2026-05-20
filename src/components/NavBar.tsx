@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import logo from "@/assets/dublin-hacks-logo.png";
+import logo from "@/assets/dublin-hacx-logo.svg";
+import { useAuth } from "@/hooks/useAuth";
 
 const NAV_ITEMS = [
   { id: "about", label: "About" },
@@ -15,6 +16,7 @@ export function NavBar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
+  const { session } = useAuth();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -34,6 +36,11 @@ export function NavBar() {
     navigate({ to: "/register" });
   };
 
+  const goToAuthArea = () => {
+    setOpen(false);
+    navigate({ to: session ? "/dashboard" : "/login" });
+  };
+
   return (
     <motion.header
       initial={{ y: -40, opacity: 0 }}
@@ -44,8 +51,12 @@ export function NavBar() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link to="/" aria-label="Dublin Hacks home" className="flex items-center">
-          <img src={logo} alt="Dublin Hacks" className="h-7 w-auto sm:h-8" />
+        <Link to="/" aria-label="Dublin Hacx home" className="flex items-center group">
+          <img
+            src={logo}
+            alt="Dublin Hacx"
+            className="h-8 w-auto sm:h-10 transition-transform duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_18px_oklch(0.78_0.17_305_/_0.9)]"
+          />
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
@@ -59,8 +70,14 @@ export function NavBar() {
             </button>
           ))}
           <button
+            onClick={goToAuthArea}
+            className="ml-2 rounded-full border border-border bg-secondary/40 px-4 py-2 text-sm font-medium hover:bg-secondary/60"
+          >
+            {session ? "Dashboard" : "Log in"}
+          </button>
+          <button
             onClick={goToRegister}
-            className="ml-2 rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground purple-glow transition-transform hover:scale-105"
+            className="ml-1 rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground purple-glow transition-transform hover:scale-105"
           >
             Sign Up
           </button>
@@ -107,6 +124,12 @@ export function NavBar() {
                 {item.label}
               </button>
             ))}
+            <button
+              onClick={goToAuthArea}
+              className="mt-2 rounded-full border border-border bg-secondary/40 px-5 py-3 text-sm font-medium"
+            >
+              {session ? "Dashboard" : "Log in"}
+            </button>
             <button
               onClick={goToRegister}
               className="mt-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground"

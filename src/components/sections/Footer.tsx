@@ -16,7 +16,7 @@ export function Footer() {
             <div className="flex items-center gap-2 font-display text-xl font-bold">
               <span className="inline-block h-3 w-3 rounded-full bg-primary purple-glow" />
               <span>
-                DUBLIN<span className="text-primary">HACKS</span>
+                DUBLIN<span className="text-primary">HACX</span>
               </span>
             </div>
             <p className="mt-3 text-sm text-muted-foreground">
@@ -64,7 +64,7 @@ export function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:dublinhacks@emeraldhacking.org" className="hover:text-foreground">
+                  <a href="mailto:dublinhacx@gmail.com" className="hover:text-foreground">
                     Contact
                   </a>
                 </li>
@@ -90,7 +90,7 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row">
           <p>In respect to the EHS Hacking & Coding Club · Dublin, CA</p>
-          <p>© 2026 Dublin Hacks</p>
+          <p>© 2026 Dublin Hacx</p>
         </div>
       </div>
     </footer>

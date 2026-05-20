@@ -12,7 +12,7 @@ const FAQS = [
   },
   {
     q: "How much does it cost?",
-    a: "$0. Dublin Hacks is completely free for hackers thanks to our sponsors. Food, swag, and prizes included.",
+    a: "$0. Dublin Hacx is completely free for hackers thanks to our sponsors. Food, swag, and prizes included.",
   },
   {
     q: "What should I bring?",
@@ -40,7 +40,7 @@ const FAQS = [
   },
   {
     q: "How do I become a sponsor?",
-    a: "Email us at dublinhacks@emeraldhacking.org. We have Bronze, Silver, and Gold tiers — see the Sponsors section for details.",
+    a: "Email us at dublinhacx@gmail.com. We have Bronze, Silver, and Gold tiers — see the Sponsors section for details.",
   },
 ];
 

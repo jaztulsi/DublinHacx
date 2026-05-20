@@ -1,4 +1,4 @@
-## Dublin Hacks — Production Website
+## Dublin Hacx — Production Website
 
 A dark, cosmic, premium hackathon site for Dublin, CA's first overnight high school hackathon, hosted by the Emerald Hacking & Coding Club. September 2026, 170 hackers cap.
 
@@ -22,7 +22,7 @@ A dark, cosmic, premium hackathon site for Dublin, CA's first overnight high sch
 
 - `/` — landing (hero, about, club, schedule, registration, FAQ, sponsors, footer all on one scrolling page with smooth-scroll nav)
 - `/admin` — password-gated registrant table with CSV export
-- Per-route `head()` metadata; OG title "Dublin Hacks — September 2026"
+- Per-route `head()` metadata; OG title "Dublin Hacx — September 2026"
 
 ---
 
@@ -74,7 +74,7 @@ Server functions:
 
 ### Email (Resend connector)
 
-Server function calls Resend through the Lovable connector gateway to send two templated emails per successful registration: one to the hacker confirming their spot, one to the parent/guardian with event info. Sender: `dublinhacks@emeraldhacking.org` (from address noted; user can swap once domain is verified in Resend).
+Server function calls Resend through the Lovable connector gateway to send two templated emails per successful registration: one to the hacker confirming their spot, one to the parent/guardian with event info. Sender: `dublinhacx@gmail.com` (from address noted; user can swap once domain is verified in Resend).
 
 ---
 

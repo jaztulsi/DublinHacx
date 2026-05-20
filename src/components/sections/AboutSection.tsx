@@ -25,7 +25,7 @@ const organizers = [
   {
     name: "Jasraj Tulsi",
     role: "Co-Founder · Emerald HS",
-    bio: "Builder, organizer, and lead voice behind Dublin Hacks.",
+    bio: "Builder, organizer, and lead voice behind Dublin Hacx.",
   },
   {
     name: "Rachit Panchal",
@@ -78,7 +78,7 @@ export function AboutSection() {
           >
             <h3 className="font-display text-3xl font-bold">A weekend that changes trajectories.</h3>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              Dublin Hacks is the first overnight high school hackathon in Dublin, CA — a 24-hour
+              Dublin Hacx is the first overnight high school hackathon in Dublin, CA — a 24-hour
               sprint where 170 students from across the Bay Area come together to build, learn,
               and compete. Whether it's your first line of code or your tenth project, you'll
               walk out with new friends, new skills, and something you actually shipped.

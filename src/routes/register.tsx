@@ -9,17 +9,17 @@ import { Footer } from "@/components/sections/Footer";
 export const Route = createFileRoute("/register")({
   head: () => ({
     meta: [
-      { title: "Register — Dublin Hacks" },
+      { title: "Register — Dublin Hacx" },
       {
         name: "description",
         content:
-          "Claim your spot at Dublin Hacks. All skill levels welcome, free to attend, with 170 hacker spots available.",
+          "Claim your spot at Dublin Hacx. All skill levels welcome, free to attend, with 170 hacker spots available.",
       },
-      { property: "og:title", content: "Register — Dublin Hacks" },
+      { property: "og:title", content: "Register — Dublin Hacx" },
       {
         property: "og:description",
         content:
-          "Claim your spot at Dublin Hacks. All skill levels welcome, free to attend, with 170 hacker spots available.",
+          "Claim your spot at Dublin Hacx. All skill levels welcome, free to attend, with 170 hacker spots available.",
       },
     ],
   }),

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import logo from "@/assets/dublin-hacks-logo.png";
+import logo from "@/assets/dublin-hacx-logo.svg";
 
 interface Props {
   onDone: () => void;
@@ -14,7 +14,7 @@ const ORBS = [
 
 /**
  * Intro: 3 slow, glossy labeled orbs sweep across a starry sky,
- * then the Dublin Hacks logo materializes. ~5.5s total.
+ * then the Dublin Hacx logo materializes. ~5.5s total.
  */
 export function IntroOverlay({ onDone }: Props) {
   const [visible, setVisible] = useState(true);
@@ -124,7 +124,7 @@ export function IntroOverlay({ onDone }: Props) {
       >
         <img
           src={logo}
-          alt="Dublin Hacks"
+          alt="Dublin Hacx"
           className="h-auto w-[min(82vw,560px)] drop-shadow-[0_0_50px_oklch(0.78_0.17_305_/_0.65)]"
         />
       </motion.div>

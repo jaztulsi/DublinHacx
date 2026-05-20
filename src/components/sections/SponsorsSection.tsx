@@ -94,7 +94,7 @@ export function SponsorsSection() {
         </div>
 
         <motion.a
-          href="mailto:dublinhacks@emeraldhacking.org"
+          href="mailto:dublinhacx@gmail.com"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -104,7 +104,7 @@ export function SponsorsSection() {
           <div>
             <p className="text-xs uppercase tracking-widest text-primary">Get in touch</p>
             <p className="mt-1 font-display text-xl font-bold md:text-2xl">
-              dublinhacks@emeraldhacking.org
+              dublinhacx@gmail.com
             </p>
           </div>
           <span className="rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground">

@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 200" fill="none">
+  <defs>
+    <linearGradient id="hacxPurple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#A78BFA"/>
+      <stop offset="1" stop-color="#7C3AED"/>
+    </linearGradient>
+    <filter id="hacxGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Bracket-and-DH mark -->
+  <g transform="translate(20,30)" filter="url(#hacxGlow)">
+    <!-- Outer rounded square frame -->
+    <rect x="0" y="0" width="140" height="140" rx="14" ry="14"
+          fill="none" stroke="url(#hacxPurple)" stroke-width="3"/>
+
+    <!-- Left bracket -->
+    <path d="M20 38 L8 70 L20 102"
+          stroke="url(#hacxPurple)" stroke-width="5"
+          stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <!-- Right bracket -->
+    <path d="M120 38 L132 70 L120 102"
+          stroke="url(#hacxPurple)" stroke-width="5"
+          stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <!-- D (purple, slightly pixelated style) -->
+    <g fill="url(#hacxPurple)">
+      <rect x="34" y="40" width="8" height="60"/>
+      <rect x="42" y="40" width="20" height="8"/>
+      <rect x="42" y="92" width="20" height="8"/>
+      <rect x="62" y="48" width="8" height="44"/>
+    </g>
+
+    <!-- H (white) -->
+    <g fill="#FFFFFF">
+      <rect x="78" y="40" width="8" height="60"/>
+      <rect x="78" y="66" width="28" height="8"/>
+      <rect x="98" y="40" width="8" height="60"/>
+    </g>
+
+    <!-- Floating pixel sparks above the H -->
+    <g fill="url(#hacxPurple)">
+      <rect x="84" y="22" width="4" height="4"/>
+      <rect x="92" y="14" width="4" height="4"/>
+      <rect x="100" y="26" width="4" height="4"/>
+      <rect x="96" y="32" width="3" height="3" opacity="0.7"/>
+    </g>
+
+    <!-- Falling pixel sparks below the D -->
+    <g fill="url(#hacxPurple)">
+      <rect x="40" y="110" width="3" height="3" opacity="0.6"/>
+      <rect x="46" y="118" width="4" height="4"/>
+      <rect x="54" y="112" width="3" height="3" opacity="0.7"/>
+    </g>
+  </g>
+
+  <!-- Vertical divider -->
+  <line x1="186" y1="40" x2="186" y2="160" stroke="url(#hacxPurple)" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Wordmark -->
+  <g font-family="'JetBrains Mono', 'Courier New', monospace" font-weight="800" letter-spacing="6">
+    <text x="210" y="86" font-size="44" fill="#FFFFFF">DUBLIN</text>
+    <text x="210" y="142" font-size="44" fill="#FFFFFF">HAC<tspan fill="url(#hacxPurple)">X</tspan></text>
+  </g>
+</svg>

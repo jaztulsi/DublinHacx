@@ -19,13 +19,13 @@ import { Footer } from "@/components/sections/Footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Dublin Hacks — September 2026" },
+      { title: "Dublin Hacx — September 2026" },
       {
         name: "description",
         content:
           "Dublin, CA's first overnight high school hackathon. Bring any idea. Build it into reality. 24 hours, 170 hackers, free food and swag.",
       },
-      { property: "og:title", content: "Dublin Hacks — September 2026" },
+      { property: "og:title", content: "Dublin Hacx — September 2026" },
       {
         property: "og:description",
         content:

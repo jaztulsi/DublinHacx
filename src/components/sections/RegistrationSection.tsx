@@ -12,7 +12,7 @@ import { motion } from "framer-motion";
 import confetti from "canvas-confetti";
 import { useServerFn } from "@tanstack/react-start";
 import { registrationSchema, type RegistrationInput, HACKER_CAP } from "@/lib/registration-schema";
-import { submitRegistration, getCapacity } from "@/server/registrations.functions";
+import { submitRegistration, getCapacity } from "@/functions/registrations.functions";
 
 const GRAD_YEARS = ["2026", "2027", "2028", "2029", "2030"];
 const DIETARY = [
@@ -255,7 +255,7 @@ export function RegistrationSection() {
                 You're in, {result.name}!
               </h3>
               <p className="mt-4 text-muted-foreground">
-                We've saved your spot at Dublin Hacks. Watch your email for confirmation and next
+                We've saved your spot at Dublin Hacx. Watch your email for confirmation and next
                 steps in the coming weeks.
               </p>
             </>

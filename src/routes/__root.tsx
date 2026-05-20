@@ -29,14 +29,14 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Dublin Hacks — September 2026" },
+      { title: "Dublin Hacx — September 2026" },
       {
         name: "description",
         content:
           "Dublin, CA's first overnight high school hackathon. 24 hours to build, break, ship, and meet your future co-founders.",
       },
-      { name: "author", content: "Dublin Hacks" },
-      { property: "og:title", content: "Dublin Hacks — September 2026" },
+      { name: "author", content: "Dublin Hacx" },
+      { property: "og:title", content: "Dublin Hacx — September 2026" },
       {
         property: "og:description",
         content:
@@ -44,7 +44,7 @@ export const Route = createRootRoute({
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Dublin Hacks — September 2026" },
+      { name: "twitter:title", content: "Dublin Hacx — September 2026" },
       { name: "description", content: "A stunning, production-ready website for Dublin's first overnight high school hackathon." },
       { property: "og:description", content: "A stunning, production-ready website for Dublin's first overnight high school hackathon." },
       { name: "twitter:description", content: "A stunning, production-ready website for Dublin's first overnight high school hackathon." },

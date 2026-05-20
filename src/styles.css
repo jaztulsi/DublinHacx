@@ -68,6 +68,30 @@
   100% { transform: translate3d(5vw, 0, 0); }
 }
 
+@keyframes glitch-shift {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-2px, 1px); }
+  40% { transform: translate(2px, -1px); }
+  60% { transform: translate(-1px, -2px); }
+  80% { transform: translate(1px, 2px); }
+}
+
+@keyframes aurora {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes tilt-3d {
+  0%, 100% { transform: perspective(800px) rotateX(0deg) rotateY(0deg); }
+  25% { transform: perspective(800px) rotateX(2deg) rotateY(-2deg); }
+  75% { transform: perspective(800px) rotateX(-2deg) rotateY(2deg); }
+}
+
 :root {
   --radius: 0.75rem;
 
@@ -179,6 +203,39 @@ html, body {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+.text-aurora {
+  background: linear-gradient(
+    90deg,
+    oklch(0.78 0.17 305),
+    oklch(0.85 0.15 310),
+    oklch(0.75 0.18 240),
+    oklch(0.85 0.15 310),
+    oklch(0.78 0.17 305)
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: aurora 6s ease infinite;
+}
+
+.tilt-3d {
+  animation: tilt-3d 8s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+.shimmer-line {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, oklch(0.78 0.17 305 / 0.25), transparent);
+  animation: shimmer 3s infinite;
 }
 
 /* Grain overlay */

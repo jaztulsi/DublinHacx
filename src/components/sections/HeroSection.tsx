@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import heroImg from "@/assets/hero-night.jpg";
-import logo from "@/assets/dublin-hacks-logo.png";
+import logo from "@/assets/dublin-hacx-logo.svg";
 
 interface Props {
   onApply: () => void;
@@ -21,6 +21,80 @@ const fadeUp = {
   }),
 };
 
+function MagneticButton({
+  children,
+  onClick,
+  variant = "primary",
+}: {
+  children: React.ReactNode;
+  onClick: () => void;
+  variant?: "primary" | "secondary";
+}) {
+  const ref = useRef<HTMLButtonElement>(null);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+
+  const handleMove = (e: React.MouseEvent) => {
+    const el = ref.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const cx = r.left + r.width / 2;
+    const cy = r.top + r.height / 2;
+    setPos({ x: (e.clientX - cx) * 0.25, y: (e.clientY - cy) * 0.25 });
+  };
+
+  const styles =
+    variant === "primary"
+      ? "bg-primary text-primary-foreground purple-glow"
+      : "border border-border bg-background/40 text-foreground backdrop-blur-md hover:bg-secondary/50";
+
+  return (
+    <motion.button
+      ref={ref}
+      onClick={onClick}
+      onMouseMove={handleMove}
+      onMouseLeave={() => setPos({ x: 0, y: 0 })}
+      animate={{ x: pos.x, y: pos.y }}
+      transition={{ type: "spring", stiffness: 220, damping: 18 }}
+      className={`group relative overflow-hidden rounded-full px-8 py-4 font-semibold transition-shadow ${styles}`}
+    >
+      {variant === "primary" && (
+        <span
+          aria-hidden
+          className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full"
+        />
+      )}
+      <span className="relative z-10">{children}</span>
+    </motion.button>
+  );
+}
+
+function GlitchText({ children }: { children: string }) {
+  return (
+    <span className="relative inline-block">
+      <span
+        aria-hidden
+        className="absolute inset-0 text-gradient-primary text-glow"
+        style={{ transform: "translate(2px, 0)", mixBlendMode: "screen", opacity: 0.6 }}
+      >
+        {children}
+      </span>
+      <span
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          transform: "translate(-2px, 0)",
+          color: "#22d3ee",
+          mixBlendMode: "screen",
+          opacity: 0.5,
+        }}
+      >
+        {children}
+      </span>
+      <span className="relative text-gradient-primary text-glow">{children}</span>
+    </span>
+  );
+}
+
 export function HeroSection({ onApply, onLearnMore }: Props) {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -28,7 +102,6 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
     offset: ["start start", "end start"],
   });
 
-  // Subtle parallax on the night-sky image
   const yImg = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
   const scaleImg = useTransform(scrollYProgress, [0, 1], [1.05, 1.15]);
   const yStars = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
@@ -50,8 +123,7 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
           height={1080}
           className="h-full w-full object-cover"
         />
-        {/* readability overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/40 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/50 to-background" />
       </motion.div>
 
       {/* Twinkling parallax stars layer */}
@@ -87,10 +159,12 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
           custom={0}
           className="mx-auto mb-6 w-fit"
         >
-          <img
+          <motion.img
             src={logo}
-            alt="Dublin Hacks"
-            className="mx-auto h-14 w-auto sm:h-16 md:h-20 drop-shadow-[0_0_30px_oklch(0.78_0.17_305_/_0.5)]"
+            alt="Dublin Hacx"
+            animate={{ y: [0, -6, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            className="mx-auto h-16 w-auto sm:h-20 md:h-24 drop-shadow-[0_0_40px_oklch(0.78_0.17_305_/_0.65)]"
           />
         </motion.div>
 
@@ -114,7 +188,7 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
         >
           DUBLIN
           <br />
-          <span className="text-gradient-primary text-glow">HACKS</span>
+          <GlitchText>HACX</GlitchText>
         </motion.h1>
 
         <motion.p
@@ -135,18 +209,8 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
           custom={4}
           className="mt-10 flex flex-wrap justify-center gap-4"
         >
-          <button
-            onClick={onApply}
-            className="group relative overflow-hidden rounded-full bg-primary px-8 py-4 font-semibold text-primary-foreground purple-glow transition-transform hover:scale-105"
-          >
-            <span className="relative z-10">Apply to Hack →</span>
-          </button>
-          <button
-            onClick={onLearnMore}
-            className="rounded-full border border-border bg-background/40 px-8 py-4 font-semibold text-foreground backdrop-blur-md transition-colors hover:bg-secondary/50"
-          >
-            Learn More
-          </button>
+          <MagneticButton onClick={onApply}>Apply to Hack →</MagneticButton>
+          <MagneticButton onClick={onLearnMore} variant="secondary">Learn More</MagneticButton>
         </motion.div>
       </div>
 

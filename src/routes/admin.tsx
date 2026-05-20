@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { adminListRegistrations } from "@/server/registrations.functions";
+import { adminListRegistrations } from "@/functions/registrations.functions";
 
 export const Route = createFileRoute("/admin")({
   head: () => ({
     meta: [
-      { title: "Admin — Dublin Hacks" },
+      { title: "Admin — Dublin Hacx" },
       { name: "robots", content: "noindex, nofollow" },
     ],
   }),
@@ -140,7 +140,7 @@ function AdminPage() {
       <div className="mx-auto max-w-7xl">
         <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
           <div>
-            <h1 className="font-display text-3xl font-extrabold">Dublin Hacks Admin</h1>
+            <h1 className="font-display text-3xl font-extrabold">Dublin Hacx Admin</h1>
             <p className="mt-1 text-sm text-muted-foreground">
               {registrations?.length ?? 0} registered ·{" "}
               {waitlist?.length ?? 0} waitlisted

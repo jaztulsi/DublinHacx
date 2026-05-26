@@ -29,7 +29,7 @@ const organizers = [
   },
   {
     name: "Rachit Panchal",
-    role: "Co-Founder · Emerald HS",
+    role: "Admin · Co-Founder · Emerald HS",
     bio: "Architect of the experience and the operations behind it.",
   },
 ];

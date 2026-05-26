@@ -57,6 +57,8 @@ function DefaultErrorComponent({ error, reset }: { error: Error; reset: () => vo
 export const getRouter = () => {
   const router = createRouter({
     routeTree,
+    // Matches the Vite `base` (set to /DublinHacx/ for the GitHub Pages build).
+    basepath: import.meta.env.BASE_URL,
     context: {},
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,

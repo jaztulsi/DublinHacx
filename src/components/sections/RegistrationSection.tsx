@@ -10,9 +10,8 @@ import { useForm, type FieldErrors, type UseFormRegisterReturn } from "react-hoo
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
 import confetti from "canvas-confetti";
-import { useServerFn } from "@tanstack/react-start";
 import { registrationSchema, type RegistrationInput, HACKER_CAP } from "@/lib/registration-schema";
-import { submitRegistration, getCapacity } from "@/functions/registrations.functions";
+import { submitRegistration, getCapacity } from "@/lib/registration-client";
 
 const GRAD_YEARS = ["2026", "2027", "2028", "2029", "2030"];
 const DIETARY = [
@@ -91,8 +90,8 @@ type Result =
   | null;
 
 export function RegistrationSection() {
-  const submit = useServerFn(submitRegistration);
-  const fetchCapacity = useServerFn(getCapacity);
+  const submit = submitRegistration;
+  const fetchCapacity = getCapacity;
   const [capacity, setCapacity] = useState({ count: 0, cap: HACKER_CAP });
   const [submitting, setSubmitting] = useState(false);
   const [result, setResult] = useState<Result>(null);

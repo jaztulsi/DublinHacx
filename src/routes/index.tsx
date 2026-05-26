@@ -9,6 +9,7 @@ import { NavBar } from "@/components/NavBar";
 import { IntroOverlay } from "@/components/IntroOverlay";
 import { KonamiEgg } from "@/components/KonamiEgg";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { BackedBySection } from "@/components/sections/BackedBySection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { ThemeSection } from "@/components/sections/ThemeSection";
 import { ScheduleSection } from "@/components/sections/ScheduleSection";
@@ -68,6 +69,7 @@ function Index() {
           onApply={() => navigate({ to: "/register" })}
           onLearnMore={() => scrollToId("about")}
         />
+        <BackedBySection />
         <AboutSection />
         <ThemeSection />
         <ScheduleSection />

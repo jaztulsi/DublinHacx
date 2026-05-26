@@ -16,6 +16,9 @@ dist-ssr
 .nitro
 *.local
 
+# Vercel
+.vercel
+
 # Environment variables / secrets
 .env
 .env.*

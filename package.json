@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "build:vercel": "vite build"
+    "build:vercel": "vite build && node scripts/build-vercel.mjs"
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.25.5",

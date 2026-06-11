@@ -3,5 +3,8 @@
   "framework": null,
   "installCommand": "npm install",
   "buildCommand": "npm run build:vercel",
-  "outputDirectory": ".vercel/output"
+  "outputDirectory": ".vercel/output",
+  "env": {
+    "VITE_TARGET": "vercel"
+  }
 }

@@ -21,6 +21,21 @@ export function ScheduleSection() {
           transition={{ duration: 0.7 }}
           className="mb-12 text-center"
         >
+          <h2 className="font-display text-4xl font-extrabold text-center md:text-5xl">
+            Here's how 24 hours looks.
+          </h2>
+          <p className="mt-4 text-sm text-muted-foreground">
+            Saturday September 1 → Sunday September 2, 2026 · Dublin, CA
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7 }}
+          className="mb-12 text-center"
+        >
           <p className="mb-3 text-xs uppercase tracking-widest text-primary">
             Schedule
           </p>

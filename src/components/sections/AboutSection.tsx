@@ -69,6 +69,21 @@ export function AboutSection() {
           ))}
         </div>
 
+        <motion.blockquote
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7 }}
+          className="my-16 mx-auto max-w-3xl border-l-4 border-gold py-2 pl-6"
+        >
+          <p className="font-display text-3xl italic text-foreground md:text-4xl">
+            "The weekend I started taking building seriously."
+          </p>
+          <footer className="mt-3 text-sm not-italic text-muted-foreground">
+            — A future Dublin Hacx alum
+          </footer>
+        </motion.blockquote>
+
         <div className="grid gap-12 md:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, x: -30 }}

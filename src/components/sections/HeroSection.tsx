@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import heroImg from "@/assets/hero-night.jpg";
 import logo from "@/assets/dublin-hacx-logo.svg";
 
@@ -95,6 +95,56 @@ function GlitchText({ children }: { children: string }) {
   );
 }
 
+// Event start: September 1, 2026 00:00:00 UTC-7
+const EVENT_TS = new Date("2026-09-01T00:00:00-07:00").getTime();
+
+function getRemaining() {
+  const diff = Math.max(0, EVENT_TS - Date.now());
+  const days = Math.floor(diff / 86_400_000);
+  const hours = Math.floor((diff % 86_400_000) / 3_600_000);
+  const minutes = Math.floor((diff % 3_600_000) / 60_000);
+  const seconds = Math.floor((diff % 60_000) / 1000);
+  return { days, hours, minutes, seconds };
+}
+
+function Countdown() {
+  const [time, setTime] = useState(getRemaining);
+
+  useEffect(() => {
+    const id = setInterval(() => setTime(getRemaining()), 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  const blocks = [
+    { value: time.days, label: "Days" },
+    { value: time.hours, label: "Hours" },
+    { value: time.minutes, label: "Minutes" },
+    { value: time.seconds, label: "Seconds" },
+  ];
+
+  return (
+    <div className="mb-8 flex items-center justify-center gap-3 font-mono sm:gap-5">
+      {blocks.map((b, i) => (
+        <div key={b.label} className="flex items-center gap-3 sm:gap-5">
+          <div className="flex flex-col items-center">
+            <span className="font-display text-4xl font-extrabold tabular-nums text-gold gold-glow sm:text-5xl md:text-6xl">
+              {b.value.toString().padStart(2, "0")}
+            </span>
+            <span className="mt-1 text-[10px] uppercase tracking-widest text-muted-foreground sm:text-xs">
+              {b.label}
+            </span>
+          </div>
+          {i < blocks.length - 1 && (
+            <span aria-hidden className="text-2xl text-border sm:text-3xl">
+              ·
+            </span>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function HeroSection({ onApply, onLearnMore }: Props) {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -178,6 +228,15 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
           <span className="inline-block h-1.5 w-1.5 animate-pulse-glow rounded-full bg-primary" />
           Dublin, CA · September 2026 · Overnight
         </motion.p>
+
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          animate="show"
+          custom={1.5}
+        >
+          <Countdown />
+        </motion.div>
 
         <motion.h1
           variants={fadeUp}

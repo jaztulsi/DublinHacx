@@ -8,6 +8,8 @@ import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/sections/Footer";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
+import { getUserRegistration, type UserRegistration } from "@/lib/registration-client";
+import { setDevpostUrl } from "@/functions/registrations.functions";
 
 export const Route = createFileRoute("/dashboard")({
   head: () => ({
@@ -80,6 +82,10 @@ function DashboardPage() {
   const [fetching, setFetching] = useState(true);
   const [busy, setBusy] = useState<DocKey | null>(null);
   const [celebrated, setCelebrated] = useState(false);
+  const [registration, setRegistration] = useState<UserRegistration | null>(null);
+  const [devpostInput, setDevpostInput] = useState("");
+  const [savingDevpost, setSavingDevpost] = useState(false);
+  const [devpostError, setDevpostError] = useState<string | null>(null);
 
   const loadSignatures = useCallback(async (userId: string) => {
     setFetching(true);
@@ -93,14 +99,23 @@ function DashboardPage() {
     setFetching(false);
   }, []);
 
+  const loadRegistration = useCallback(async () => {
+    const reg = await getUserRegistration().catch(() => null);
+    setRegistration(reg);
+    setDevpostInput(reg?.devpost_url ?? "");
+  }, []);
+
   useEffect(() => {
     if (loading) return;
     if (!session) {
       navigate({ to: "/login" });
       return;
     }
-    if (user) loadSignatures(user.id);
-  }, [loading, session, user, navigate, loadSignatures]);
+    if (user) {
+      loadSignatures(user.id);
+      loadRegistration();
+    }
+  }, [loading, session, user, navigate, loadSignatures, loadRegistration]);
 
   const allSigned = signed.size === DOCUMENTS.length;
 
@@ -146,6 +161,24 @@ function DashboardPage() {
       setCelebrated(false);
     }
     setBusy(null);
+  };
+
+  const saveDevpost = async () => {
+    if (!user) return;
+    setSavingDevpost(true);
+    setDevpostError(null);
+    try {
+      const res = await setDevpostUrl({ data: { userId: user.id, devpostUrl: devpostInput } });
+      if (res.ok) {
+        setRegistration((prev) => (prev ? { ...prev, devpost_url: res.devpost_url } : prev));
+        setDevpostInput(res.devpost_url ?? "");
+      } else {
+        setDevpostError("Could not save. Please try again.");
+      }
+    } catch (err) {
+      setDevpostError(err instanceof Error ? err.message : "Enter a valid Devpost URL");
+    }
+    setSavingDevpost(false);
   };
 
   if (loading || !session) {
@@ -195,6 +228,90 @@ function DashboardPage() {
               Log out
             </button>
           </div>
+
+          {registration && (
+            <div className="mb-8 rounded-2xl border border-border bg-card/30 p-5 backdrop-blur-md">
+              <div className="mb-4 flex items-center justify-between">
+                <h2 className="font-display text-lg font-bold">Your registration</h2>
+                <span
+                  className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${
+                    registration.status === "accepted"
+                      ? "bg-primary/15 text-primary"
+                      : "bg-secondary/60 text-muted-foreground"
+                  }`}
+                >
+                  {registration.status}
+                </span>
+              </div>
+              <dl className="grid grid-cols-1 gap-3 text-sm sm:grid-cols-2">
+                <div>
+                  <dt className="text-muted-foreground">Name</dt>
+                  <dd className="font-medium">
+                    {registration.first_name} {registration.last_name}
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-muted-foreground">School</dt>
+                  <dd className="font-medium">{registration.school}</dd>
+                </div>
+                <div>
+                  <dt className="text-muted-foreground">Team</dt>
+                  <dd className="font-medium">{registration.team_name || "Solo / not set"}</dd>
+                </div>
+                <div>
+                  <dt className="text-muted-foreground">Email</dt>
+                  <dd className="font-medium break-all">{registration.email}</dd>
+                </div>
+              </dl>
+            </div>
+          )}
+
+          {registration && allSigned && (
+            <div className="mb-8 rounded-2xl border border-primary/40 bg-primary/5 p-5 backdrop-blur-md">
+              <h2 className="font-display text-lg font-bold">Link your Devpost project</h2>
+              <p className="mt-1 text-sm text-muted-foreground">
+                All set on documents — paste your Devpost project URL so we can find your submission.
+              </p>
+              {registration.devpost_url ? (
+                <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <a
+                    href={registration.devpost_url}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="break-all text-sm font-medium text-primary underline underline-offset-4 hover:text-primary-glow"
+                  >
+                    {registration.devpost_url}
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => setRegistration((p) => (p ? { ...p, devpost_url: null } : p))}
+                    className="self-start rounded-full border border-border bg-secondary/40 px-4 py-2 text-sm font-medium hover:bg-secondary/60"
+                  >
+                    Change
+                  </button>
+                </div>
+              ) : (
+                <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+                  <input
+                    type="url"
+                    value={devpostInput}
+                    onChange={(e) => setDevpostInput(e.target.value)}
+                    placeholder="https://devpost.com/software/your-project"
+                    className="flex-1 rounded-full border border-border bg-input/30 px-4 py-2 text-sm outline-none focus:border-primary/50"
+                  />
+                  <button
+                    type="button"
+                    onClick={saveDevpost}
+                    disabled={savingDevpost || !devpostInput.trim()}
+                    className="rounded-full bg-primary px-6 py-2 text-sm font-semibold text-primary-foreground purple-glow hover:scale-[1.02] disabled:opacity-60"
+                  >
+                    {savingDevpost ? "Saving…" : "Save"}
+                  </button>
+                </div>
+              )}
+              {devpostError && <p className="mt-2 text-sm text-destructive">{devpostError}</p>}
+            </div>
+          )}
 
           <div className="mb-8 rounded-2xl border border-border bg-card/30 p-5 backdrop-blur-md">
             <div className="mb-2 flex items-center justify-between text-sm">

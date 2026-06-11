@@ -1,3 +1,8 @@
+# MCP server build output
+mcp-server/dist/
+mcp-server/.env
+mcp-server/node_modules/
+
 # Logs
 logs
 *.log
@@ -20,7 +25,6 @@ dist-ssr
 .vercel
 
 # Environment variables / secrets
-.env
 .env.*
 !.env.example
 
@@ -38,3 +42,4 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.env*

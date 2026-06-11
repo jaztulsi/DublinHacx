@@ -1,20 +1,19 @@
 import { supabase } from "@/integrations/supabase/client";
-import { registrationSchema, type RegistrationInput, HACKER_CAP } from "@/lib/registration-schema";
+import { type RegistrationInput, HACKER_CAP } from "@/lib/registration-schema";
+import {
+  submitRegistration as submitRegistrationFn,
+  getUserRegistration as getUserRegistrationFn,
+  type SubmitResult,
+  type UserRegistration,
+} from "@/functions/registrations.functions";
 
-// Client-side registration. The Supabase RLS policies allow anonymous INSERTs
-// on `registrations`/`waitlist`, and `get_registration_count()` is a
-// SECURITY DEFINER function granted to `anon` — so the whole flow runs in the
-// browser with the publishable (anon) key, no server required. This is what
-// lets the site live on a static host like GitHub Pages.
+// Public client-side API for the registration flow. The actual insert now runs
+// in a TanStack Start server function (service-role key) so it can stamp the
+// hacker's user_id and send a Resend confirmation. Capacity is still read
+// through the anon-accessible SECURITY DEFINER RPC so the live count works
+// without a round-trip to the server function.
 
-function parseTeammates(raw?: string): string[] {
-  if (!raw) return [];
-  return raw
-    .split(",")
-    .map((s) => s.trim())
-    .filter((s) => s.length > 0)
-    .slice(0, 3);
-}
+export type { SubmitResult, UserRegistration };
 
 export async function getCapacity(): Promise<{ count: number; cap: number }> {
   const { data, error } = await supabase.rpc("get_registration_count");
@@ -25,64 +24,24 @@ export async function getCapacity(): Promise<{ count: number; cap: number }> {
   return { count: (data as number) ?? 0, cap: HACKER_CAP };
 }
 
-type SubmitResult =
-  | { ok: true; status: "accepted" | "waitlisted"; name: string }
-  | { ok: false; error: string };
-
 export async function submitRegistration({
-  data: input,
+  data,
 }: {
   data: RegistrationInput;
 }): Promise<SubmitResult> {
-  const data = registrationSchema.parse(input);
+  // Attach the signed-in user (if any) so the row is linked to their account.
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
-  // Count via the public SECURITY DEFINER RPC (anon can't SELECT rows directly).
-  const { data: countData, error: countErr } = await supabase.rpc("get_registration_count");
-  if (countErr) {
-    console.error("count error", countErr);
-    return { ok: false, error: "Could not check capacity. Please try again." };
-  }
-  const count = (countData as number) ?? 0;
+  return submitRegistrationFn({ data: { input: data, userId: user?.id ?? null } });
+}
 
-  const row = {
-    first_name: data.first_name,
-    last_name: data.last_name,
-    email: data.email.toLowerCase(),
-    phone: data.phone,
-    school: data.school,
-    grad_year: data.grad_year,
-    exp_level: data.exp_level,
-    dietary: data.dietary,
-    tshirt: data.tshirt,
-    idea: data.idea || null,
-    github: data.github || null,
-    linkedin: data.linkedin || null,
-    parent_name: data.parent_name,
-    parent_email: data.parent_email.toLowerCase(),
-    parent_phone: data.parent_phone,
-    emergency_contact: data.emergency_contact,
-    team_name: data.team_name || null,
-    teammate_emails: parseTeammates(data.teammate_emails),
-    code_of_conduct: data.code_of_conduct,
-    photo_release: data.photo_release,
-    parent_signature: data.parent_signature,
-  };
+export async function getUserRegistration(): Promise<UserRegistration | null> {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user?.id || !user.email) return null;
 
-  if (count >= HACKER_CAP) {
-    const { error } = await supabase.from("waitlist").insert(row);
-    if (error) {
-      console.error("waitlist insert error", error);
-      return { ok: false, error: "Could not save your waitlist entry." };
-    }
-    return { ok: true, status: "waitlisted", name: data.first_name };
-  }
-
-  const { error } = await supabase
-    .from("registrations")
-    .insert({ ...row, status: "accepted" as const });
-  if (error) {
-    console.error("registration insert error", error);
-    return { ok: false, error: "Could not save your registration." };
-  }
-  return { ok: true, status: "accepted", name: data.first_name };
+  return getUserRegistrationFn({ data: { userId: user.id, email: user.email } });
 }

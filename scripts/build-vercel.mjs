@@ -7,7 +7,7 @@
 //     └─ config.json             ← routes: static first, everything else → SSR
 import { build } from "esbuild";
 import { cp, mkdir, rm, writeFile } from "node:fs/promises";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 
@@ -41,6 +41,16 @@ await build({
     js: "import{createRequire as __cr}from'node:module';const require=__cr(import.meta.url);",
   },
 });
+
+// 3b. sanity check: if SPA mode was accidentally left on, `vite build` produces a
+//     client-only bundle and the server entry has no fetch/handler — server
+//     functions would silently never run. Warn loudly so the build target is fixed.
+const serverBundle = readFileSync(resolve(root, "dist/server/server.js"), "utf8");
+if (!serverBundle.includes("fetch") && !serverBundle.includes("handler")) {
+  console.warn(
+    "⚠️  Server bundle looks like a SPA build — server functions will not work. Check VITE_TARGET.",
+  );
+}
 
 // 4. function runtime config
 await writeFile(

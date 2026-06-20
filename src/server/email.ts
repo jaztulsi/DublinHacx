@@ -4,7 +4,7 @@
 import { Resend } from "resend";
 
 const EVENT_DATE = "September 1, 2026";
-const SIGN_OFF = "— Jasraj & Rachit, Dublin Hacx";
+const SIGN_OFF = "— The Dublin Hacx Team";
 
 let _resend: Resend | undefined;
 function getResend() {
@@ -37,18 +37,25 @@ export async function sendRegistrationConfirmation({ to, firstName, status }: Co
 
 You're in — your spot at Dublin Hacx on ${EVENT_DATE} is confirmed! 🎉
 
-Next step: head to your dashboard to read and sign your event documents. You won't be checked in on event day until all of them are signed.
+Here's what to do next:
 
-Sign in here: https://dublinhacx.com/dashboard
+1. Sign your documents. Head to your dashboard and read and sign every event document. You won't be checked in on event day until all of them are signed.
+   Sign in here: https://dublinhacx.com/dashboard
+
+2. Watch your inbox. We'll send further updates with the schedule, venue details, and event-day logistics as the date gets closer.
+
+3. Pack for the day. Bring your laptop and charger, plus a photo ID for check-in.
 
 Can't wait to see what you build.
 
 ${SIGN_OFF}`
       : `Hi ${firstName},
 
-Thanks for registering for Dublin Hacx on ${EVENT_DATE}. We've hit capacity, so you're currently on the waitlist.
+Thanks for registering for Dublin Hacx on ${EVENT_DATE}. We've hit capacity for now, so you're on the waitlist.
 
-If a spot opens up, we'll email you right away with instructions to claim it — no action needed from you for now.
+There's nothing you need to do — spots open up regularly, and if one becomes available we'll email you right away with instructions to claim it.
+
+We'll be in touch.
 
 ${SIGN_OFF}`;
 

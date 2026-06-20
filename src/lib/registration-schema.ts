@@ -42,6 +42,8 @@ const emailListSchema = z
   }, "Enter up to 3 valid emails, separated by commas");
 
 export const registrationSchema = z.object({
+  // Access
+  passcode: z.string().min(1, "Required"),
   // Hacker
   first_name: z.string().trim().min(1, "Required").max(80),
   last_name: z.string().trim().min(1, "Required").max(80),

@@ -42,35 +42,35 @@ const DOCUMENTS: DocSpec[] = [
     title: "Code of Conduct",
     description: "Be kind, build cool things, no jerks.",
     signerLabel: "Sign as Hacker",
-    body: "I agree to follow the Dublin Hacx Code of Conduct. I will treat fellow hackers, mentors, and organizers with respect. I will not engage in harassment, plagiarism, or unsafe behavior. I understand violations may result in removal from the event.",
+    body: "Dublin Hacx is a welcoming, harassment-free event for participants of every background, identity, and skill level. I agree to treat fellow hackers, mentors, volunteers, organizers, and venue staff with respect and courtesy at all times.\n\nI will not engage in harassment, discrimination, intimidation, bullying, or unwelcome conduct of any kind, whether based on age, race, ethnicity, gender, gender identity or expression, sexual orientation, disability, religion, or any other characteristic. I will not plagiarize work, cheat, damage property, or bring weapons, alcohol, drugs, or other prohibited items to the event. All project work must be created during the event and must be my own or my team's.\n\nI understand that the organizers may take any action they consider appropriate to enforce this Code of Conduct, including a warning, removal from the event without refund or compensation, and notification of my school or guardian or, where warranted, law enforcement. I agree to follow the reasonable instructions of organizers and venue staff throughout the event.",
   },
   {
     key: "photo_release",
     title: "Photo & Video Release",
     description: "Lets us share event photos.",
     signerLabel: "Sign as Hacker",
-    body: "I consent to being photographed and recorded during the event, and grant Dublin Hacx the right to use this media for promotion of future events, social media, and recap materials.",
+    body: "I grant Dublin Hacx and its organizers permission to photograph, film, and record me and my voice during the event, and to use, reproduce, edit, publish, and distribute these photographs, videos, and recordings.\n\nI understand this media may be used for promotional, educational, and archival purposes, including on websites, social media, recap videos, newsletters, sponsor materials, and future event marketing. I acknowledge that I will not receive any payment or other compensation for this use, and that the media may be stored and shared indefinitely.\n\nIf I prefer not to be featured, I understand I may notify the organizers in writing before or during the event and they will make reasonable efforts to honor that request. This release is given voluntarily and, where I am under 18, is confirmed by my parent or guardian's permission below.",
   },
   {
     key: "parent_signature",
     title: "Parent / Guardian Permission",
     description: "Required for hackers under 18.",
     signerLabel: "Sign as Parent / Guardian",
-    body: "I am the parent or legal guardian of the registered hacker. I give permission for them to attend the overnight Dublin Hacx event and acknowledge the schedule and venue described in the registration materials.",
+    body: "I am the parent or legal guardian of the registered hacker, and I give my permission for them to attend and participate in Dublin Hacx. I understand this is an overnight event running approximately 24 hours, and that participants may remain at the venue through the night under the general supervision of organizers and volunteers.\n\nI understand that Dublin Hacx is not a licensed childcare provider and that organizers cannot guarantee continuous individual supervision. I confirm that the contact and emergency information provided at registration is accurate, and I authorize the organizers to contact me at any time during the event.\n\nIn the event of an injury, illness, or other emergency, and if I cannot be reached promptly, I authorize the organizers to seek and consent to emergency medical care for my child, including transport by ambulance and treatment by licensed medical professionals. I accept financial responsibility for any such care. I have reviewed the schedule and venue information in the registration materials and grant this permission voluntarily.",
   },
   {
     key: "liability_waiver",
     title: "Liability Waiver",
     description: "Standard event waiver.",
     signerLabel: "Sign as Parent / Guardian",
-    body: "I, on behalf of myself and the hacker, release Dublin Hacx, its organizers, and the venue from liability for ordinary risks of attending the event, including travel to and from the venue.",
+    body: "I understand that participation in Dublin Hacx involves inherent risks, including but not limited to fatigue from an overnight event, slips and falls, food allergies or reactions, illness, travel to and from the venue, and the ordinary risks of being in a shared public space. Knowing these risks, I voluntarily agree that my child and I assume them as a condition of participation.\n\nIn consideration of being allowed to participate, I, on behalf of myself, my child, and our heirs and representatives, release, waive, and discharge Dublin Hacx, its organizers, volunteers, sponsors, and the host venue and its owners from any and all claims, liabilities, or demands for injury, illness, loss, or damage arising out of or related to participation in the event, to the fullest extent permitted by California law, except for harm caused by gross negligence or willful misconduct.\n\nThis release is intended to be a complete release of liability to the maximum extent allowed by law, and I expressly waive the protections of California Civil Code section 1542, which provides that a general release does not extend to claims the releasing party does not know or suspect to exist at the time of signing. I have read and understood this waiver and sign it freely.",
   },
   {
     key: "medical_release",
     title: "Medical Information & Emergency Release",
     description: "So we can help if something happens.",
     signerLabel: "Sign as Parent / Guardian",
-    body: "I authorize Dublin Hacx organizers to seek emergency medical treatment for the hacker if needed during the event, and I have provided accurate emergency contact and allergy information on the registration form.",
+    body: "I confirm that the emergency contact, allergy, dietary, and medical information provided at registration is accurate and complete to the best of my knowledge. I will inform the organizers in advance of any medical condition, allergy, medication, or accessibility need that may require attention during the event.\n\nIn the event of an accident, injury, or illness, I authorize the organizers and volunteers to administer or arrange basic first aid and to contact emergency services as they reasonably judge necessary. If neither I nor the listed emergency contact can be reached in time, I authorize licensed medical personnel to provide examination, treatment, and hospital care for my child, and I consent to such treatment on their behalf.\n\nI accept responsibility for any medical, ambulance, or hospital costs incurred, and I understand that the organizers are not medical professionals and will act in good faith based on the information available. This authorization remains in effect for the duration of the event.",
   },
 ];
 
@@ -442,7 +442,7 @@ function DashboardPage() {
             >
               <h3 className="font-display text-2xl font-extrabold">{openSpec.title}</h3>
               <p className="mt-1 text-sm text-muted-foreground">{openSpec.description}</p>
-              <div className="mt-5 max-h-60 overflow-y-auto rounded-xl border border-border bg-input/30 p-4 text-sm leading-relaxed">
+              <div className="mt-5 max-h-60 overflow-y-auto whitespace-pre-line rounded-xl border border-border bg-input/30 p-4 text-sm leading-relaxed">
                 {openSpec.body}
               </div>
               <div className="mt-6 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">

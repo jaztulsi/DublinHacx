@@ -68,6 +68,33 @@ export const submitRegistration = createServerFn({ method: "POST" })
     const supabase = getAdminClient();
     const { input, userId } = data;
 
+    // Passcode gate: keeps public spam out. Skipped (with a warning) when the
+    // env var is unset so local dev doesn't hard-fail.
+    const expectedPasscode = process.env.REGISTRATION_PASSCODE;
+    if (!expectedPasscode) {
+      console.warn("REGISTRATION_PASSCODE is not set — skipping passcode check");
+    } else if (input.passcode !== expectedPasscode) {
+      return {
+        ok: false,
+        error: "Incorrect passcode. Ask a Dublin Hacx organizer for the current one.",
+      };
+    }
+
+    // Block duplicate signups by email across both tables (email is lowercased
+    // on insert, so compare against the lowercased input).
+    const email = input.email.toLowerCase();
+    const [existingReg, existingWait] = await Promise.all([
+      supabase.from("registrations").select("id").eq("email", email).maybeSingle(),
+      supabase.from("waitlist").select("id").eq("email", email).maybeSingle(),
+    ]);
+    if (existingReg.data || existingWait.data) {
+      return {
+        ok: false,
+        error:
+          "This email is already registered for Dublin Hacx. Check your inbox, or contact us if you think this is a mistake.",
+      };
+    }
+
     const { count, error: countErr } = await supabase
       .from("registrations")
       .select("id", { count: "exact", head: true });

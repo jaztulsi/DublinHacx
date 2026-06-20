@@ -28,6 +28,7 @@ const TSHIRTS = ["XS", "S", "M", "L", "XL", "XXL"] as const;
 const DRAFT_KEY = "dublin-hacks-registration-draft";
 
 const defaultValues: RegistrationInput = {
+  passcode: "",
   first_name: "",
   last_name: "",
   email: "",
@@ -55,6 +56,7 @@ const steps = [
   {
     title: "Hacker Info",
     fields: [
+      "passcode",
       "first_name",
       "last_name",
       "email",
@@ -375,6 +377,16 @@ export function RegistrationSection() {
           <FormBlock title={activeStep.title}>
             {currentStep === 0 && (
               <>
+                <Field label="Event Passcode" full error={form.formState.errors.passcode?.message}>
+                  <input
+                    className={inputCls}
+                    autoComplete="off"
+                    {...form.register("passcode")}
+                  />
+                  <span className="mt-1 block text-xs text-muted-foreground">
+                    Ask a Dublin Hacx organizer for this.
+                  </span>
+                </Field>
                 <Field label="First Name" error={form.formState.errors.first_name?.message}>
                   <input
                     className={inputCls}

@@ -328,7 +328,21 @@ export function SponsorsSection() {
             Current Sponsors
           </p>
           <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4">
-            {Array.from({ length: 4 }).map((_, i) => (
+            <a
+              href="https://www.yriscience.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YRI Science"
+              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
+            >
+              <img
+                src="/yri-science-logo.png"
+                alt="YRI Science"
+                className="max-h-16 w-auto object-contain"
+              />
+              <span className="text-xs text-muted-foreground">YRI Science</span>
+            </a>
+            {Array.from({ length: 3 }).map((_, i) => (
               <div
                 key={i}
                 className="flex aspect-[3/2] items-center justify-center rounded-xl border border-dashed border-border bg-card/20 text-xs text-muted-foreground"

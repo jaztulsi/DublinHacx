@@ -22,7 +22,7 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-3 text-sm text-muted-foreground">
-              Dublin, CA's first overnight high school hackathon. September 2026.
+              Dublin, CA's first overnight high school hackathon. September 2026 (date TBD).
             </p>
           </div>
 

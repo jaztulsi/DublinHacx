@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import heroImg from "@/assets/hero-night.jpg";
 import logo from "@/assets/dublin-hacx-logo.svg";
+import { EVENT_DATE_TBD } from "@/lib/schedule";
 
 interface Props {
   onApply: () => void;
@@ -95,7 +96,7 @@ function GlitchText({ children }: { children: string }) {
   );
 }
 
-// Event start: September 1, 2026 00:00:00 UTC-7
+// Placeholder countdown target — only used when EVENT_DATE_TBD is false.
 const EVENT_TS = new Date("2026-09-01T00:00:00-07:00").getTime();
 
 function getRemaining() {
@@ -235,7 +236,15 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
           animate="show"
           custom={1.5}
         >
-          <Countdown />
+          {EVENT_DATE_TBD ? (
+            <div className="mb-8 flex items-center justify-center font-mono">
+              <span className="font-display text-3xl font-extrabold text-gold gold-glow sm:text-4xl md:text-5xl">
+                September 2026 — date TBD
+              </span>
+            </div>
+          ) : (
+            <Countdown />
+          )}
         </motion.div>
 
         <motion.h1

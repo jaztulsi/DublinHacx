@@ -25,7 +25,7 @@ export function ScheduleSection() {
             Here's how 24 hours looks.
           </h2>
           <p className="mt-4 text-sm text-muted-foreground">
-            Saturday September 1 → Sunday September 2, 2026 · Dublin, CA
+            September 2026 (date TBD) · Dublin, CA
           </p>
         </motion.div>
 

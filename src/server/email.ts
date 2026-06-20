@@ -3,7 +3,7 @@
 // functions in `src/functions/*`.
 import { Resend } from "resend";
 
-const EVENT_DATE = "September 1, 2026";
+const EVENT_DATE = "September 2026 (date TBD)";
 const SIGN_OFF = "— The Dublin Hacx Team";
 
 let _resend: Resend | undefined;

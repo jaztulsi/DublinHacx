@@ -32,7 +32,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Bring any idea. Build it into reality. Dublin, CA's first overnight high school hackathon — September 2026.",
+          "Bring any idea. Build it into reality. Dublin, CA's first overnight high school hackathon — September 2026 (date TBD).",
       },
       { property: "og:type", content: "website" },
     ],

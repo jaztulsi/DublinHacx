@@ -10,8 +10,16 @@ export interface ScheduleItem {
 }
 
 /**
- * Event start: Saturday, September 12, 2026 at 9:00 AM Pacific.
- * (Date is approximate — adjust when finalized.)
+ * The exact event date is not finalized yet — sometime in September 2026 (date TBD).
+ * While EVENT_DATE_TBD is true, any live countdown / "happening now" UI should be
+ * skipped in favor of static "September 2026 — date TBD" text.
+ */
+export const EVENT_DATE_TBD = true;
+
+/**
+ * Placeholder start anchor (9:00 AM Pacific). Only used by the relative schedule
+ * math and the countdown logic, both gated by EVENT_DATE_TBD until a real date
+ * is set — update this when the date is finalized.
  */
 export const EVENT_START = new Date("2026-09-12T09:00:00-07:00");
 

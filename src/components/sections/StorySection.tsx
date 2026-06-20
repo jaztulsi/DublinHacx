@@ -11,7 +11,7 @@ const panels = [
   },
   {
     statement: "You ship. You present. You remember this weekend forever.",
-    subline: "Dublin's first overnight high school hackathon — September 2026.",
+    subline: "Dublin's first overnight high school hackathon — September 2026 (date TBD).",
   },
 ];
 

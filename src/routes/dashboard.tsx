@@ -86,6 +86,7 @@ function DashboardPage() {
   const [devpostInput, setDevpostInput] = useState("");
   const [savingDevpost, setSavingDevpost] = useState(false);
   const [devpostError, setDevpostError] = useState<string | null>(null);
+  const [profileOpen, setProfileOpen] = useState(false);
 
   const loadSignatures = useCallback(async (userId: string) => {
     setFetching(true);
@@ -197,6 +198,18 @@ function DashboardPage() {
   const progress = Math.round((signed.size / DOCUMENTS.length) * 100);
   const openSpec = openDoc ? DOCUMENTS.find((d) => d.key === openDoc) : null;
 
+  // Profile details come from Supabase auth user metadata set at signup.
+  const meta = user?.user_metadata ?? {};
+  const profileUsername = (meta.username as string) || "";
+  const profileFirstName = (meta.first_name as string) || "";
+  const profileLastName = (meta.last_name as string) || "";
+  const profileFullName = [profileFirstName, profileLastName].filter(Boolean).join(" ");
+  const profileInitials =
+    (((profileFirstName[0] ?? "") + (profileLastName[0] ?? "")).trim() ||
+      profileUsername[0] ||
+      user?.email?.[0] ||
+      "?").toUpperCase();
+
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
       <div className="pointer-events-none fixed inset-0 z-0">
@@ -205,6 +218,83 @@ function DashboardPage() {
       <div className="pointer-events-none fixed inset-0 z-[1] opacity-[0.07] grain-overlay" />
       <CustomCursor />
       <NavBar />
+
+      {/* Profile menu — fixed below the NavBar, top-left of the page */}
+      <div className="fixed left-4 top-20 z-30 sm:left-6">
+        <div className="relative">
+          <button
+            type="button"
+            onClick={() => setProfileOpen((open) => !open)}
+            aria-haspopup="menu"
+            aria-expanded={profileOpen}
+            className="flex items-center gap-3 rounded-xl border border-border bg-card/40 px-3 py-2 backdrop-blur-md transition hover:border-primary/40"
+          >
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-primary/40 bg-primary/15 text-sm font-bold text-primary">
+              {profileInitials}
+            </span>
+            <span className="hidden text-left sm:block">
+              <span className="block text-sm font-semibold leading-tight">
+                {profileUsername || "Hacker"}
+              </span>
+              {profileFullName && (
+                <span className="block text-xs leading-tight text-muted-foreground">
+                  {profileFullName}
+                </span>
+              )}
+            </span>
+            <svg
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className={`text-muted-foreground transition-transform ${profileOpen ? "rotate-180" : ""}`}
+              aria-hidden="true"
+            >
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+
+          <AnimatePresence>
+            {profileOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: -6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.15 }}
+                role="menu"
+                className="absolute left-0 mt-2 w-56 rounded-xl border border-primary/40 bg-card/90 p-3 backdrop-blur-xl purple-glow"
+              >
+                <div className="border-b border-border pb-2">
+                  <p className="text-sm font-semibold">{profileUsername || "Hacker"}</p>
+                  {profileFullName && (
+                    <p className="text-xs text-muted-foreground">{profileFullName}</p>
+                  )}
+                  {user?.email && (
+                    <p className="mt-0.5 break-all text-xs text-muted-foreground">{user.email}</p>
+                  )}
+                </div>
+                <button
+                  type="button"
+                  role="menuitem"
+                  onClick={async () => {
+                    setProfileOpen(false);
+                    await signOut();
+                    navigate({ to: "/" });
+                  }}
+                  className="mt-2 w-full rounded-full border border-border bg-secondary/40 px-4 py-2 text-sm font-medium transition hover:bg-secondary/60"
+                >
+                  Sign Out
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
+
       <main className="relative z-10 px-6 pt-28 pb-16">
         <div className="mx-auto max-w-3xl">
           <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">

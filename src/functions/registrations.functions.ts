@@ -166,6 +166,19 @@ export const getUserRegistration = createServerFn({ method: "POST" })
     return row;
   });
 
+// Verifies a signup passcode against REGISTRATION_PASSCODE without touching any
+// table. Used by the login/signup flow to gate account creation. Skipped (treated
+// as valid) when the env var is unset so local dev doesn't hard-fail.
+export const verifySignupPasscode = createServerFn({ method: "POST" })
+  .inputValidator((payload: { passcode: string }) => payload)
+  .handler(async ({ data }): Promise<{ ok: boolean; error?: string }> => {
+    if (!process.env.REGISTRATION_PASSCODE) return { ok: true };
+    if (data.passcode !== process.env.REGISTRATION_PASSCODE) {
+      return { ok: false, error: "Incorrect passcode." };
+    }
+    return { ok: true };
+  });
+
 export const setDevpostUrl = createServerFn({ method: "POST" })
   .inputValidator((payload: { userId: string; devpostUrl: string }) => {
     const trimmed = payload.devpostUrl.trim();

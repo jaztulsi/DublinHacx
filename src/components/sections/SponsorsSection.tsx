@@ -338,7 +338,7 @@ export function SponsorsSection() {
               <img
                 src="/yri-science-logo.png"
                 alt="YRI Science"
-                className="max-h-16 w-auto object-contain"
+                className="max-h-28 w-auto object-contain"
               />
               <span className="text-xs text-muted-foreground">YRI Science</span>
             </a>

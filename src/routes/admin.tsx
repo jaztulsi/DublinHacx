@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useMemo, useState } from "react";
 import { CosmicBackground } from "@/components/CosmicBackground";
+import { CustomCursor } from "@/components/CustomCursor";
 import {
   getRegistrations,
   getWaitlist,
@@ -168,6 +169,7 @@ function AdminPage() {
         <div className="pointer-events-none fixed inset-0 z-0">
           <CosmicBackground />
         </div>
+        <CustomCursor />
         <div className="relative z-10 flex min-h-screen items-center justify-center px-4">
           <form
             onSubmit={submitGate}
@@ -204,6 +206,7 @@ function AdminPage() {
       <div className="pointer-events-none fixed inset-0 z-0">
         <CosmicBackground />
       </div>
+      <CustomCursor />
       <main className="relative z-10 px-4 py-10 sm:px-6">
         <div className="mx-auto max-w-6xl">
           <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">

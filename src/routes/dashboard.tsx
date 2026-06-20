@@ -6,6 +6,7 @@ import { CosmicBackground } from "@/components/CosmicBackground";
 import { CustomCursor } from "@/components/CustomCursor";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/sections/Footer";
+import { RegistrationSection } from "@/components/sections/RegistrationSection";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { getUserRegistration, type UserRegistration } from "@/lib/registration-client";
@@ -83,6 +84,7 @@ function DashboardPage() {
   const [busy, setBusy] = useState<DocKey | null>(null);
   const [celebrated, setCelebrated] = useState(false);
   const [registration, setRegistration] = useState<UserRegistration | null>(null);
+  const [regLoading, setRegLoading] = useState(true);
   const [devpostInput, setDevpostInput] = useState("");
   const [savingDevpost, setSavingDevpost] = useState(false);
   const [devpostError, setDevpostError] = useState<string | null>(null);
@@ -101,9 +103,11 @@ function DashboardPage() {
   }, []);
 
   const loadRegistration = useCallback(async () => {
+    setRegLoading(true);
     const reg = await getUserRegistration().catch(() => null);
     setRegistration(reg);
     setDevpostInput(reg?.devpost_url ?? "");
+    setRegLoading(false);
   }, []);
 
   useEffect(() => {
@@ -319,6 +323,13 @@ function DashboardPage() {
             </button>
           </div>
 
+          {regLoading ? (
+            <p className="text-center text-muted-foreground">Loading your registration…</p>
+          ) : !registration ? (
+            // No registration on file yet — collect it before showing documents.
+            <RegistrationSection onSubmitted={loadRegistration} />
+          ) : (
+            <>
           {registration && (
             <div className="mb-8 rounded-2xl border border-border bg-card/30 p-5 backdrop-blur-md">
               <div className="mb-4 flex items-center justify-between">
@@ -507,6 +518,8 @@ function DashboardPage() {
                 );
               })}
             </ul>
+          )}
+            </>
           )}
         </div>
       </main>

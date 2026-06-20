@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { CosmicBackground } from "@/components/CosmicBackground";
@@ -6,7 +6,6 @@ import { CustomCursor } from "@/components/CustomCursor";
 import { NavBar } from "@/components/NavBar";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
-import { verifySignupPasscode } from "@/functions/registrations.functions";
 
 export const Route = createFileRoute("/login")({
   head: () => ({
@@ -24,10 +23,8 @@ function LoginPage() {
   const navigate = useNavigate();
   const { session, loading } = useAuth();
   const [mode, setMode] = useState<Mode>("signin");
-  const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [passcode, setPasscode] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -50,19 +47,9 @@ function LoginPage() {
         const { data, error } = await supabase.auth.signUp({
           email,
           password,
-          options: { data: { username, first_name: firstName, last_name: lastName } },
+          options: { data: { first_name: firstName, last_name: lastName } },
         });
         if (error) throw error;
-
-        // Gate account creation on the event passcode. If it's wrong, undo the
-        // sign-in so a bad-passcode account isn't left silently logged in.
-        const check = await verifySignupPasscode({ data: { passcode } });
-        if (!check.ok) {
-          await supabase.auth.signOut();
-          setError(check.error ?? "Incorrect passcode.");
-          return;
-        }
-
         if (data.session) {
           navigate({ to: "/dashboard" });
         } else {
@@ -134,17 +121,6 @@ function LoginPage() {
             {mode === "signup" && (
               <>
                 <label className="block text-sm">
-                  <span className="mb-1.5 block font-medium text-foreground/90">Username</span>
-                  <input
-                    type="text"
-                    required
-                    autoComplete="username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    className={inputCls}
-                  />
-                </label>
-                <label className="block text-sm">
                   <span className="mb-1.5 block font-medium text-foreground/90">First Name</span>
                   <input
                     type="text"
@@ -179,22 +155,6 @@ function LoginPage() {
                 className={inputCls}
               />
             </label>
-            {mode === "signup" && (
-              <label className="block text-sm">
-                <span className="mb-1.5 block font-medium text-foreground/90">Passcode</span>
-                <input
-                  type="text"
-                  required
-                  autoComplete="off"
-                  value={passcode}
-                  onChange={(e) => setPasscode(e.target.value)}
-                  className={inputCls}
-                />
-                <span className="mt-1.5 block text-xs text-muted-foreground">
-                  Ask a Dublin Hacx organizer for this.
-                </span>
-              </label>
-            )}
             <label className="block text-sm">
               <span className="mb-1.5 block font-medium text-foreground/90">Password</span>
               <input
@@ -222,47 +182,40 @@ function LoginPage() {
             </button>
           </form>
 
-          <div className="mt-6 text-center text-sm text-muted-foreground">
-            {mode === "signin" ? (
-              <>
-                No account?{" "}
-                <button
-                  type="button"
-                  onClick={() => {
-                    setMode("signup");
-                    setError(null);
-                    setInfo(null);
-                  }}
-                  className="font-semibold text-primary hover:underline"
-                >
-                  Sign up
-                </button>
-              </>
-            ) : (
-              <>
-                Already have one?{" "}
-                <button
-                  type="button"
-                  onClick={() => {
-                    setMode("signin");
-                    setError(null);
-                    setInfo(null);
-                  }}
-                  className="font-semibold text-primary hover:underline"
-                >
-                  Log in
-                </button>
-              </>
-            )}
+          <div className="mt-6 grid grid-cols-2 gap-2 rounded-full border border-border bg-secondary/20 p-1">
+            <button
+              type="button"
+              onClick={() => {
+                setMode("signin");
+                setError(null);
+                setInfo(null);
+              }}
+              aria-pressed={mode === "signin"}
+              className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                mode === "signin"
+                  ? "bg-primary text-primary-foreground purple-glow"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Log in
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setMode("signup");
+                setError(null);
+                setInfo(null);
+              }}
+              aria-pressed={mode === "signup"}
+              className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                mode === "signup"
+                  ? "bg-primary text-primary-foreground purple-glow"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Sign up
+            </button>
           </div>
-
-          <p className="mt-6 text-center text-xs text-muted-foreground">
-            Need to register for the event first?{" "}
-            <Link to="/register" className="text-primary hover:underline">
-              Apply here
-            </Link>
-            .
-          </p>
         </motion.div>
       </main>
     </div>

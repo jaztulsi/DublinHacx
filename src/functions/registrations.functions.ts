@@ -68,18 +68,6 @@ export const submitRegistration = createServerFn({ method: "POST" })
     const supabase = getAdminClient();
     const { input, userId } = data;
 
-    // Passcode gate: keeps public spam out. Skipped (with a warning) when the
-    // env var is unset so local dev doesn't hard-fail.
-    const expectedPasscode = process.env.REGISTRATION_PASSCODE;
-    if (!expectedPasscode) {
-      console.warn("REGISTRATION_PASSCODE is not set — skipping passcode check");
-    } else if (input.passcode !== expectedPasscode) {
-      return {
-        ok: false,
-        error: "Incorrect passcode. Ask a Dublin Hacx organizer for the current one.",
-      };
-    }
-
     // Block duplicate signups by email across both tables (email is lowercased
     // on insert, so compare against the lowercased input).
     const email = input.email.toLowerCase();
@@ -164,19 +152,6 @@ export const getUserRegistration = createServerFn({ method: "POST" })
     const row = byEmail as UserRegistration;
     await supabase.from("registrations").update({ user_id: data.userId }).eq("id", row.id);
     return row;
-  });
-
-// Verifies a signup passcode against REGISTRATION_PASSCODE without touching any
-// table. Used by the login/signup flow to gate account creation. Skipped (treated
-// as valid) when the env var is unset so local dev doesn't hard-fail.
-export const verifySignupPasscode = createServerFn({ method: "POST" })
-  .inputValidator((payload: { passcode: string }) => payload)
-  .handler(async ({ data }): Promise<{ ok: boolean; error?: string }> => {
-    if (!process.env.REGISTRATION_PASSCODE) return { ok: true };
-    if (data.passcode !== process.env.REGISTRATION_PASSCODE) {
-      return { ok: false, error: "Incorrect passcode." };
-    }
-    return { ok: true };
   });
 
 export const setDevpostUrl = createServerFn({ method: "POST" })

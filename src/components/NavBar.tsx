@@ -43,15 +43,14 @@ export function NavBar() {
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  const goToRegister = () => {
-    setOpen(false);
-    navigate({ to: "/register" });
-  };
-
   const goToAuthArea = () => {
     setOpen(false);
     navigate({ to: session ? "/dashboard" : "/login" });
   };
+
+  // Registration now lives inside the dashboard, so the "Sign Up" CTA routes to
+  // the auth area (dashboard if signed in, otherwise the login/sign-up page).
+  const goToRegister = goToAuthArea;
 
   return (
     <motion.header

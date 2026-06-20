@@ -6,6 +6,7 @@ import { CosmicBackground } from "@/components/CosmicBackground";
 import { MoonCompanion } from "@/components/MoonCompanion";
 
 import { NavBar } from "@/components/NavBar";
+import { useAuth } from "@/hooks/useAuth";
 import { IntroOverlay } from "@/components/IntroOverlay";
 import { KonamiEgg } from "@/components/KonamiEgg";
 import { HeroSection } from "@/components/sections/HeroSection";
@@ -42,6 +43,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   const [introDone, setIntroDone] = useState(false);
   const navigate = useNavigate();
+  const { session } = useAuth();
 
   const scrollToId = (id: string) => {
     const el = document.getElementById(id);
@@ -67,7 +69,7 @@ function Index() {
 
       <main className="relative z-10">
         <HeroSection
-          onApply={() => navigate({ to: "/register" })}
+          onApply={() => navigate({ to: session ? "/dashboard" : "/login" })}
           onLearnMore={() => scrollToId("about")}
         />
         <StorySection />

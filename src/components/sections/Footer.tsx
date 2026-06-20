@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { useAuth } from "@/hooks/useAuth";
 
 const SOCIALS = [
   { name: "Instagram", href: "#", icon: "📷" },
@@ -8,6 +9,7 @@ const SOCIALS = [
 ];
 
 export function Footer() {
+  const { session } = useAuth();
   return (
     <footer className="relative border-t border-border px-6 py-16">
       <div className="mx-auto max-w-6xl">
@@ -54,7 +56,7 @@ export function Footer() {
               <p className="mb-3 text-xs uppercase tracking-widest text-primary">Get involved</p>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <Link to="/register" className="hover:text-foreground">
+                  <Link to={session ? "/dashboard" : "/login"} className="hover:text-foreground">
                     Sign Up
                   </Link>
                 </li>

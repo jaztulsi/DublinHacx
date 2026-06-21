@@ -2,7 +2,10 @@ import { motion } from "framer-motion";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import logo from "@/assets/dublin-hacx-logo.svg";
-import { useAuth } from "@/hooks/useAuth";
+
+// Registration is handled entirely through an external Google Form.
+const REGISTER_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdnmbxMou0EOQ4BbJJEeekJ_B7FVXqV9IioHKOfzYSVIGmKNg/viewform";
 
 const NAV_ITEMS = [
   { id: "about", label: "About" },
@@ -17,7 +20,6 @@ export function NavBar() {
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const { session } = useAuth();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -41,22 +43,6 @@ export function NavBar() {
     }
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
-  const goToAuthArea = () => {
-    setOpen(false);
-    navigate({ to: session ? "/dashboard" : "/login" });
-  };
-
-  // Registration is now handled through an external Google Form, so the "Sign Up"
-  // CTA opens that form in a new tab instead of routing into the app.
-  const goToRegister = () => {
-    setOpen(false);
-    window.open(
-      "https://docs.google.com/forms/d/e/1FAIpQLSdnmbxMou0EOQ4BbJJEeekJ_B7FVXqV9IioHKOfzYSVIGmKNg/viewform?usp=header",
-      "_blank",
-      "noopener,noreferrer",
-    );
   };
 
   return (
@@ -87,18 +73,14 @@ export function NavBar() {
               {item.label}
             </button>
           ))}
-          <button
-            onClick={goToAuthArea}
-            className="ml-2 rounded-full border border-border bg-secondary/40 px-4 py-2 text-sm font-medium hover:bg-secondary/60"
+          <a
+            href={REGISTER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-2 rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground purple-glow transition-transform hover:scale-105"
           >
-            {session ? "Dashboard" : "Log in"}
-          </button>
-          <button
-            onClick={goToRegister}
-            className="ml-1 rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground purple-glow transition-transform hover:scale-105"
-          >
-            Sign Up
-          </button>
+            Register →
+          </a>
         </nav>
 
         <button
@@ -142,18 +124,15 @@ export function NavBar() {
                 {item.label}
               </button>
             ))}
-            <button
-              onClick={goToAuthArea}
-              className="mt-2 rounded-full border border-border bg-secondary/40 px-5 py-3 text-sm font-medium"
+            <a
+              href={REGISTER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setOpen(false)}
+              className="mt-2 rounded-full bg-primary px-5 py-3 text-center text-sm font-semibold text-primary-foreground"
             >
-              {session ? "Dashboard" : "Log in"}
-            </button>
-            <button
-              onClick={goToRegister}
-              className="mt-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground"
-            >
-              Sign Up
-            </button>
+              Register →
+            </a>
           </div>
         </motion.div>
       )}

@@ -1,5 +1,5 @@
 const REGISTER_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSdnmbxMou0EOQ4BbJJEeekJ_B7FVXqV9IioHKOfzYSVIGmKNg/viewform?usp=header";
+  "https://docs.google.com/forms/d/e/1FAIpQLSdnmbxMou0EOQ4BbJJEeekJ_B7FVXqV9IioHKOfzYSVIGmKNg/viewform";
 
 const SOCIALS = [
   { name: "Instagram", href: "#", icon: "📷" },

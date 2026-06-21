@@ -67,7 +67,7 @@ function Index() {
         <HeroSection
           onApply={() =>
             window.open(
-              "https://docs.google.com/forms/d/e/1FAIpQLSdnmbxMou0EOQ4BbJJEeekJ_B7FVXqV9IioHKOfzYSVIGmKNg/viewform?usp=header",
+              "https://docs.google.com/forms/d/e/1FAIpQLSdnmbxMou0EOQ4BbJJEeekJ_B7FVXqV9IioHKOfzYSVIGmKNg/viewform",
               "_blank",
               "noopener,noreferrer",
             )

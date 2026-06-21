@@ -10,9 +10,14 @@ import { getAdminClient } from "@/server/supabase-admin";
 // It mirrors the old in-app submitRegistration: decide accepted vs waitlisted
 // from the live count against the 170 cap, then insert into the matching table.
 
-const HACKER_CAP = 170;
+export const HACKER_CAP = 170;
 
-const webhookSchema = z.object({
+// Exported so the API route (src/routes/api/form-webhook.ts) can reuse the exact
+// same validation without duplicating it. The route inlines the business logic
+// rather than calling formSubmissionWebhook, because createServerFn-wrapped
+// functions are only reliably invokable via their RPC mechanism, not as plain
+// function calls from inside another server route handler.
+export const webhookSchema = z.object({
   secret: z.string(),
   first_name: z.string().trim().min(1).max(80),
   last_name: z.string().trim().min(1).max(80),

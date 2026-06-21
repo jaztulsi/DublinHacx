@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { getAdminClient } from "@/server/supabase-admin";
-import { webhookSchema, HACKER_CAP } from "@/functions/webhook.functions";
+import { webhookSchema, HACKER_CAP } from "@/lib/webhook-schema";
 
 // Public HTTP endpoint for the Google Form webhook: POST /api/form-webhook with
 // a JSON body { secret, first_name, last_name, email }.
@@ -9,8 +9,11 @@ import { webhookSchema, HACKER_CAP } from "@/functions/webhook.functions";
 // `formSubmissionWebhook`) on purpose: createServerFn-wrapped functions are only
 // reliably invokable through their build-time RPC registration — calling one as
 // a plain function from inside another server route handler fails in production
-// with "Server function info not found for [hash]". The validation schema and
-// cap are imported from webhook.functions.ts so there's a single source of truth.
+// with "Server function info not found for [hash]". Crucially, this file imports
+// ONLY from server-function-free modules (@/lib/webhook-schema, @/server/
+// supabase-admin) so the build never bundles it into a server function's RPC
+// chunk — importing the schema from webhook.functions.ts (which contains a
+// createServerFn) re-triggered that same error.
 export const Route = createFileRoute("/api/form-webhook")({
   server: {
     handlers: {

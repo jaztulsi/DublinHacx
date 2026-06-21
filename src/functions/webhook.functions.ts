@@ -1,28 +1,18 @@
 import { createServerFn } from "@tanstack/react-start";
-import { z } from "zod";
 import { getAdminClient } from "@/server/supabase-admin";
+import { webhookSchema, HACKER_CAP } from "@/lib/webhook-schema";
 
 // Public Google Form → Supabase webhook. UNLIKE the admin functions, this is
 // reachable without the admin password (Google Apps Script can't hold it), so
-// it is secured by its own shared secret (FORM_WEBHOOK_SECRET) instead. It is
-// invoked from the API route at src/routes/api/form-webhook.ts.
+// it is secured by its own shared secret (FORM_WEBHOOK_SECRET) instead.
+//
+// NOTE: the live endpoint is the API route at src/routes/api/form-webhook.ts,
+// which inlines this logic. This createServerFn is kept only for any future
+// client-side (RPC) caller. The shared schema/cap live in @/lib/webhook-schema
+// (a server-function-free file) so the API route never imports from here.
 //
 // It mirrors the old in-app submitRegistration: decide accepted vs waitlisted
 // from the live count against the 170 cap, then insert into the matching table.
-
-export const HACKER_CAP = 170;
-
-// Exported so the API route (src/routes/api/form-webhook.ts) can reuse the exact
-// same validation without duplicating it. The route inlines the business logic
-// rather than calling formSubmissionWebhook, because createServerFn-wrapped
-// functions are only reliably invokable via their RPC mechanism, not as plain
-// function calls from inside another server route handler.
-export const webhookSchema = z.object({
-  secret: z.string(),
-  first_name: z.string().trim().min(1).max(80),
-  last_name: z.string().trim().min(1).max(80),
-  email: z.string().trim().toLowerCase().email().max(255),
-});
 
 export const formSubmissionWebhook = createServerFn({ method: "POST" })
   .inputValidator((p: unknown) => webhookSchema.parse(p))

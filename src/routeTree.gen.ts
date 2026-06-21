@@ -13,6 +13,7 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiFormWebhookRouteImport } from './routes/api/form-webhook'
 
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
@@ -34,18 +35,25 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiFormWebhookRoute = ApiFormWebhookRouteImport.update({
+  id: '/api/form-webhook',
+  path: '/api/form-webhook',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
+  '/api/form-webhook': typeof ApiFormWebhookRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
+  '/api/form-webhook': typeof ApiFormWebhookRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,20 @@ export interface FileRoutesById {
   '/admin': typeof AdminRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
+  '/api/form-webhook': typeof ApiFormWebhookRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/admin' | '/dashboard' | '/login'
+  fullPaths: '/' | '/admin' | '/dashboard' | '/login' | '/api/form-webhook'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/admin' | '/dashboard' | '/login'
-  id: '__root__' | '/' | '/admin' | '/dashboard' | '/login'
+  to: '/' | '/admin' | '/dashboard' | '/login' | '/api/form-webhook'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/dashboard'
+    | '/login'
+    | '/api/form-webhook'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +82,7 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRoute
   DashboardRoute: typeof DashboardRoute
   LoginRoute: typeof LoginRoute
+  ApiFormWebhookRoute: typeof ApiFormWebhookRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +115,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/form-webhook': {
+      id: '/api/form-webhook'
+      path: '/api/form-webhook'
+      fullPath: '/api/form-webhook'
+      preLoaderRoute: typeof ApiFormWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +130,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRoute: AdminRoute,
   DashboardRoute: DashboardRoute,
   LoginRoute: LoginRoute,
+  ApiFormWebhookRoute: ApiFormWebhookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

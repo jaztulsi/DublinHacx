@@ -8,6 +8,7 @@ import {
   getSignatures,
   getSignatureStats,
   promoteFromWaitlist,
+  createRegistration,
   DOCUMENT_KEYS,
   type AdminRegistration,
   type AdminWaitlist,
@@ -25,10 +26,11 @@ export const Route = createFileRoute("/admin")({
   component: AdminPage,
 });
 
-type Tab = "registrations" | "waitlist" | "signatures" | "export";
+type Tab = "registrations" | "add" | "waitlist" | "signatures" | "export";
 
 const TABS: { key: Tab; label: string }[] = [
   { key: "registrations", label: "Registrations" },
+  { key: "add", label: "Add Hacker" },
   { key: "waitlist", label: "Waitlist" },
   { key: "signatures", label: "Signatures" },
   { key: "export", label: "Export" },
@@ -257,6 +259,17 @@ function AdminPage() {
             <RegistrationsTable rows={filteredRegs} onCopy={copyEmail} />
           )}
 
+          {tab === "add" && (
+            <AddHackerForm
+              password={password}
+              onCreated={(msg) => {
+                setNotice(msg);
+                loadAll(password);
+                window.setTimeout(() => setNotice(null), 2500);
+              }}
+            />
+          )}
+
           {tab === "waitlist" && (
             <WaitlistTable rows={filteredWaitlist} onCopy={copyEmail} onPromote={promote} />
           )}
@@ -378,6 +391,109 @@ function RegistrationsTable({
         ))}
       </tbody>
     </TableShell>
+  );
+}
+
+function AddHackerForm({
+  password,
+  onCreated,
+}: {
+  password: string;
+  onCreated: (msg: string) => void;
+}) {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"accepted" | "waitlisted">("accepted");
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const fieldCls =
+    "w-full rounded-full border border-border bg-input/30 px-4 py-2 text-sm outline-none focus:border-primary/50";
+  const canSubmit = firstName.trim() && lastName.trim() && email.trim() && !submitting;
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setError(null);
+    try {
+      const res = await createRegistration({
+        data: { password, first_name: firstName, last_name: lastName, email, status },
+      });
+      if (res.ok) {
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        setStatus("accepted");
+        onCreated(`Added ${res.name ?? "hacker"} as ${status}.`);
+      } else {
+        setError(res.error ?? "Could not add hacker.");
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Could not add hacker.");
+    }
+    setSubmitting(false);
+  };
+
+  return (
+    <div className="max-w-xl rounded-2xl border border-border bg-card/30 p-6 backdrop-blur-md">
+      <h2 className="font-display text-lg font-bold">Add a hacker</h2>
+      <p className="mt-1 text-sm text-muted-foreground">
+        Manually create a registration, matched to the hacker by email. Use this once someone has
+        filled out the Google Form. Name, email, and status only — the Google Form stays the source
+        of truth for the rest of their details. Setting status to Accepted lets them sign documents
+        on their dashboard.
+      </p>
+      <form onSubmit={submit} className="mt-5 grid gap-4 sm:grid-cols-2">
+        <label className="block text-sm">
+          <span className="mb-1.5 block font-medium text-foreground/90">First name</span>
+          <input
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            className={fieldCls}
+          />
+        </label>
+        <label className="block text-sm">
+          <span className="mb-1.5 block font-medium text-foreground/90">Last name</span>
+          <input
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            className={fieldCls}
+          />
+        </label>
+        <label className="block text-sm sm:col-span-2">
+          <span className="mb-1.5 block font-medium text-foreground/90">Email</span>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="hacker@example.com"
+            className={fieldCls}
+          />
+        </label>
+        <label className="block text-sm">
+          <span className="mb-1.5 block font-medium text-foreground/90">Status</span>
+          <select
+            value={status}
+            onChange={(e) => setStatus(e.target.value as "accepted" | "waitlisted")}
+            className={fieldCls}
+          >
+            <option value="accepted">Accepted</option>
+            <option value="waitlisted">Waitlisted</option>
+          </select>
+        </label>
+        <div className="flex items-end">
+          <button
+            type="submit"
+            disabled={!canSubmit}
+            className="w-full rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground purple-glow hover:scale-[1.01] disabled:opacity-60 sm:w-auto"
+          >
+            {submitting ? "Adding…" : "Add hacker"}
+          </button>
+        </div>
+      </form>
+      {error && <p className="mt-3 text-sm text-destructive">{error}</p>}
+    </div>
   );
 }
 

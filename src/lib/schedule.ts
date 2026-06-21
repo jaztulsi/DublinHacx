@@ -17,27 +17,26 @@ export interface ScheduleItem {
 export const EVENT_DATE_TBD = true;
 
 /**
- * Placeholder start anchor (9:00 AM Pacific). Only used by the relative schedule
+ * Placeholder start anchor (10:00 AM Pacific). Only used by the relative schedule
  * math and the countdown logic, both gated by EVENT_DATE_TBD until a real date
  * is set — update this when the date is finalized.
  */
-export const EVENT_START = new Date("2026-09-12T09:00:00-07:00");
+export const EVENT_START = new Date("2026-09-12T10:00:00-07:00");
 
 export const schedule: ScheduleItem[] = [
-  { offsetMin: 0,    time: "9:00 AM",  title: "Check-In",            description: "Arrive, sign in, grab your badge & swag bag.",                tag: "Event" },
-  { offsetMin: 60,   time: "10:00 AM", title: "Waitlist Check-In",   description: "Last call for waitlisted hackers if spots open up.",          tag: "Event" },
-  { offsetMin: 120,  time: "11:00 AM", title: "Opening Ceremony",    description: "Sponsors intro, judging criteria, and the green light.",     tag: "Event" },
-  { offsetMin: 180,  time: "12:00 PM", title: "Hacking Begins",      description: "24 hours start now. Build, ship, repeat.",                   tag: "Event" },
-  { offsetMin: 300,  time: "2:00 PM",  title: "Workshops",           description: "Beginner-friendly sessions on web, AI, and hardware.",       tag: "Fun" },
-  { offsetMin: 540,  time: "6:00 PM",  title: "Dinner",              description: "Hot meal to keep you fueled through the long haul.",         tag: "Food" },
-  { offsetMin: 780,  time: "10:00 PM", title: "Mini-Events",         description: "Trivia, smash tournaments, and surprise activities.",        tag: "Fun" },
-  { offsetMin: 1080, time: "3:00 AM",  title: "Late Night Snacks",   description: "Pizza, energy drinks, and cosmic vibes.",                    tag: "Food" },
-  { offsetMin: 1500, time: "10:00 AM", title: "Day 2 Submissions",   description: "Final commits, demo prep, and devpost uploads.",             tag: "Event" },
-  { offsetMin: 1620, time: "12:00 PM", title: "Judging",             description: "Show your project to industry mentors.",                     tag: "Event" },
-  { offsetMin: 1800, time: "3:00 PM",  title: "Awards Ceremony",     description: "Winners announced. Prizes handed out. Confetti.",            tag: "Event" },
+  { offsetMin: 0,   time: "10:00 AM", title: "Check-In",                    description: "Arrive, sign in, grab your badge & swag bag.",            tag: "Event" },
+  { offsetMin: 30,  time: "10:30 AM", title: "Opening Ceremony",           description: "Sponsors intro, judging criteria, and the green light.", tag: "Event" },
+  { offsetMin: 60,  time: "11:00 AM", title: "Hacking Begins",             description: "12 hours start now. Build, ship, repeat.",               tag: "Event" },
+  { offsetMin: 180, time: "1:00 PM",  title: "Lunch",                      description: "Hot meal to keep you fueled for the afternoon.",         tag: "Food" },
+  { offsetMin: 300, time: "3:00 PM",  title: "Workshops",                  description: "Beginner-friendly sessions on web, AI, and hardware.",   tag: "Fun" },
+  { offsetMin: 480, time: "6:00 PM",  title: "Dinner",                     description: "Refuel for the final stretch of building.",              tag: "Food" },
+  { offsetMin: 600, time: "8:00 PM",  title: "Hacking Ends / Submissions Due", description: "Final commits, demo prep, and devpost uploads.",     tag: "Event" },
+  { offsetMin: 630, time: "8:30 PM",  title: "Judging",                    description: "Show your project to industry mentors.",                 tag: "Event" },
+  { offsetMin: 690, time: "9:30 PM",  title: "Awards Ceremony",            description: "Winners announced. Prizes handed out. Confetti.",        tag: "Event" },
+  { offsetMin: 720, time: "10:00 PM", title: "Event Ends",                 description: "Pack up, say goodbyes, and head home.",                  tag: "Event" },
 ];
 
-export const EVENT_END_MIN = 1800 + 60; // ~4:00 PM Sunday
+export const EVENT_END_MIN = 720; // 10:00 PM — end of the 12-hour day
 
 export interface LiveStatus {
   /** "before" | "live" | "ended" */

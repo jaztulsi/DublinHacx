@@ -1,5 +1,5 @@
-import { Link } from "@tanstack/react-router";
-import { useAuth } from "@/hooks/useAuth";
+const REGISTER_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdnmbxMou0EOQ4BbJJEeekJ_B7FVXqV9IioHKOfzYSVIGmKNg/viewform?usp=header";
 
 const SOCIALS = [
   { name: "Instagram", href: "#", icon: "📷" },
@@ -9,7 +9,6 @@ const SOCIALS = [
 ];
 
 export function Footer() {
-  const { session } = useAuth();
   return (
     <footer className="relative border-t border-border px-6 py-16">
       <div className="mx-auto max-w-6xl">
@@ -22,7 +21,7 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-3 text-sm text-muted-foreground">
-              Dublin, CA's first overnight high school hackathon. September 2026 (date TBD).
+              Dublin, CA's first single-day high school hackathon. September 2026 (date TBD).
             </p>
           </div>
 
@@ -56,9 +55,14 @@ export function Footer() {
               <p className="mb-3 text-xs uppercase tracking-widest text-primary">Get involved</p>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <Link to={session ? "/dashboard" : "/login"} className="hover:text-foreground">
+                  <a
+                    href={REGISTER_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-foreground"
+                  >
                     Sign Up
-                  </Link>
+                  </a>
                 </li>
                 <li>
                   <a href="#sponsors" className="hover:text-foreground">

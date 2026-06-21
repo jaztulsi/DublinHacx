@@ -14,7 +14,7 @@ const pillars = [
   },
   {
     icon: Sparkles,
-    title: "Ship in 24 hours",
+    title: "Ship in 12 hours",
     desc: "From first commit to live demo, the only constraint is the clock. Mentors and workshops keep you moving.",
   },
 ];

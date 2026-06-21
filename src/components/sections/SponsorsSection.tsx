@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 
 const stats = [
   { value: "170", label: "High-school hackers" },
-  { value: "24h", label: "Non-stop building" },
-  { value: "1st", label: "Overnight hackathon in Dublin" },
+  { value: "12h", label: "Non-stop building" },
+  { value: "1st", label: "Single-day hackathon in Dublin" },
   { value: "100%", label: "Of funds fuel the event" },
 ];
 
@@ -26,7 +26,7 @@ const reasons = [
   {
     icon: "💜",
     title: "Invest in community",
-    body: "Fund Dublin's first overnight high-school hackathon. Your support goes straight to meals, swag, and prizes.",
+    body: "Fund Dublin's first single-day high-school hackathon. Your support goes straight to meals, swag, and prizes.",
   },
 ];
 
@@ -135,7 +135,7 @@ export function SponsorsSection() {
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
             Dublin Hacx puts your brand in front of 170 of the Bay Area's most driven high-school
-            engineers — for a full 24 hours, and in every story they tell afterward. Every dollar
+            engineers — for a full 12 hours, and in every story they tell afterward. Every dollar
             funds free meals, swag, and prizes.
           </p>
         </motion.div>

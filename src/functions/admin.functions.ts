@@ -1,4 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
+import { z } from "zod";
 import { getAdminClient } from "@/server/supabase-admin";
 import { sendRegistrationConfirmation } from "@/server/email";
 
@@ -151,6 +152,78 @@ export const getSignatureStats = createServerFn({ method: "POST" })
       if (DOCUMENT_KEYS.every((k) => set.has(k))) fully += 1;
     }
     return { fully_signed: fully, total_signers: counts.size };
+  });
+
+// Minimal validation for an organizer-created registration. The Google Form is
+// now the source of truth for the full detail (school, phone, parent info, …),
+// so this only needs name, a valid email, and the status that gates document
+// signing on the dashboard.
+const createRegistrationSchema = z.object({
+  first_name: z.string().trim().min(1, "First name is required").max(80),
+  last_name: z.string().trim().min(1, "Last name is required").max(80),
+  email: z.string().trim().toLowerCase().email("Enter a valid email").max(255),
+  status: z.enum(["accepted", "waitlisted"]),
+});
+
+export const createRegistration = createServerFn({ method: "POST" })
+  .inputValidator(
+    (p: {
+      password: string;
+      first_name: string;
+      last_name: string;
+      email: string;
+      status: "accepted" | "waitlisted";
+    }) => ({
+      password: p.password,
+      ...createRegistrationSchema.parse({
+        first_name: p.first_name,
+        last_name: p.last_name,
+        email: p.email,
+        status: p.status,
+      }),
+    }),
+  )
+  .handler(async ({ data }): Promise<{ ok: boolean; error?: string; name?: string }> => {
+    assertAdmin(data.password);
+    const supabase = getAdminClient();
+
+    // Guard against duplicates: getUserRegistration matches by email with
+    // maybeSingle(), which errors if two rows share an email.
+    const { data: existing, error: existErr } = await supabase
+      .from("registrations")
+      .select("id")
+      .ilike("email", data.email)
+      .maybeSingle();
+    if (existErr) return { ok: false, error: existErr.message };
+    if (existing) return { ok: false, error: "A registration with this email already exists." };
+
+    // NOT NULL text columns that the Google Form (not this form) now owns are
+    // inserted as empty strings; user_id stays null so the hacker claims the row
+    // by email when they sign in. Booleans/team_name/teammate_emails use their
+    // column defaults.
+    const row = {
+      first_name: data.first_name,
+      last_name: data.last_name,
+      email: data.email,
+      status: data.status,
+      phone: "",
+      school: "",
+      grad_year: "",
+      exp_level: "",
+      dietary: "",
+      tshirt: "",
+      parent_name: "",
+      parent_email: "",
+      parent_phone: "",
+      emergency_contact: "",
+      team_name: null,
+      user_id: null,
+    };
+
+    const { error: insertErr } = await supabase.from("registrations").insert(row);
+    if (insertErr) return { ok: false, error: insertErr.message };
+
+    return { ok: true, name: data.first_name };
   });
 
 export const promoteFromWaitlist = createServerFn({ method: "POST" })

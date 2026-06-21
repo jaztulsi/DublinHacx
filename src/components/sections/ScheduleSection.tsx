@@ -22,7 +22,7 @@ export function ScheduleSection() {
           className="mb-12 text-center"
         >
           <h2 className="font-display text-4xl font-extrabold text-center md:text-5xl">
-            Here's how 24 hours looks.
+            Here's how the day looks.
           </h2>
           <p className="mt-4 text-sm text-muted-foreground">
             September 2026 (date TBD) · Dublin, CA
@@ -40,7 +40,7 @@ export function ScheduleSection() {
             Schedule
           </p>
           <h2 className="font-display text-4xl font-extrabold md:text-6xl">
-            24 hours of <span className="text-gradient-primary">building</span>.
+            12 hours of <span className="text-gradient-primary">building</span>.
           </h2>
         </motion.div>
 
@@ -164,8 +164,8 @@ function ScheduleTrack() {
     };
   }, []);
 
-  // Convert offsetMin (minutes since event start at 9:00 AM) → time-of-day minutes
-  const startOfDayMin = 9 * 60;
+  // Convert offsetMin (minutes since event start at 10:00 AM) → time-of-day minutes
+  const startOfDayMin = 10 * 60;
   const timeLabel = formatMinutes(startOfDayMin + displayMinutes);
   const hour24 =
     (((startOfDayMin + Math.round(displayMinutes)) % (24 * 60)) + 24 * 60) %
@@ -179,7 +179,7 @@ function ScheduleTrack() {
       <div>
         <div className="md:sticky md:top-28 flex flex-col items-center md:items-start">
           <p className="mb-4 text-sm font-display font-bold uppercase tracking-widest text-foreground/80">
-            {isNight ? "Night" : "Day"} {activeIdx >= 8 ? "2" : "1"}
+            {isNight ? "Evening" : "Daytime"}
           </p>
           <ScheduleOrb time={timeLabel} isNight={isNight} pulsing={!isIdle} />
           <p className="sr-only" aria-live="polite" aria-atomic="true">

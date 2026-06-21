@@ -17,7 +17,7 @@ function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
 
 const stats = [
   { value: 170, suffix: "", label: "Spots" },
-  { value: 24, suffix: "hr", label: "Build window" },
+  { value: 12, suffix: "hr", label: "Build window" },
   { value: 0, suffix: "", label: "Cost — totally free", isText: "$0" },
 ];
 
@@ -91,12 +91,12 @@ export function AboutSection() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7 }}
           >
-            <h3 className="font-display text-3xl font-bold">A weekend that changes trajectories.</h3>
+            <h3 className="font-display text-3xl font-bold">A day that changes trajectories.</h3>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              Dublin Hacx is the first overnight high school hackathon in Dublin, CA — a 24-hour
-              sprint where 170 students from across the Bay Area come together to build, learn,
-              and compete. Whether it's your first line of code or your tenth project, you'll
-              walk out with new friends, new skills, and something you actually shipped.
+              Dublin Hacx is the first single-day high school hackathon in Dublin, CA — a 12-hour
+              sprint from 10am to 10pm where 170 students from across the Bay Area come together to
+              build, learn, and compete. Whether it's your first line of code or your tenth project,
+              you'll walk out with new friends, new skills, and something you actually shipped.
             </p>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
               Built in respect to the EHS Hacking & Coding Club at Emerald High School — by

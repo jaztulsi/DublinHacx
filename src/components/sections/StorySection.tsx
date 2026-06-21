@@ -6,12 +6,12 @@ const panels = [
     subline: "Doesn't matter how rough. Doesn't matter if it's been done before.",
   },
   {
-    statement: "24 hours to make it real.",
+    statement: "12 hours to make it real.",
     subline: "Free food, mentors, hardware, and 169 other people who get it.",
   },
   {
     statement: "You ship. You present. You remember this weekend forever.",
-    subline: "Dublin's first overnight high school hackathon — September 2026 (date TBD).",
+    subline: "Dublin's first single-day high school hackathon — September 2026 (date TBD).",
   },
 ];
 

@@ -1,12 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { CustomCursor } from "@/components/CustomCursor";
 import { CosmicBackground } from "@/components/CosmicBackground";
 import { MoonCompanion } from "@/components/MoonCompanion";
 
 import { NavBar } from "@/components/NavBar";
-import { useAuth } from "@/hooks/useAuth";
 import { IntroOverlay } from "@/components/IntroOverlay";
 import { KonamiEgg } from "@/components/KonamiEgg";
 import { HeroSection } from "@/components/sections/HeroSection";
@@ -26,13 +24,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Dublin, CA's first overnight high school hackathon. Bring any idea. Build it into reality. 24 hours, 170 hackers, free food and swag.",
+          "Dublin, CA's first single-day high school hackathon. Bring any idea. Build it into reality. 12 hours (10am–10pm), 170 hackers, free food and swag.",
       },
       { property: "og:title", content: "Dublin Hacx — September 2026" },
       {
         property: "og:description",
         content:
-          "Bring any idea. Build it into reality. Dublin, CA's first overnight high school hackathon — September 2026 (date TBD).",
+          "Bring any idea. Build it into reality. Dublin, CA's first single-day high school hackathon — September 2026 (date TBD).",
       },
       { property: "og:type", content: "website" },
     ],
@@ -42,8 +40,6 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [introDone, setIntroDone] = useState(false);
-  const navigate = useNavigate();
-  const { session } = useAuth();
 
   const scrollToId = (id: string) => {
     const el = document.getElementById(id);
@@ -69,7 +65,13 @@ function Index() {
 
       <main className="relative z-10">
         <HeroSection
-          onApply={() => navigate({ to: session ? "/dashboard" : "/login" })}
+          onApply={() =>
+            window.open(
+              "https://docs.google.com/forms/d/e/1FAIpQLSdnmbxMou0EOQ4BbJJEeekJ_B7FVXqV9IioHKOfzYSVIGmKNg/viewform?usp=header",
+              "_blank",
+              "noopener,noreferrer",
+            )
+          }
           onLearnMore={() => scrollToId("about")}
         />
         <StorySection />

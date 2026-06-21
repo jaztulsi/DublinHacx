@@ -227,7 +227,7 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
           className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-primary backdrop-blur-sm"
         >
           <span className="inline-block h-1.5 w-1.5 animate-pulse-glow rounded-full bg-primary" />
-          Dublin, CA · September 2026 · Overnight
+          Dublin, CA · September 2026 · 10am–10pm
         </motion.p>
 
         <motion.div
@@ -266,8 +266,8 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
           custom={3}
           className="mx-auto mt-8 max-w-2xl text-base text-muted-foreground md:text-lg"
         >
-          Dublin, CA's first overnight high school hackathon. 24 hours to build,
-          break, ship, and meet your future co-founders.
+          Dublin, CA's first single-day high school hackathon. 12 hours, 10am–10pm,
+          to build, break, ship, and meet your future co-founders.
         </motion.p>
 
         <motion.div

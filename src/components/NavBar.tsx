@@ -48,9 +48,16 @@ export function NavBar() {
     navigate({ to: session ? "/dashboard" : "/login" });
   };
 
-  // Registration now lives inside the dashboard, so the "Sign Up" CTA routes to
-  // the auth area (dashboard if signed in, otherwise the login/sign-up page).
-  const goToRegister = goToAuthArea;
+  // Registration is now handled through an external Google Form, so the "Sign Up"
+  // CTA opens that form in a new tab instead of routing into the app.
+  const goToRegister = () => {
+    setOpen(false);
+    window.open(
+      "https://docs.google.com/forms/d/e/1FAIpQLSdnmbxMou0EOQ4BbJJEeekJ_B7FVXqV9IioHKOfzYSVIGmKNg/viewform?usp=header",
+      "_blank",
+      "noopener,noreferrer",
+    );
+  };
 
   return (
     <motion.header

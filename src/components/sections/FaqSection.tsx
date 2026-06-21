@@ -16,7 +16,7 @@ const FAQS = [
   },
   {
     q: "What should I bring?",
-    a: "Laptop, charger, a change of clothes, toothbrush, and a sleeping bag (optional but recommended for the overnight portion).",
+    a: "Laptop, charger, any hardware you want to hack on, a water bottle, and a photo ID for check-in.",
   },
   {
     q: "Can I join a team at the event?",
@@ -27,8 +27,8 @@ const FAQS = [
     a: "Dublin, CA — exact venue TBA. Announcement coming soon. Stay tuned via email after registering.",
   },
   {
-    q: "What happens overnight?",
-    a: "The venue stays open all night. You can keep building, attend mini-events, or grab a few hours of sleep in the designated quiet area.",
+    q: "How long is the event?",
+    a: "Dublin Hacx runs a single day, 10am to 10pm — 12 hours of building, workshops, meals, and judging. Doors open at 10am for check-in and the awards ceremony wraps up by 10pm.",
   },
   {
     q: "How are projects judged?",
@@ -36,7 +36,7 @@ const FAQS = [
   },
   {
     q: "Is food provided?",
-    a: "Yes — three full meals plus snacks and drinks throughout the 24 hours. Dietary restrictions are accommodated.",
+    a: "Yes — meals plus snacks and drinks throughout the day. Dietary restrictions are accommodated.",
   },
   {
     q: "How do I become a sponsor?",

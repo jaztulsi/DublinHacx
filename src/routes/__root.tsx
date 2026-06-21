@@ -33,21 +33,21 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "Dublin, CA's first overnight high school hackathon. 24 hours to build, break, ship, and meet your future co-founders.",
+          "Dublin, CA's first single-day high school hackathon. 12 hours, 10am–10pm, to build, break, ship, and meet your future co-founders.",
       },
       { name: "author", content: "Dublin Hacx" },
       { property: "og:title", content: "Dublin Hacx — September 2026" },
       {
         property: "og:description",
         content:
-          "24 hours. 170 hackers. Free food and swag. All skill levels welcome.",
+          "12 hours, 10am–10pm. 170 hackers. Free food and swag. All skill levels welcome.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Dublin Hacx — September 2026" },
-      { name: "description", content: "A stunning, production-ready website for Dublin's first overnight high school hackathon." },
-      { property: "og:description", content: "A stunning, production-ready website for Dublin's first overnight high school hackathon." },
-      { name: "twitter:description", content: "A stunning, production-ready website for Dublin's first overnight high school hackathon." },
+      { name: "description", content: "A stunning, production-ready website for Dublin's first single-day high school hackathon." },
+      { property: "og:description", content: "A stunning, production-ready website for Dublin's first single-day high school hackathon." },
+      { name: "twitter:description", content: "A stunning, production-ready website for Dublin's first single-day high school hackathon." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/1408ccfa-b62e-43e9-9cc1-9e38e29d5c6e/id-preview-9e2707ab--97213956-dc45-4934-92dd-6a417c311157.lovable.app-1777184056394.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/1408ccfa-b62e-43e9-9cc1-9e38e29d5c6e/id-preview-9e2707ab--97213956-dc45-4934-92dd-6a417c311157.lovable.app-1777184056394.png" },
     ],

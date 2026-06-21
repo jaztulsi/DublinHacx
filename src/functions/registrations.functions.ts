@@ -122,9 +122,13 @@ export const submitRegistration = createServerFn({ method: "POST" })
     return { ok: true, status, name: input.first_name };
   });
 
-// Returns the signed-in hacker's registration, backfilling user_id by email the
-// first time (registration is anonymous, so the row usually predates their auth
-// account).
+// Returns the signed-in hacker's registration. Rows are now created manually by
+// an organizer (matched to the hacker by email), so the row usually exists with
+// the hacker's email but no user_id — whether it was added before or after the
+// hacker created their account. Resolution order:
+//   (a) by user_id, if this account is already linked to a row, then
+//   (b) by email (case-insensitive) against an as-yet-unclaimed row, which we
+//       then backfill with user_id so future lookups hit case (a) directly.
 export const getUserRegistration = createServerFn({ method: "POST" })
   .inputValidator((payload: { userId: string; email: string }) => ({
     userId: payload.userId,
@@ -134,6 +138,7 @@ export const getUserRegistration = createServerFn({ method: "POST" })
     const supabase = getAdminClient();
     const cols = "id, first_name, last_name, email, school, status, team_name, confirmed, devpost_url";
 
+    // (a) Already linked to this account.
     const { data: byUser } = await supabase
       .from("registrations")
       .select(cols)
@@ -141,15 +146,19 @@ export const getUserRegistration = createServerFn({ method: "POST" })
       .maybeSingle();
     if (byUser) return byUser as UserRegistration;
 
+    // (b) Not linked yet — match the organizer-created row by email. `ilike`
+    // (not `eq`) so a manually-typed row with different casing still matches.
+    // Restrict to rows with no user_id so we never claim someone else's row.
     const { data: byEmail } = await supabase
       .from("registrations")
       .select(cols)
-      .eq("email", data.email)
+      .ilike("email", data.email)
       .is("user_id", null)
       .maybeSingle();
     if (!byEmail) return null;
 
     const row = byEmail as UserRegistration;
+    // Backfill so the next lookup resolves via case (a).
     await supabase.from("registrations").update({ user_id: data.userId }).eq("id", row.id);
     return row;
   });

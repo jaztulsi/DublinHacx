@@ -6,7 +6,6 @@ import { CosmicBackground } from "@/components/CosmicBackground";
 import { CustomCursor } from "@/components/CustomCursor";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/sections/Footer";
-import { RegistrationSection } from "@/components/sections/RegistrationSection";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { getUserRegistration, type UserRegistration } from "@/lib/registration-client";
@@ -57,14 +56,14 @@ const DOCUMENTS: DocSpec[] = [
     title: "Parent / Guardian Permission",
     description: "Required for hackers under 18.",
     signerLabel: "Sign as Parent / Guardian",
-    body: "I am the parent or legal guardian of the registered hacker, and I give my permission for them to attend and participate in Dublin Hacx. I understand this is an overnight event running approximately 24 hours, and that participants may remain at the venue through the night under the general supervision of organizers and volunteers.\n\nI understand that Dublin Hacx is not a licensed childcare provider and that organizers cannot guarantee continuous individual supervision. I confirm that the contact and emergency information provided at registration is accurate, and I authorize the organizers to contact me at any time during the event.\n\nIn the event of an injury, illness, or other emergency, and if I cannot be reached promptly, I authorize the organizers to seek and consent to emergency medical care for my child, including transport by ambulance and treatment by licensed medical professionals. I accept financial responsibility for any such care. I have reviewed the schedule and venue information in the registration materials and grant this permission voluntarily.",
+    body: "I am the parent or legal guardian of the registered hacker, and I give my permission for them to attend and participate in Dublin Hacx. I understand this is a single-day event running approximately 12 hours, from 10:00 AM to 10:00 PM, and that participants will be at the venue during these hours under the general supervision of organizers and volunteers.\n\nI understand that Dublin Hacx is not a licensed childcare provider and that organizers cannot guarantee continuous individual supervision. I am responsible for my child's transportation to the venue at the start of the day and their departure at the close of the event, and I confirm that the contact and emergency information provided at registration is accurate. I authorize the organizers to contact me at any time during the event.\n\nIn the event of an injury, illness, or other emergency, and if I cannot be reached promptly, I authorize the organizers to seek and consent to emergency medical care for my child, including transport by ambulance and treatment by licensed medical professionals. I accept financial responsibility for any such care. I have reviewed the schedule and venue information in the registration materials and grant this permission voluntarily.",
   },
   {
     key: "liability_waiver",
     title: "Liability Waiver",
     description: "Standard event waiver.",
     signerLabel: "Sign as Parent / Guardian",
-    body: "I understand that participation in Dublin Hacx involves inherent risks, including but not limited to fatigue from an overnight event, slips and falls, food allergies or reactions, illness, travel to and from the venue, and the ordinary risks of being in a shared public space. Knowing these risks, I voluntarily agree that my child and I assume them as a condition of participation.\n\nIn consideration of being allowed to participate, I, on behalf of myself, my child, and our heirs and representatives, release, waive, and discharge Dublin Hacx, its organizers, volunteers, sponsors, and the host venue and its owners from any and all claims, liabilities, or demands for injury, illness, loss, or damage arising out of or related to participation in the event, to the fullest extent permitted by California law, except for harm caused by gross negligence or willful misconduct.\n\nThis release is intended to be a complete release of liability to the maximum extent allowed by law, and I expressly waive the protections of California Civil Code section 1542, which provides that a general release does not extend to claims the releasing party does not know or suspect to exist at the time of signing. I have read and understood this waiver and sign it freely.",
+    body: "I understand that participation in Dublin Hacx involves inherent risks, including but not limited to fatigue from a full day of participation, slips and falls, food allergies or reactions, illness, travel to and from the venue, and the ordinary risks of being in a shared public space. Knowing these risks, I voluntarily agree that my child and I assume them as a condition of participation.\n\nIn consideration of being allowed to participate, I, on behalf of myself, my child, and our heirs and representatives, release, waive, and discharge Dublin Hacx, its organizers, volunteers, sponsors, and the host venue and its owners from any and all claims, liabilities, or demands for injury, illness, loss, or damage arising out of or related to participation in the event, to the fullest extent permitted by California law, except for harm caused by gross negligence or willful misconduct.\n\nThis release is intended to be a complete release of liability to the maximum extent allowed by law, and I expressly waive the protections of California Civil Code section 1542, which provides that a general release does not extend to claims the releasing party does not know or suspect to exist at the time of signing. I have read and understood this waiver and sign it freely.",
   },
   {
     key: "medical_release",
@@ -326,8 +325,52 @@ function DashboardPage() {
           {regLoading ? (
             <p className="text-center text-muted-foreground">Loading your registration…</p>
           ) : !registration ? (
-            // No registration on file yet — collect it before showing documents.
-            <RegistrationSection onSubmitted={loadRegistration} />
+            // No registration on file for this email yet — point hackers to the Google Form.
+            <div className="rounded-3xl border border-border bg-card/30 p-8 text-center backdrop-blur-md md:p-12">
+              <h2 className="font-display text-3xl font-extrabold md:text-4xl">
+                Claim your <span className="text-gradient-primary">spot</span>.
+              </h2>
+              <p className="mx-auto mt-4 max-w-md text-muted-foreground">
+                We don't have a registration on file for this email yet. Fill out the form below —
+                once we process it, your status will show up here.
+              </p>
+              <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSdnmbxMou0EOQ4BbJJEeekJ_B7FVXqV9IioHKOfzYSVIGmKNg/viewform?usp=header"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground purple-glow transition-transform hover:scale-[1.01]"
+                >
+                  Register on Google Forms →
+                </a>
+                <button
+                  type="button"
+                  onClick={loadRegistration}
+                  className="inline-flex rounded-full border border-border bg-secondary/40 px-6 py-3 text-sm font-medium hover:bg-secondary/60"
+                >
+                  Refresh status
+                </button>
+              </div>
+            </div>
+          ) : registration.status === "waitlisted" ? (
+            // Organizer added this hacker as waitlisted — show status only, no documents.
+            <div className="rounded-3xl border border-border bg-card/30 p-8 text-center backdrop-blur-md md:p-12">
+              <h2 className="font-display text-3xl font-extrabold md:text-4xl">
+                You're on the <span className="text-gradient-primary">waitlist</span>.
+              </h2>
+              <p className="mx-auto mt-4 max-w-md text-muted-foreground">
+                We'll email you if a spot opens up. No action needed right now.
+              </p>
+              <div className="mt-8 flex justify-center">
+                <button
+                  type="button"
+                  onClick={loadRegistration}
+                  className="inline-flex rounded-full border border-border bg-secondary/40 px-6 py-3 text-sm font-medium hover:bg-secondary/60"
+                >
+                  Refresh status
+                </button>
+              </div>
+            </div>
           ) : (
             <>
           {registration && (

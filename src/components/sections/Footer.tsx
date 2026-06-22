@@ -2,10 +2,7 @@ const REGISTER_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSdnmbxMou0EOQ4BbJJEeekJ_B7FVXqV9IioHKOfzYSVIGmKNg/viewform";
 
 const SOCIALS = [
-  { name: "Instagram", href: "#", icon: "📷" },
-  { name: "Twitter", href: "#", icon: "𝕏" },
-  { name: "GitHub", href: "#", icon: "⌨" },
-  { name: "LinkedIn", href: "#", icon: "in" },
+  { name: "Instagram", href: "https://www.instagram.com/dublin.hacx/", icon: "📷" },
 ];
 
 export function Footer() {
@@ -83,6 +80,8 @@ export function Footer() {
                   <a
                     key={s.name}
                     href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={s.name}
                     className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card/30 text-sm hover:border-primary hover:text-primary"
                   >

@@ -226,7 +226,6 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
           custom={1}
           className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-primary backdrop-blur-sm"
         >
-          <span className="inline-block h-1.5 w-1.5 animate-pulse-glow rounded-full bg-primary" />
           Dublin, CA · September 2026 · 10am–10pm
         </motion.p>
 

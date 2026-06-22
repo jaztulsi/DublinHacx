@@ -49,7 +49,6 @@ const tiers = [
   {
     name: "Platinum",
     price: "$2,500",
-    badge: "Most popular",
     featured: true,
     perks: [
       "Everything in Gold, plus:",

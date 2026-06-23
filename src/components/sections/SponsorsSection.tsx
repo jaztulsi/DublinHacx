@@ -341,7 +341,19 @@ export function SponsorsSection() {
               />
               <span className="text-xs text-muted-foreground">YRI Science</span>
             </a>
-            {Array.from({ length: 3 }).map((_, i) => (
+            <a
+              href="https://medo.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="MeDo"
+              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
+            >
+              <span className="flex items-center justify-center rounded-lg bg-white px-3 py-2">
+                <img src="/medo-logo.png" alt="MeDo" className="max-h-20 w-auto object-contain" />
+              </span>
+              <span className="text-xs text-muted-foreground">MeDo</span>
+            </a>
+            {Array.from({ length: 2 }).map((_, i) => (
               <div
                 key={i}
                 className="flex aspect-[3/2] items-center justify-center rounded-xl border border-dashed border-border bg-card/20 text-xs text-muted-foreground"

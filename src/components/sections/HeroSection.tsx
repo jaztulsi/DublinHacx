@@ -91,7 +91,7 @@ function GlitchText({ children }: { children: string }) {
       >
         {children}
       </span>
-      <span className="relative text-gradient-primary text-glow">{children}</span>
+      <span className="relative text-gradient-primary text-glow-soft">{children}</span>
     </span>
   );
 }

@@ -342,7 +342,7 @@ function ScheduleOrb({
           initial={{ opacity: 0, y: 4 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.25 }}
-          className="font-display text-3xl font-extrabold text-white sm:text-4xl md:text-5xl text-glow tabular-nums"
+          className="font-display text-3xl font-extrabold text-white sm:text-4xl md:text-5xl tabular-nums"
         >
           {time}
         </motion.span>

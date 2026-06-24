@@ -74,7 +74,7 @@ function GlitchText({ children }: { children: string }) {
     <span className="relative inline-block">
       <span
         aria-hidden
-        className="absolute inset-0 text-gradient-primary text-glow"
+        className="absolute inset-0 text-gradient-primary"
         style={{ transform: "translate(2px, 0)", mixBlendMode: "screen", opacity: 0.6 }}
       >
         {children}
@@ -224,7 +224,7 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
           initial="hidden"
           animate="show"
           custom={1}
-          className="mb-6 text-xs font-semibold uppercase tracking-[0.25em] text-primary text-glow"
+          className="mb-6 text-xs font-semibold uppercase tracking-[0.25em] text-primary"
         >
           Dublin, CA · September 2026 · 10am–10pm
         </motion.p>

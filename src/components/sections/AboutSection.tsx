@@ -25,12 +25,12 @@ const organizers = [
   {
     name: "Jasraj Tulsi",
     role: "Co-Founder · Emerald HS",
-    bio: "Builder, organizer, and lead voice behind Dublin Hacx.",
+    bio: "Runs the club, sends the emails. Probably the one who'll reply to you.",
   },
   {
     name: "Rachit Panchal",
     role: "Admin · Co-Founder · Emerald HS",
-    bio: "Architect of the experience and the operations behind it.",
+    bio: "Handles the logistics so the day actually happens. Co-founder.",
   },
 ];
 
@@ -47,7 +47,7 @@ export function AboutSection() {
         >
           <p className="mb-3 text-xs uppercase tracking-widest text-primary">About</p>
           <h2 className="font-display text-4xl font-extrabold tracking-tight md:text-6xl">
-            Built for the next generation of <span className="text-gradient-primary">builders</span>.
+            Made by students who got tired of <span className="text-gradient-primary">waiting</span>.
           </h2>
         </motion.div>
 
@@ -77,10 +77,10 @@ export function AboutSection() {
           className="my-16 mx-auto max-w-3xl border-l-4 border-gold py-2 pl-6"
         >
           <p className="font-display text-3xl italic text-foreground md:text-4xl">
-            "The weekend I started taking building seriously."
+            "The day I stopped just talking about building stuff and actually built something."
           </p>
           <footer className="mt-3 text-sm not-italic text-muted-foreground">
-            — A future Dublin Hacx alum
+            — hopefully you, in September
           </footer>
         </motion.blockquote>
 
@@ -91,16 +91,15 @@ export function AboutSection() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7 }}
           >
-            <h3 className="font-display text-3xl font-bold">A day that changes trajectories.</h3>
+            <h3 className="font-display text-3xl font-bold">One day that actually sticks.</h3>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              Dublin Hacx is the first single-day high school hackathon in Dublin, CA — a 12-hour
-              sprint from 10am to 10pm where 170 students from across the Bay Area come together to
-              build, learn, and compete. Whether it's your first line of code or your tenth project,
-              you'll walk out with new friends, new skills, and something you actually shipped.
+              It's the first single-day high school hackathon in Dublin — 10am to 10pm, 170 people
+              from around the Bay Area, one room. First time touching code or your tenth project,
+              doesn't matter. You leave with something you actually built and a few people you didn't
+              know that morning.
             </p>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              Built in respect to the EHS Hacking & Coding Club at Emerald High School — by
-              students, for students.
+              Run out of the EHS Hacking & Coding Club at Emerald High. By students, for students.
             </p>
           </motion.div>
 

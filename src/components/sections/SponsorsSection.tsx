@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Heart, Rocket, Sparkles, Target } from "lucide-react";
 
 const stats = [
   { value: "170", label: "High-school hackers" },
@@ -9,22 +10,22 @@ const stats = [
 
 const reasons = [
   {
-    icon: "🎯",
+    icon: Target,
     title: "Recruit early talent",
     body: "Meet motivated builders before anyone else — with opt-in access to their resumes, GitHubs, and projects.",
   },
   {
-    icon: "🚀",
+    icon: Rocket,
     title: "Drive product adoption",
     body: "Put your API, hardware, or platform in 170 hands. Sponsor a challenge and watch students ship with your tools.",
   },
   {
-    icon: "✨",
+    icon: Sparkles,
     title: "Real brand love",
-    body: "Logo on shirts, banners, and our site puts you in every photo and story hackers share with their networks.",
+    body: "Logo on the shirts, the banners, the site. You're in every photo people post and every story they tell their friends after.",
   },
   {
-    icon: "💜",
+    icon: Heart,
     title: "Invest in community",
     body: "Fund Dublin's first single-day high-school hackathon. Your support goes straight to meals, swag, and prizes.",
   },
@@ -168,7 +169,9 @@ export function SponsorsSection() {
               transition={{ duration: 0.5, delay: i * 0.08 }}
               className="rounded-2xl border border-border bg-card/30 p-6 backdrop-blur-md transition-colors hover:border-primary/50"
             >
-              <span className="text-3xl">{r.icon}</span>
+              <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/15 text-primary">
+                <r.icon size={20} />
+              </div>
               <h3 className="mt-4 font-display text-lg font-bold">{r.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{r.body}</p>
             </motion.div>

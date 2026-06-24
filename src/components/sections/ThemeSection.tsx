@@ -10,7 +10,7 @@ const pillars = [
   {
     icon: Rocket,
     title: "Build it for real",
-    desc: "Participants are encouraged to explore any idea they're passionate about and turn it into a real, working prototype over the course of the hackathon.",
+    desc: "Pick something you actually want to make, then make it. By 8pm it should run — not be a slide deck about a thing that could run.",
   },
   {
     icon: Sparkles,

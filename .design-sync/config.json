@@ -1,0 +1,16 @@
+{
+  "projectId": "9a8694c6-1d8f-4ae6-b43f-950f3377e6dd",
+  "shape": "package",
+  "pkg": "tanstack_start_ts",
+  "globalName": "DublinHacks",
+  "srcDir": "src/components",
+  "tsconfig": "tsconfig.json",
+  "cssEntry": "dist/client/assets/styles-DEll2sU-.css",
+  "componentSrcMap": {
+    "CosmicBackground": null,
+    "CustomCursor": null,
+    "IntroOverlay": null,
+    "KonamiEgg": null,
+    "MoonCompanion": null
+  }
+}

@@ -1,7 +1,44 @@
-@import url("https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
+
+/* Monaspace Krypton — GitHub's mechanical monospace (self-hosted) */
+@font-face {
+  font-family: "Monaspace Krypton";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/MonaspaceKrypton-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Monaspace Krypton";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/MonaspaceKrypton-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Monaspace Krypton";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/MonaspaceKrypton-SemiBold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Monaspace Krypton";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/MonaspaceKrypton-Bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Monaspace Krypton";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/fonts/MonaspaceKrypton-ExtraBold.woff2") format("woff2");
+}
 
 @custom-variant dark (&:is(.dark *));
 
@@ -14,7 +51,7 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
 
-  --font-display: "Syne", system-ui, sans-serif;
+  --font-display: "Monaspace Krypton", ui-monospace, "SF Mono", Menlo, monospace;
   --font-sans: "Space Grotesk", system-ui, sans-serif;
 
   --color-background: var(--background);
@@ -156,7 +193,7 @@ html, body {
 
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.045em;
   }
 }
 
@@ -172,7 +209,12 @@ html, body {
 
 /* Glowing utilities */
 .text-glow {
-  text-shadow: 0 0 30px oklch(0.78 0.17 305 / 0.6), 0 0 60px oklch(0.78 0.17 305 / 0.3);
+  text-shadow:
+    0 0 14px oklch(0.9 0.12 315 / 0.95),
+    0 0 32px oklch(0.82 0.18 312 / 0.9),
+    0 0 64px oklch(0.78 0.17 305 / 0.7),
+    0 0 120px oklch(0.78 0.17 305 / 0.5),
+    0 0 200px oklch(0.78 0.17 305 / 0.35);
 }
 .gold-glow {
   box-shadow: 0 0 30px oklch(0.85 0.15 85 / 0.4), inset 0 0 20px oklch(0.85 0.15 85 / 0.1);
@@ -199,26 +241,35 @@ html, body {
 }
 
 .text-gradient-primary {
-  background: linear-gradient(135deg, oklch(0.78 0.17 305), oklch(0.85 0.15 310));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.text-aurora {
   background: linear-gradient(
-    90deg,
-    oklch(0.78 0.17 305),
-    oklch(0.85 0.15 310),
-    oklch(0.75 0.18 240),
-    oklch(0.85 0.15 310),
-    oklch(0.78 0.17 305)
+    120deg,
+    oklch(0.82 0.19 330),
+    oklch(0.78 0.17 305) 50%,
+    oklch(0.82 0.16 270),
+    oklch(0.78 0.17 305) 50%,
+    oklch(0.82 0.19 330)
   );
   background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: aurora 6s ease infinite;
+  animation: aurora 10s ease infinite;
+}
+
+.text-aurora {
+  background: linear-gradient(
+    90deg,
+    oklch(0.82 0.19 330),
+    oklch(0.78 0.17 305),
+    oklch(0.8 0.16 260),
+    oklch(0.78 0.17 305),
+    oklch(0.82 0.19 330)
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: aurora 8s ease infinite;
 }
 
 .tilt-3d {

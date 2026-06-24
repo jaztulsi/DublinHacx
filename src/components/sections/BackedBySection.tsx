@@ -15,7 +15,7 @@ export function BackedBySection() {
           {/* Emerald glow accent */}
           <div className="pointer-events-none absolute -top-24 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-emerald-500/20 blur-3xl" />
 
-          <p className="relative mb-5 inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-500/10 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-emerald-300 backdrop-blur-sm">
+          <p className="relative mb-5 text-xs font-semibold uppercase tracking-[0.25em] text-emerald-300">
             Officially Backed
           </p>
 
@@ -31,8 +31,9 @@ export function BackedBySection() {
           </h2>
 
           <p className="relative mx-auto mt-5 max-w-xl text-base text-muted-foreground">
-            Dublin Hacx is proudly powered and supported by the Emerald Hacking &amp;
-            Coding Club — built by students, for students.
+            We run the Emerald Hacking &amp; Coding Club. Dublin Hacx is the event we
+            kept wishing existed, so we're just building it ourselves. By students,
+            for students.
           </p>
         </motion.div>
       </div>

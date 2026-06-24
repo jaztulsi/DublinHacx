@@ -224,7 +224,7 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
           initial="hidden"
           animate="show"
           custom={1}
-          className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-primary backdrop-blur-sm"
+          className="mb-6 text-xs font-semibold uppercase tracking-[0.25em] text-primary text-glow"
         >
           Dublin, CA · September 2026 · 10am–10pm
         </motion.p>
@@ -251,7 +251,7 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
           initial="hidden"
           animate="show"
           custom={2}
-          className="font-display text-6xl font-extrabold leading-[0.9] tracking-tight text-foreground sm:text-7xl md:text-[8rem] lg:text-[10rem]"
+          className="font-display text-6xl font-extrabold leading-[0.9] tracking-[-0.07em] text-foreground sm:text-7xl md:text-[8rem] lg:text-[10rem]"
         >
           DUBLIN
           <br />
@@ -265,8 +265,8 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
           custom={3}
           className="mx-auto mt-8 max-w-2xl text-base text-muted-foreground md:text-lg"
         >
-          Dublin, CA's first single-day high school hackathon. 12 hours, 10am–10pm,
-          to build, break, ship, and meet your future co-founders.
+          Dublin's first single-day high school hackathon. 12 hours, 10am to 10pm.
+          Walk in with an idea. Walk out with something real.
         </motion.p>
 
         <motion.div
@@ -277,7 +277,7 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
           className="mt-10 flex flex-wrap justify-center gap-4"
         >
           <MagneticButton onClick={onApply}>Apply to Hack →</MagneticButton>
-          <MagneticButton onClick={onLearnMore} variant="secondary">Learn More</MagneticButton>
+          <MagneticButton onClick={onLearnMore} variant="secondary">What's the deal?</MagneticButton>
         </motion.div>
       </div>
 

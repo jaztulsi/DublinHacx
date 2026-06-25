@@ -26,7 +26,6 @@ const organizers: { name: string; role: string; bio: string; img?: string }[] = 
     name: "Jasraj Tulsi",
     role: "Co-Founder · Emerald HS",
     bio: "Runs the club, sends the emails. Probably the one who'll reply to you.",
-    img: "/jasraj-tulsi.png",
   },
   {
     name: "Rachit Panchal",
@@ -38,14 +37,23 @@ const organizers: { name: string; role: string; bio: string; img?: string }[] = 
 /** Avatar: shows the organizer photo if provided, else falls back to initials. */
 function OrganizerAvatar({ name, img }: { name: string; img?: string }) {
   const [errored, setErrored] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
   const initials = name
     .split(" ")
     .map((n) => n[0])
     .join("");
 
+  // On a prerendered page the image can 404 before React hydrates, so the
+  // onError event is missed. Re-check the loaded state on mount.
+  useEffect(() => {
+    const el = imgRef.current;
+    if (el && el.complete && el.naturalWidth === 0) setErrored(true);
+  }, [img]);
+
   if (img && !errored) {
     return (
       <img
+        ref={imgRef}
         src={img}
         alt={name}
         onError={() => setErrored(true)}

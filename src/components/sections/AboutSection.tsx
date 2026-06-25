@@ -26,6 +26,7 @@ const organizers: { name: string; role: string; bio: string; img?: string }[] = 
     name: "Jasraj Tulsi",
     role: "Co-Founder · Emerald HS",
     bio: "Runs the club, sends the emails. Probably the one who'll reply to you.",
+    img: "/jasraj-tulsi.png",
   },
   {
     name: "Rachit Panchal",

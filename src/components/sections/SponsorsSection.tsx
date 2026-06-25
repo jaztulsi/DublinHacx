@@ -27,7 +27,7 @@ const reasons = [
   {
     icon: Heart,
     title: "Invest in community",
-    body: "Fund Dublin's first single-day high-school hackathon. Your support goes straight to meals, swag, and prizes.",
+    body: "Fund Dublin's very first Dublin Hacx. Your support goes straight to meals, swag, and prizes.",
   },
 ];
 
@@ -46,7 +46,14 @@ const presenting = {
   ],
 };
 
-const tiers = [
+const tiers: {
+  name: string;
+  price: string;
+  perks: string[];
+  featured?: boolean;
+  accent?: boolean;
+  badge?: string;
+}[] = [
   {
     name: "Platinum",
     price: "$2,500",
@@ -129,7 +136,7 @@ export function SponsorsSection() {
           transition={{ duration: 0.7 }}
           className="mb-12 text-center"
         >
-          <p className="mb-3 text-xs uppercase tracking-widest text-primary">Partner with us</p>
+          <p className="mb-3 font-pixel text-sm uppercase tracking-widest text-primary">Partner with us</p>
           <h2 className="font-display text-4xl font-extrabold md:text-6xl">
             Back the next <span className="text-gradient-primary">generation</span> of builders.
           </h2>
@@ -150,7 +157,7 @@ export function SponsorsSection() {
         >
           {stats.map((s) => (
             <div key={s.label} className="text-center">
-              <p className="font-display text-3xl font-extrabold text-gradient-primary md:text-5xl">
+              <p className="font-pixel text-4xl text-gradient-primary md:text-6xl">
                 {s.value}
               </p>
               <p className="mt-1 text-xs text-muted-foreground md:text-sm">{s.label}</p>
@@ -185,7 +192,7 @@ export function SponsorsSection() {
           transition={{ duration: 0.6 }}
           className="mb-8 text-center"
         >
-          <p className="text-xs uppercase tracking-widest text-primary">Sponsorship tiers</p>
+          <p className="font-pixel text-sm uppercase tracking-widest text-primary">Sponsorship tiers</p>
           <h3 className="mt-2 font-display text-3xl font-extrabold md:text-4xl">
             Pick your <span className="text-gradient-primary">level</span>.
           </h3>
@@ -210,7 +217,7 @@ export function SponsorsSection() {
               <h4 className="font-display text-3xl font-extrabold text-gold md:text-4xl">
                 {presenting.name}
               </h4>
-              <p className="mt-3 font-display text-5xl font-extrabold">{presenting.price}</p>
+              <p className="mt-3 font-pixel text-6xl">{presenting.price}</p>
               <p className="mt-3 text-sm font-medium text-gold/90">{presenting.tagline}</p>
             </div>
             <ul className="grid gap-3 sm:grid-cols-2">
@@ -253,7 +260,7 @@ export function SponsorsSection() {
               >
                 {t.name}
               </h4>
-              <p className="mt-2 font-display text-4xl font-extrabold">{t.price}</p>
+              <p className="mt-2 font-pixel text-5xl">{t.price}</p>
               <ul className="mt-6 space-y-3 text-sm">
                 {t.perks.map((p) => (
                   <li key={p} className="flex items-start gap-2 text-muted-foreground">
@@ -279,7 +286,7 @@ export function SponsorsSection() {
           <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_1.4fr] md:items-center">
             <div>
               <h4 className="font-display text-2xl font-extrabold md:text-3xl">{inKind.name}</h4>
-              <p className="mt-2 font-display text-3xl font-extrabold text-gradient-primary">
+              <p className="mt-2 font-pixel text-4xl text-gradient-primary">
                 {inKind.price}
               </p>
               <p className="mt-3 text-sm text-muted-foreground">
@@ -308,7 +315,7 @@ export function SponsorsSection() {
           className="mt-10 flex flex-col items-center justify-between gap-4 rounded-2xl border border-primary/30 bg-card/30 p-6 backdrop-blur-md transition-colors hover:border-primary md:flex-row md:p-8"
         >
           <div>
-            <p className="text-xs uppercase tracking-widest text-primary">Get in touch</p>
+            <p className="font-pixel text-sm uppercase tracking-widest text-primary">Get in touch</p>
             <p className="mt-1 font-display text-xl font-bold md:text-2xl">dublinhacx@gmail.com</p>
             <p className="mt-1 text-sm text-muted-foreground">
               Tell us your goals and we'll send a tailored package within 48 hours.
@@ -326,7 +333,7 @@ export function SponsorsSection() {
           transition={{ duration: 0.6 }}
           className="mt-16"
         >
-          <p className="text-center text-xs uppercase tracking-widest text-muted-foreground">
+          <p className="text-center font-pixel text-sm uppercase tracking-widest text-muted-foreground">
             Current Sponsors
           </p>
           <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4">

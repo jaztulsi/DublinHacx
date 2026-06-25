@@ -56,7 +56,7 @@ export function FaqSection() {
           transition={{ duration: 0.7 }}
           className="mb-12 text-center"
         >
-          <p className="mb-3 text-xs uppercase tracking-widest text-primary">FAQ</p>
+          <p className="mb-3 font-pixel text-sm uppercase tracking-widest text-primary">FAQ</p>
           <h2 className="font-display text-4xl font-extrabold md:text-6xl">Questions, answered.</h2>
         </motion.div>
 
@@ -76,7 +76,7 @@ export function FaqSection() {
                   onClick={() => setOpen(isOpen ? null : i)}
                   className="flex w-full items-center justify-between gap-4 p-5 text-left"
                 >
-                  <span className="font-display text-base font-semibold md:text-lg">{item.q}</span>
+                  <span className="font-pixel text-lg md:text-xl">{item.q}</span>
                   <span
                     className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border text-primary transition-transform ${
                       isOpen ? "rotate-45" : ""

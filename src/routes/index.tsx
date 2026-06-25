@@ -24,13 +24,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Dublin, CA's first single-day high school hackathon. Bring any idea. Build it into reality. 12 hours (10am–10pm), 170 hackers, free food and swag.",
+          "Dublin's very first Dublin Hacx. Bring any idea. Build it into reality. 12 hours (10am–10pm), 170 hackers, free food and swag.",
       },
       { property: "og:title", content: "Dublin Hacx — September 2026" },
       {
         property: "og:description",
         content:
-          "Bring any idea. Build it into reality. Dublin, CA's first single-day high school hackathon — September 2026 (date TBD).",
+          "Bring any idea. Build it into reality. Dublin's very first Dublin Hacx — September 2026 (date TBD).",
       },
       { property: "og:type", content: "website" },
     ],

@@ -128,7 +128,7 @@ function Countdown() {
       {blocks.map((b, i) => (
         <div key={b.label} className="flex items-center gap-3 sm:gap-5">
           <div className="flex flex-col items-center">
-            <span className="font-display text-4xl font-extrabold tabular-nums text-gold gold-glow sm:text-5xl md:text-6xl">
+            <span className="font-pixel text-5xl tabular-nums text-gold gold-glow sm:text-6xl md:text-7xl">
               {b.value.toString().padStart(2, "0")}
             </span>
             <span className="mt-1 text-[10px] uppercase tracking-widest text-muted-foreground sm:text-xs">
@@ -224,7 +224,7 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
           initial="hidden"
           animate="show"
           custom={1}
-          className="mb-6 text-xs font-semibold uppercase tracking-[0.25em] text-primary"
+          className="mb-6 font-pixel text-base uppercase tracking-[0.25em] text-primary"
         >
           Dublin, CA · September 2026 · 10am–10pm
         </motion.p>
@@ -237,7 +237,7 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
         >
           {EVENT_DATE_TBD ? (
             <div className="mb-8 flex items-center justify-center font-mono">
-              <span className="font-display text-3xl font-extrabold text-gold gold-glow sm:text-4xl md:text-5xl">
+              <span className="font-pixel text-4xl text-gold gold-glow sm:text-5xl md:text-6xl">
                 September 2026 — date TBD
               </span>
             </div>
@@ -265,7 +265,7 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
           custom={3}
           className="mx-auto mt-8 max-w-2xl text-base text-muted-foreground md:text-lg"
         >
-          Dublin's first single-day high school hackathon. 12 hours, 10am to 10pm.
+          Dublin's very first Dublin Hacx. 12 hours, 10am to 10pm.
           Walk in with an idea. Walk out with something real.
         </motion.p>
 

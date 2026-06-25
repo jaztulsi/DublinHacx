@@ -1,5 +1,5 @@
 import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -21,11 +21,12 @@ const stats = [
   { value: 0, suffix: "", label: "Cost — totally free", isText: "$0" },
 ];
 
-const organizers = [
+const organizers: { name: string; role: string; bio: string; img?: string }[] = [
   {
     name: "Jasraj Tulsi",
     role: "Co-Founder · Emerald HS",
     bio: "Runs the club, sends the emails. Probably the one who'll reply to you.",
+    img: "/jasraj-tulsi.png",
   },
   {
     name: "Rachit Panchal",
@@ -33,6 +34,32 @@ const organizers = [
     bio: "Handles the logistics so the day actually happens. Co-founder.",
   },
 ];
+
+/** Avatar: shows the organizer photo if provided, else falls back to initials. */
+function OrganizerAvatar({ name, img }: { name: string; img?: string }) {
+  const [errored, setErrored] = useState(false);
+  const initials = name
+    .split(" ")
+    .map((n) => n[0])
+    .join("");
+
+  if (img && !errored) {
+    return (
+      <img
+        src={img}
+        alt={name}
+        onError={() => setErrored(true)}
+        className="h-14 w-14 shrink-0 rounded-full object-cover"
+      />
+    );
+  }
+
+  return (
+    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary-glow font-display text-lg font-bold text-primary-foreground">
+      {initials}
+    </div>
+  );
+}
 
 export function AboutSection() {
   return (
@@ -45,7 +72,7 @@ export function AboutSection() {
           transition={{ duration: 0.7 }}
           className="mb-16 text-center"
         >
-          <p className="mb-3 text-xs uppercase tracking-widest text-primary">About</p>
+          <p className="mb-3 font-pixel text-sm uppercase tracking-widest text-primary">About</p>
           <h2 className="font-display text-4xl font-extrabold tracking-tight md:text-6xl">
             Made by students who got tired of <span className="text-gradient-primary">waiting</span>.
           </h2>
@@ -61,7 +88,7 @@ export function AboutSection() {
               transition={{ duration: 0.6, delay: i * 0.1 }}
               className="rounded-2xl border border-border bg-card/30 p-8 backdrop-blur-md"
             >
-              <div className="font-display text-5xl font-extrabold text-primary md:text-6xl">
+              <div className="font-pixel text-6xl text-primary md:text-7xl">
                 {s.isText ? s.isText : <Counter to={s.value} suffix={s.suffix} />}
               </div>
               <p className="mt-2 text-sm text-muted-foreground">{s.label}</p>
@@ -93,7 +120,7 @@ export function AboutSection() {
           >
             <h3 className="font-display text-3xl font-bold">One day that actually sticks.</h3>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              It's the first single-day high school hackathon in Dublin — 10am to 10pm, 170 people
+              It's Dublin's very first Dublin Hacx — 10am to 10pm, 170 people
               from around the Bay Area, one room. First time touching code or your tenth project,
               doesn't matter. You leave with something you actually built and a few people you didn't
               know that morning.
@@ -115,12 +142,7 @@ export function AboutSection() {
                 key={o.name}
                 className="flex items-center gap-4 rounded-2xl border border-border bg-card/30 p-5 backdrop-blur-md"
               >
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary-glow font-display text-lg font-bold text-primary-foreground">
-                  {o.name
-                    .split(" ")
-                    .map((n) => n[0])
-                    .join("")}
-                </div>
+                <OrganizerAvatar name={o.name} img={o.img} />
                 <div>
                   <h4 className="font-semibold">{o.name}</h4>
                   <p className="text-xs text-primary">{o.role}</p>

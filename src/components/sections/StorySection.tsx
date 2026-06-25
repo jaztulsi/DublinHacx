@@ -11,7 +11,7 @@ const panels = [
   },
   {
     statement: "You ship. You present. You remember this weekend forever.",
-    subline: "Dublin's first single-day high school hackathon — September 2026 (date TBD).",
+    subline: "Dublin's very first Dublin Hacx — September 2026 (date TBD).",
   },
 ];
 
@@ -27,7 +27,7 @@ export function StorySection() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="flex min-h-[60vh] flex-col items-center justify-center text-center"
         >
-          <h2 className="text-aurora font-display text-5xl font-extrabold leading-[1.05] md:text-7xl">
+          <h2 className="text-aurora font-pixel text-6xl leading-[1.05] md:text-8xl">
             {p.statement}
           </h2>
           <p className="mt-6 max-w-2xl text-center text-lg text-muted-foreground md:text-xl">

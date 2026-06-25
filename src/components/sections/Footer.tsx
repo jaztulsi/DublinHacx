@@ -11,20 +11,20 @@ export function Footer() {
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 md:grid-cols-3">
           <div>
-            <div className="flex items-center gap-2 font-display text-xl font-bold">
+            <div className="flex items-center gap-2 font-pixel text-2xl">
               <span className="inline-block h-3 w-3 rounded-full bg-primary purple-glow" />
               <span>
                 DUBLIN<span className="text-primary">HACX</span>
               </span>
             </div>
             <p className="mt-3 text-sm text-muted-foreground">
-              Dublin, CA's first single-day high school hackathon. September 2026 (date TBD).
+              Dublin's very first Dublin Hacx. September 2026 (date TBD).
             </p>
           </div>
 
           <div className="grid grid-cols-2 gap-6 md:grid-cols-3 md:col-span-2">
             <div>
-              <p className="mb-3 text-xs uppercase tracking-widest text-primary">Event</p>
+              <p className="mb-3 font-pixel text-sm uppercase tracking-widest text-primary">Event</p>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
                   <a href="#about" className="hover:text-foreground">
@@ -49,7 +49,7 @@ export function Footer() {
               </ul>
             </div>
             <div>
-              <p className="mb-3 text-xs uppercase tracking-widest text-primary">Get involved</p>
+              <p className="mb-3 font-pixel text-sm uppercase tracking-widest text-primary">Get involved</p>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
                   <a
@@ -74,7 +74,7 @@ export function Footer() {
               </ul>
             </div>
             <div>
-              <p className="mb-3 text-xs uppercase tracking-widest text-primary">Social</p>
+              <p className="mb-3 font-pixel text-sm uppercase tracking-widest text-primary">Social</p>
               <div className="flex flex-wrap gap-2">
                 {SOCIALS.map((s) => (
                   <a

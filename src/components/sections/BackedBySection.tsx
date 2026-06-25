@@ -15,7 +15,7 @@ export function BackedBySection() {
           {/* Emerald glow accent */}
           <div className="pointer-events-none absolute -top-24 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-emerald-500/20 blur-3xl" />
 
-          <p className="relative mb-5 text-xs font-semibold uppercase tracking-[0.25em] text-emerald-300">
+          <p className="relative mb-5 font-pixel text-sm uppercase tracking-[0.25em] text-emerald-300">
             Officially Backed
           </p>
 

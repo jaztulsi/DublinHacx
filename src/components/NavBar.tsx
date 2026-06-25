@@ -68,7 +68,7 @@ export function NavBar() {
             <button
               key={item.id}
               onClick={() => scrollTo(item.id)}
-              className="rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary/50 hover:text-foreground"
+              className="rounded-full px-4 py-2 font-pixel text-base text-muted-foreground transition-colors hover:bg-secondary/50 hover:text-foreground"
             >
               {item.label}
             </button>
@@ -119,7 +119,7 @@ export function NavBar() {
               <button
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
-                className="rounded-lg px-4 py-3 text-left text-sm font-medium text-muted-foreground hover:bg-secondary/50 hover:text-foreground"
+                className="rounded-lg px-4 py-3 text-left font-pixel text-base text-muted-foreground hover:bg-secondary/50 hover:text-foreground"
               >
                 {item.label}
               </button>

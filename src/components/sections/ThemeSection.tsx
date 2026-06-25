@@ -28,7 +28,7 @@ export function ThemeSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
-          className="mb-6 text-center text-sm uppercase tracking-widest text-muted-foreground"
+          className="mb-6 font-pixel text-center text-base uppercase tracking-widest text-muted-foreground"
         >
           Every great hack starts with a question.
         </motion.p>
@@ -40,7 +40,7 @@ export function ThemeSection() {
           transition={{ duration: 0.7 }}
           className="mb-14 text-center"
         >
-          <p className="mb-3 text-xs uppercase tracking-widest text-primary">The Theme</p>
+          <p className="mb-3 font-pixel text-sm uppercase tracking-widest text-primary">The Theme</p>
           <h2 className="font-display text-4xl font-extrabold md:text-6xl">
             Open-ended. <span className="text-gradient-primary">On purpose.</span>
           </h2>
@@ -62,7 +62,7 @@ export function ThemeSection() {
               <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/15 text-primary">
                 <p.icon size={20} />
               </div>
-              <h3 className="font-display text-lg font-bold">{p.title}</h3>
+              <h3 className="font-pixel text-xl">{p.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
             </motion.div>
           ))}

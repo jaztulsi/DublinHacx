@@ -2,7 +2,7 @@ const REGISTER_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSdnmbxMou0EOQ4BbJJEeekJ_B7FVXqV9IioHKOfzYSVIGmKNg/viewform";
 
 const VOLUNTEER_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLScdfNpcAJTRDc2Z9PKoUv1vNVHyYfiwte9zLMTC30vcF-0vIw/viewform?usp=publish-editor";
+  "https://docs.google.com/forms/d/e/1FAIpQLScdfNpcAJTRDc2Z9PKoUv1vNVHyYfiwte9zLMTC30vcF-0vIw/viewform?usp=dialog";
 
 const SOCIALS = [
   { name: "Instagram", href: "https://www.instagram.com/dublin.hacx/", icon: "📷" },

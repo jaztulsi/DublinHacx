@@ -10,18 +10,16 @@ export interface ScheduleItem {
 }
 
 /**
- * The exact event date is not finalized yet — sometime in September 2026 (date TBD).
- * While EVENT_DATE_TBD is true, any live countdown / "happening now" UI should be
- * skipped in favor of static "September 2026 — date TBD" text.
+ * The event date is final: Saturday, October 10, 2026 at Emerald High School.
+ * EVENT_DATE_TBD is false, so the live countdown is shown.
  */
-export const EVENT_DATE_TBD = true;
+export const EVENT_DATE_TBD = false;
 
 /**
- * Placeholder start anchor (10:00 AM Pacific). Only used by the relative schedule
- * math and the countdown logic, both gated by EVENT_DATE_TBD until a real date
- * is set — update this when the date is finalized.
+ * Event start anchor: 10:00 AM Pacific (PDT, UTC-7) on October 10, 2026. Used by
+ * the relative schedule math and the countdown logic.
  */
-export const EVENT_START = new Date("2026-09-12T10:00:00-07:00");
+export const EVENT_START = new Date("2026-10-10T10:00:00-07:00");
 
 export const schedule: ScheduleItem[] = [
   { offsetMin: 0,   time: "10:00 AM", title: "Check-In",                    description: "Arrive, sign in, grab your badge & swag bag.",            tag: "Event" },

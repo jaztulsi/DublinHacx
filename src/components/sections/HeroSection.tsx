@@ -96,8 +96,8 @@ function GlitchText({ children }: { children: string }) {
   );
 }
 
-// Placeholder countdown target — only used when EVENT_DATE_TBD is false.
-const EVENT_TS = new Date("2026-09-01T00:00:00-07:00").getTime();
+// Countdown target — 10:00 AM PDT on October 10, 2026.
+const EVENT_TS = new Date("2026-10-10T10:00:00-07:00").getTime();
 
 function getRemaining() {
   const diff = Math.max(0, EVENT_TS - Date.now());
@@ -124,11 +124,15 @@ function Countdown() {
   ];
 
   return (
-    <div className="mb-8 flex items-center justify-center gap-3 font-mono sm:gap-5">
+    <div className="mb-8 flex flex-col items-center gap-4">
+      <span className="font-pixel text-4xl text-gold gold-glow sm:text-5xl md:text-6xl">
+        October 10, 2026
+      </span>
+      <div className="flex items-center justify-center gap-3 font-mono sm:gap-5">
       {blocks.map((b, i) => (
         <div key={b.label} className="flex items-center gap-3 sm:gap-5">
           <div className="flex flex-col items-center">
-            <span className="font-pixel text-5xl tabular-nums text-gold gold-glow sm:text-6xl md:text-7xl">
+            <span className="font-pixel text-4xl tabular-nums text-gold gold-glow sm:text-5xl md:text-6xl">
               {b.value.toString().padStart(2, "0")}
             </span>
             <span className="mt-1 text-[10px] uppercase tracking-widest text-muted-foreground sm:text-xs">
@@ -142,6 +146,7 @@ function Countdown() {
           )}
         </div>
       ))}
+      </div>
     </div>
   );
 }
@@ -226,7 +231,7 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
           custom={1}
           className="mb-6 font-pixel text-base uppercase tracking-[0.25em] text-primary"
         >
-          Dublin, CA · September 2026 · 10am–10pm
+          Emerald High School · Oct 10, 2026 · 10am–10pm
         </motion.p>
 
         <motion.div
@@ -238,7 +243,7 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
           {EVENT_DATE_TBD ? (
             <div className="mb-8 flex items-center justify-center font-mono">
               <span className="font-pixel text-4xl text-gold gold-glow sm:text-5xl md:text-6xl">
-                September 2026 — date TBD
+                October 10, 2026
               </span>
             </div>
           ) : (

@@ -11,7 +11,7 @@ const panels = [
   },
   {
     statement: "You ship. You present. You remember this weekend forever.",
-    subline: "Dublin's very first Dublin Hacx — September 2026 (date TBD).",
+    subline: "Dublin's very first Dublin Hacx — October 10, 2026 at Emerald High School.",
   },
 ];
 

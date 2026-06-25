@@ -116,7 +116,7 @@ export function AboutSection() {
             "The day I stopped just talking about building stuff and actually built something."
           </p>
           <footer className="mt-3 text-sm not-italic text-muted-foreground">
-            — hopefully you, in September
+            — hopefully you, on October 10
           </footer>
         </motion.blockquote>
 

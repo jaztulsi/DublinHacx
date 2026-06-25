@@ -24,7 +24,7 @@ const FAQS = [
   },
   {
     q: "Where is the venue?",
-    a: "Dublin, CA — exact venue TBA. Announcement coming soon. Stay tuned via email after registering.",
+    a: "Emerald High School in Dublin, CA. The whole event runs there on Saturday, October 10, 2026.",
   },
   {
     q: "How long is the event?",

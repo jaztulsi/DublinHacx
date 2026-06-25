@@ -15,6 +15,12 @@ export function BackedBySection() {
           {/* Emerald glow accent */}
           <div className="pointer-events-none absolute -top-24 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-emerald-500/20 blur-3xl" />
 
+          <img
+            src="/ehcc-logo.png"
+            alt="Emerald Hacking & Coding Club logo"
+            className="relative mx-auto mb-6 h-28 w-28 object-contain drop-shadow-[0_0_30px_oklch(0.72_0.16_160_/_0.45)]"
+          />
+
           <p className="relative mb-5 font-pixel text-sm uppercase tracking-[0.25em] text-emerald-300">
             Officially Backed
           </p>

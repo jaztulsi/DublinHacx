@@ -14,7 +14,7 @@ export function Footer() {
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 md:grid-cols-3">
           <div>
-            <div className="flex items-center gap-2 font-pixel text-2xl">
+            <div className="flex items-center gap-2 font-sans text-xl font-bold">
               <span className="inline-block h-3 w-3 rounded-full bg-primary purple-glow" />
               <span>
                 DUBLIN<span className="text-primary">HACX</span>

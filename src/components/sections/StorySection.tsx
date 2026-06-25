@@ -27,10 +27,10 @@ export function StorySection() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="flex min-h-[60vh] flex-col items-center justify-center text-center"
         >
-          <h2 className="text-aurora font-pixel text-6xl leading-[1.05] md:text-8xl">
+          <h2 className="text-aurora font-sans text-5xl font-bold leading-[1.05] md:text-7xl">
             {p.statement}
           </h2>
-          <p className="mt-6 max-w-2xl text-center text-lg text-muted-foreground md:text-xl">
+          <p className="mt-6 max-w-2xl text-center font-pixel text-xl text-muted-foreground md:text-2xl">
             {p.subline}
           </p>
         </motion.div>

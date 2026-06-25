@@ -109,33 +109,36 @@ function getRemaining() {
 }
 
 function Countdown() {
-  const [time, setTime] = useState(getRemaining);
+  // Start null so the server-rendered HTML and the first client render match
+  // (the live time only differs after mount), avoiding a hydration mismatch.
+  const [time, setTime] = useState<ReturnType<typeof getRemaining> | null>(null);
 
   useEffect(() => {
+    setTime(getRemaining());
     const id = setInterval(() => setTime(getRemaining()), 1000);
     return () => clearInterval(id);
   }, []);
 
   const blocks = [
-    { value: time.days, label: "Days" },
-    { value: time.hours, label: "Hours" },
-    { value: time.minutes, label: "Minutes" },
-    { value: time.seconds, label: "Seconds" },
+    { value: time?.days ?? 0, label: "Days" },
+    { value: time?.hours ?? 0, label: "Hours" },
+    { value: time?.minutes ?? 0, label: "Minutes" },
+    { value: time?.seconds ?? 0, label: "Seconds" },
   ];
 
   return (
     <div className="mb-8 flex flex-col items-center gap-4">
-      <span className="font-pixel text-4xl text-gold gold-glow sm:text-5xl md:text-6xl">
+      <span className="font-sans text-4xl font-bold text-gold gold-glow sm:text-5xl md:text-6xl">
         October 10, 2026
       </span>
       <div className="flex items-center justify-center gap-3 font-mono sm:gap-5">
       {blocks.map((b, i) => (
         <div key={b.label} className="flex items-center gap-3 sm:gap-5">
           <div className="flex flex-col items-center">
-            <span className="font-pixel text-4xl tabular-nums text-gold gold-glow sm:text-5xl md:text-6xl">
+            <span className="font-sans text-4xl font-bold tabular-nums text-gold gold-glow sm:text-5xl md:text-6xl">
               {b.value.toString().padStart(2, "0")}
             </span>
-            <span className="mt-1 text-[10px] uppercase tracking-widest text-muted-foreground sm:text-xs">
+            <span className="mt-1 font-pixel text-xs uppercase tracking-widest text-muted-foreground sm:text-sm">
               {b.label}
             </span>
           </div>
@@ -242,7 +245,7 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
         >
           {EVENT_DATE_TBD ? (
             <div className="mb-8 flex items-center justify-center font-mono">
-              <span className="font-pixel text-4xl text-gold gold-glow sm:text-5xl md:text-6xl">
+              <span className="font-sans text-4xl font-bold text-gold gold-glow sm:text-5xl md:text-6xl">
                 October 10, 2026
               </span>
             </div>

@@ -21,7 +21,7 @@ export function ScheduleSection() {
           transition={{ duration: 0.7 }}
           className="mb-12 text-center"
         >
-          <h2 className="font-pixel text-5xl text-center md:text-6xl">
+          <h2 className="font-sans text-4xl font-bold text-center md:text-5xl">
             Here's how the day looks.
           </h2>
           <p className="mt-4 text-sm text-muted-foreground">
@@ -235,7 +235,7 @@ function ScheduleTrack() {
               />
               <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
                 <span
-                  className={`font-pixel text-3xl tabular-nums md:text-4xl ${
+                  className={`font-sans text-2xl font-bold tabular-nums md:text-3xl ${
                     i === activeIdx ? "text-primary" : "text-foreground/70"
                   }`}
                 >

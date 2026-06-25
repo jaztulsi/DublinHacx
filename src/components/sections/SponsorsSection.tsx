@@ -157,10 +157,10 @@ export function SponsorsSection() {
         >
           {stats.map((s) => (
             <div key={s.label} className="text-center">
-              <p className="font-pixel text-4xl text-gradient-primary md:text-6xl">
+              <p className="font-sans text-4xl font-bold text-gradient-primary md:text-5xl">
                 {s.value}
               </p>
-              <p className="mt-1 text-xs text-muted-foreground md:text-sm">{s.label}</p>
+              <p className="mt-1 font-pixel text-sm text-muted-foreground md:text-base">{s.label}</p>
             </div>
           ))}
         </motion.div>
@@ -217,7 +217,7 @@ export function SponsorsSection() {
               <h4 className="font-display text-3xl font-extrabold text-gold md:text-4xl">
                 {presenting.name}
               </h4>
-              <p className="mt-3 font-pixel text-6xl">{presenting.price}</p>
+              <p className="mt-3 font-sans text-5xl font-bold">{presenting.price}</p>
               <p className="mt-3 text-sm font-medium text-gold/90">{presenting.tagline}</p>
             </div>
             <ul className="grid gap-3 sm:grid-cols-2">
@@ -228,6 +228,37 @@ export function SponsorsSection() {
                 </li>
               ))}
             </ul>
+          </div>
+        </motion.div>
+
+        {/* Custom package — most popular, full-width hero */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6 }}
+          className="relative mb-6 overflow-hidden rounded-3xl border-2 border-primary bg-gradient-to-br from-primary/20 via-card/50 to-transparent p-8 backdrop-blur-md purple-glow md:p-12"
+        >
+          <span className="absolute right-6 top-6 flex items-center gap-1 rounded-full bg-primary px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-primary-foreground">
+            <Sparkles size={14} /> Most popular
+          </span>
+          <div className="text-center md:text-left">
+            <h4 className="font-display text-4xl font-extrabold text-gradient-primary md:text-6xl">
+              Build your own
+            </h4>
+            <p className="mt-4 max-w-2xl text-base text-muted-foreground md:text-lg">
+              Our most-loved option. Don't see the perfect fit above? Mix, match, and dream up your
+              own package — a branded challenge, a custom prize, a workshop, whatever moves your
+              brand. We'll chat it through over email and tailor everything to your goals and budget.
+            </p>
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=dublinhacx@gmail.com&su=Dublin%20Hacx%20Custom%20Sponsorship"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-base font-semibold text-primary-foreground transition-transform hover:scale-105 purple-glow"
+            >
+              Let's chat over email →
+            </a>
           </div>
         </motion.div>
 
@@ -260,7 +291,7 @@ export function SponsorsSection() {
               >
                 {t.name}
               </h4>
-              <p className="mt-2 font-pixel text-5xl">{t.price}</p>
+              <p className="mt-2 font-sans text-4xl font-bold">{t.price}</p>
               <ul className="mt-6 space-y-3 text-sm">
                 {t.perks.map((p) => (
                   <li key={p} className="flex items-start gap-2 text-muted-foreground">
@@ -286,7 +317,7 @@ export function SponsorsSection() {
           <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_1.4fr] md:items-center">
             <div>
               <h4 className="font-display text-2xl font-extrabold md:text-3xl">{inKind.name}</h4>
-              <p className="mt-2 font-pixel text-4xl text-gradient-primary">
+              <p className="mt-2 font-sans text-3xl font-bold text-gradient-primary">
                 {inKind.price}
               </p>
               <p className="mt-3 text-sm text-muted-foreground">

@@ -62,7 +62,7 @@ export function ThemeSection() {
               <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/15 text-primary">
                 <p.icon size={20} />
               </div>
-              <h3 className="font-pixel text-xl">{p.title}</h3>
+              <h3 className="font-sans text-xl font-bold">{p.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
             </motion.div>
           ))}

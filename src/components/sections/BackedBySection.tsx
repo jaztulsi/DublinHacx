@@ -18,7 +18,7 @@ export function BackedBySection() {
           <img
             src="/ehcc-logo.png"
             alt="Emerald Hacking & Coding Club logo"
-            className="relative mx-auto mb-6 h-28 w-28 object-contain drop-shadow-[0_0_30px_oklch(0.72_0.16_160_/_0.45)]"
+            className="relative mx-auto mb-6 h-40 w-auto object-contain drop-shadow-[0_0_40px_oklch(0.72_0.16_160_/_0.5)]"
           />
 
           <p className="relative mb-5 font-pixel text-sm uppercase tracking-[0.25em] text-emerald-300">

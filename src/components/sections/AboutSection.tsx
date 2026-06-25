@@ -97,10 +97,10 @@ export function AboutSection() {
               transition={{ duration: 0.6, delay: i * 0.1 }}
               className="rounded-2xl border border-border bg-card/30 p-8 backdrop-blur-md"
             >
-              <div className="font-pixel text-6xl text-primary md:text-7xl">
+              <div className="font-sans text-5xl font-bold text-primary md:text-6xl">
                 {s.isText ? s.isText : <Counter to={s.value} suffix={s.suffix} />}
               </div>
-              <p className="mt-2 text-sm text-muted-foreground">{s.label}</p>
+              <p className="mt-2 font-pixel text-base text-muted-foreground">{s.label}</p>
             </motion.div>
           ))}
         </div>

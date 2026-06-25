@@ -7,6 +7,9 @@ import logo from "@/assets/dublin-hacx-logo.svg";
 const REGISTER_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSdnmbxMou0EOQ4BbJJEeekJ_B7FVXqV9IioHKOfzYSVIGmKNg/viewform";
 
+const VOLUNTEER_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLScdfNpcAJTRDc2Z9PKoUv1vNVHyYfiwte9zLMTC30vcF-0vIw/viewform?usp=publish-editor";
+
 const NAV_ITEMS = [
   { id: "about", label: "About" },
   { id: "theme", label: "Theme" },
@@ -74,6 +77,14 @@ export function NavBar() {
             </button>
           ))}
           <a
+            href={VOLUNTEER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-2 rounded-full border border-primary/40 px-5 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary/10"
+          >
+            Volunteer
+          </a>
+          <a
             href={REGISTER_URL}
             target="_blank"
             rel="noopener noreferrer"
@@ -124,6 +135,15 @@ export function NavBar() {
                 {item.label}
               </button>
             ))}
+            <a
+              href={VOLUNTEER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setOpen(false)}
+              className="mt-2 rounded-full border border-primary/40 px-5 py-3 text-center text-sm font-semibold text-primary"
+            >
+              Volunteer
+            </a>
             <a
               href={REGISTER_URL}
               target="_blank"

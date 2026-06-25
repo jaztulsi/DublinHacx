@@ -1,6 +1,9 @@
 const REGISTER_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSdnmbxMou0EOQ4BbJJEeekJ_B7FVXqV9IioHKOfzYSVIGmKNg/viewform";
 
+const VOLUNTEER_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLScdfNpcAJTRDc2Z9PKoUv1vNVHyYfiwte9zLMTC30vcF-0vIw/viewform?usp=publish-editor";
+
 const SOCIALS = [
   { name: "Instagram", href: "https://www.instagram.com/dublin.hacx/", icon: "📷" },
 ];
@@ -59,6 +62,16 @@ export function Footer() {
                     className="hover:text-foreground"
                   >
                     Sign Up
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={VOLUNTEER_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-foreground"
+                  >
+                    Volunteer
                   </a>
                 </li>
                 <li>

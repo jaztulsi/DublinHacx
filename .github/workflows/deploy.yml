@@ -35,10 +35,6 @@ jobs:
           # GitHub Pages. This var must ONLY ever be set here — never in the Vercel
           # environment, or Vercel's asset base path breaks. See DEPLOYMENT.md.
           GITHUB_PAGES: "true"
-          # Public Supabase values (anon key) — set as repo variables, baked into the client bundle.
-          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
-          VITE_SUPABASE_PUBLISHABLE_KEY: ${{ vars.VITE_SUPABASE_PUBLISHABLE_KEY }}
-          VITE_SUPABASE_PROJECT_ID: ${{ vars.VITE_SUPABASE_PROJECT_ID }}
         run: npm run build
 
       - name: Assemble Pages output

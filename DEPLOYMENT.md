@@ -1,9 +1,8 @@
 # Deploying Dublin Hacx to Vercel
 
-This project has two deploy targets:
+This is a static marketing site (no database or backend). It has two deploy targets:
 
-- **Vercel** — runs in **SSR** mode so TanStack Start server functions
-  (`createServerFn`: registrations, email, admin panel) execute at runtime.
+- **Vercel** — runs in **SSR** mode for server-rendered pages.
 - **GitHub Pages** — runs in **SPA** mode (static files only). Handled by
   `.github/workflows/deploy.yml`; nothing here applies to it.
 
@@ -28,27 +27,16 @@ Under **Settings → Environment Variables**, add **all** of the following. The
 
 | Variable | Scope | Notes |
 | --- | --- | --- |
-| `VITE_SUPABASE_URL` | build-time + runtime | Public Supabase URL |
-| `VITE_SUPABASE_PUBLISHABLE_KEY` | build-time + runtime | Public anon key |
-| `SUPABASE_URL` | runtime only | |
-| `SUPABASE_PUBLISHABLE_KEY` | runtime only | |
-| `SUPABASE_SERVICE_ROLE_KEY` | runtime only | **Never** expose to the browser (no `VITE_` prefix) |
-| `RESEND_API_KEY` | runtime only | |
-| `RESEND_FROM_EMAIL` | runtime only | e.g. `noreply@dublinHacx.com` |
-| `ADMIN_PASSWORD` | runtime only | Admin dashboard password |
 | `VITE_TARGET` | build-time | Set to `vercel`. Already in `vercel.json`; add here as a backup |
+
+> This is a static marketing site. Registration is handled by an external
+> Google Form, so no database or backend secrets are required.
 
 > **Do NOT set `GITHUB_PAGES` on Vercel.** It only belongs to the GitHub Pages
 > workflow; setting it on Vercel rewrites the asset base path to `/DublinHacx/`
 > and breaks the site.
 
-## 3. Supabase configuration (after first deploy)
-
-1. **Authentication → URL Configuration → Redirect URLs:** add
-   `https://your-project.vercel.app`.
-2. **Settings → API → allowed origins:** add your Vercel domain.
-
-## 4. Redeploying after changing env vars
+## 3. Redeploying after changing env vars
 
 Environment-variable changes do **not** take effect on the existing build. Go to
 **Deployments → ⋯ → Redeploy** and make sure **"Use existing Build Cache" is

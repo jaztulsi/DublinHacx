@@ -32,6 +32,7 @@ const organizers: { name: string; role: string; bio: string; img?: string }[] = 
     name: "Rachit Panchal",
     role: "Admin · Co-Founder · Emerald HS",
     bio: "Handles the logistics so the day actually happens. Co-founder.",
+    img: "/rachit-panchal.jpg",
   },
 ];
 

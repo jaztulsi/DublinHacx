@@ -36,19 +36,6 @@ const organizers: { name: string; role: string; bio: string; img?: string }[] = 
   },
 ];
 
-const team: { name: string; role: string; bio: string; img?: string }[] = [
-  {
-    name: "Joseph Shin",
-    role: "Team · Emerald HS",
-    bio: "Built and shipped the website you're on, and keeps the tech running.",
-  },
-  {
-    name: "Shorya Nigam",
-    role: "Team · Emerald HS",
-    bio: "Wrangles sponsors and outreach so the day has food, prizes, and people.",
-  },
-];
-
 /** Avatar: shows the organizer photo if provided, else falls back to initials. */
 function OrganizerAvatar({ name, img }: { name: string; img?: string }) {
   const [errored, setErrored] = useState(false);
@@ -175,33 +162,6 @@ export function AboutSection() {
             ))}
           </motion.div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
-          className="mt-12"
-        >
-          <p className="mb-5 font-pixel text-sm uppercase tracking-widest text-primary">
-            The team behind it
-          </p>
-          <div className="grid gap-4 md:grid-cols-2">
-            {team.map((o) => (
-              <div
-                key={o.name}
-                className="flex items-center gap-4 rounded-2xl border border-border bg-card/30 p-5 backdrop-blur-md"
-              >
-                <OrganizerAvatar name={o.name} img={o.img} />
-                <div>
-                  <h4 className="font-semibold">{o.name}</h4>
-                  <p className="text-xs text-primary">{o.role}</p>
-                  <p className="mt-1 text-sm text-muted-foreground">{o.bio}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );

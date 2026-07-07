@@ -11,8 +11,8 @@ export function StorySection() {
         className="max-w-3xl text-center font-sans text-2xl font-medium leading-snug text-foreground md:text-3xl"
       >
         Bring an idea, get 12 hours to build it, and show what you made by the
-        end of the day. That's it — Dublin Hacx, October 10, 2026 at Emerald High
-        School.
+        end of the day. That's it — Dublin Hacx, November 14, 2026 at the SAP
+        Office in San Ramon.
       </motion.p>
     </section>
   );

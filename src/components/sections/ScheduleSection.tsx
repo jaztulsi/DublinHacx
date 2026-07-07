@@ -25,7 +25,7 @@ export function ScheduleSection() {
             Here's how the day looks.
           </h2>
           <p className="mt-4 text-sm text-muted-foreground">
-            Saturday, October 10, 2026 · Emerald High School, Dublin, CA
+            Saturday, November 14, 2026 · SAP Office, San Ramon, CA
           </p>
         </motion.div>
 

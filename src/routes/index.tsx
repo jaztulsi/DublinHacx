@@ -20,17 +20,17 @@ import { Footer } from "@/components/sections/Footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Dublin Hacx — October 10, 2026" },
+      { title: "Dublin Hacx — November 14, 2026" },
       {
         name: "description",
         content:
           "Dublin's very first Dublin Hacx. Bring any idea. Build it into reality. 12 hours (10am–10pm), 170 hackers, free food and swag.",
       },
-      { property: "og:title", content: "Dublin Hacx — October 10, 2026" },
+      { property: "og:title", content: "Dublin Hacx — November 14, 2026" },
       {
         property: "og:description",
         content:
-          "Bring any idea. Build it into reality. Dublin's very first Dublin Hacx — October 10, 2026 at Emerald High School.",
+          "Bring any idea. Build it into reality. Dublin's very first Dublin Hacx — November 14, 2026 at the SAP Office in San Ramon.",
       },
       { property: "og:type", content: "website" },
     ],

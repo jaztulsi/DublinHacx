@@ -21,7 +21,7 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-3 text-sm text-muted-foreground">
-              Dublin's very first Dublin Hacx. October 10, 2026 at Emerald High School.
+              Dublin's very first Dublin Hacx. November 14, 2026 at the SAP Office in San Ramon.
             </p>
           </div>
 

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Heart, Rocket, Sparkles, Target } from "lucide-react";
+import { Download, Heart, Rocket, Sparkles, Target } from "lucide-react";
 
 const stats = [
   { value: "170", label: "High-school hackers" },
@@ -32,17 +32,16 @@ const reasons = [
 ];
 
 const presenting = {
-  name: "Presenting Sponsor",
-  price: "$5,000",
-  tagline: "Exclusive — only 1 available",
+  name: "Partner",
+  price: "$6,000",
+  tagline: "Our top tier — main event co-branding",
   perks: [
-    "Naming rights: “Dublin Hacx, presented by you”",
-    "Headline logo on stage, banners, shirts & site hero",
-    "5-min opening keynote + final-round judging seat",
-    "Premium booth in the highest-traffic spot",
-    "Branded prize category with the award in your name",
-    "Full resume book + warm candidate introductions",
-    "Headline feature across press, email & all social",
+    "Everything in Gold, plus:",
+    "Main event co-branding",
+    "15-min ceremony speaking slot",
+    "XL logo on the t-shirt back",
+    "Participant resumes (opt-in)",
+    "Participant emails (opt-in)",
   ],
 };
 
@@ -55,46 +54,37 @@ const tiers: {
   badge?: string;
 }[] = [
   {
-    name: "Platinum",
-    price: "$2,500",
+    name: "Gold",
+    price: "$3,500",
     featured: true,
     perks: [
-      "Everything in Gold, plus:",
-      "Host a 30-min workshop or tech talk",
-      "Prize category in your name",
-      "Large logo on shirts, banners & site",
-      "Premium booth + demo table",
-    ],
-  },
-  {
-    name: "Gold",
-    price: "$1,500",
-    accent: true,
-    perks: [
-      "Logo on shirts, banners & website",
-      "Booth + demo table at the venue",
-      "Sponsor a themed mini-challenge",
-      "Dedicated social media feature",
-      "Resume book access",
+      "Everything in Silver, plus:",
+      "Large logo on the t-shirt",
+      "5-min ceremony speaking slot",
+      "Judge panel seat",
+      "Company-specific track",
     ],
   },
   {
     name: "Silver",
-    price: "$750",
+    price: "$1,800",
+    accent: true,
     perks: [
-      "Logo on the main banner & website",
-      "Swag or flyers in every welcome bag",
-      "Social media shoutout",
-      "Send up to 2 mentors or judges",
+      "Everything in Bronze, plus:",
+      "Small logo on the t-shirt",
+      "Dedicated table at the event",
+      "Social media shoutouts",
+      "Host your own workshop (30m)",
     ],
   },
   {
     name: "Bronze",
-    price: "$300",
+    price: "$600",
     perks: [
-      "Logo on our website",
-      "Social media mention",
-      "Your item in hacker welcome bags",
+      "Logo on the website footer",
+      "Swag/stickers in welcome bags",
+      "Mention in the opening ceremony",
+      "Included in emails",
     ],
   },
 ];
@@ -145,6 +135,14 @@ export function SponsorsSection() {
             engineers — for a full 12 hours, and in every story they tell afterward. Every dollar
             funds free meals, swag, and prizes.
           </p>
+          <a
+            href="/prospectus.pdf"
+            download="Dublin-Hacx-Sponsorship-Prospectus.pdf"
+            className="mt-6 inline-flex items-center gap-2 rounded-full border border-primary/50 bg-primary/10 px-6 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary/20"
+          >
+            <Download size={16} aria-hidden />
+            Download our sponsorship prospectus
+          </a>
         </motion.div>
 
         {/* Stats strip */}
@@ -210,7 +208,7 @@ export function SponsorsSection() {
           className="relative mb-6 overflow-hidden rounded-3xl border border-gold/50 bg-gradient-to-br from-gold/15 via-card/40 to-transparent p-8 backdrop-blur-md gold-glow md:p-10"
         >
           <span className="absolute right-6 top-6 rounded-full bg-gold px-3 py-1 text-xs font-bold text-gold-foreground">
-            EXCLUSIVE
+            TOP TIER
           </span>
           <div className="grid gap-8 md:grid-cols-[minmax(0,1fr)_1.4fr] md:items-center">
             <div>
@@ -263,7 +261,7 @@ export function SponsorsSection() {
         </motion.div>
 
         {/* Core tiers */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 md:grid-cols-3">
           {tiers.map((t, i) => (
             <motion.div
               key={t.name}

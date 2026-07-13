@@ -96,8 +96,8 @@ function GlitchText({ children }: { children: string }) {
   );
 }
 
-// Countdown target — 10:00 AM PST on November 14, 2026.
-const EVENT_TS = new Date("2026-11-14T10:00:00-08:00").getTime();
+// Countdown target — 10:00 AM PDT on September 26, 2026.
+const EVENT_TS = new Date("2026-09-26T10:00:00-07:00").getTime();
 
 function getRemaining() {
   const diff = Math.max(0, EVENT_TS - Date.now());
@@ -129,7 +129,7 @@ function Countdown() {
   return (
     <div className="mb-8 flex flex-col items-center gap-4">
       <span className="font-sans text-4xl font-bold text-gold gold-glow sm:text-5xl md:text-6xl">
-        November 14, 2026
+        September 26, 2026
       </span>
       <div className="flex items-center justify-center gap-3 font-mono sm:gap-5">
       {blocks.map((b, i) => (
@@ -234,7 +234,7 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
           custom={1}
           className="mb-6 font-pixel text-base uppercase tracking-[0.25em] text-primary"
         >
-          SAP Office, San Ramon · Nov 14, 2026 · 10am–10pm
+          SAP Office, San Ramon · Sep 26, 2026 · 10am–10pm
         </motion.p>
 
         <motion.div
@@ -246,7 +246,7 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
           {EVENT_DATE_TBD ? (
             <div className="mb-8 flex items-center justify-center font-mono">
               <span className="font-sans text-4xl font-bold text-gold gold-glow sm:text-5xl md:text-6xl">
-                November 14, 2026
+                September 26, 2026
               </span>
             </div>
           ) : (

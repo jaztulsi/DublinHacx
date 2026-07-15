@@ -29,14 +29,14 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Dublin Hacx — September 26, 2026" },
+      { title: "Dublin Hacx — October 3, 2026" },
       {
         name: "description",
         content:
           "Dublin's very first Dublin Hacx. 12 hours, 10am–10pm. Build, break, ship.",
       },
       { name: "author", content: "Dublin Hacx" },
-      { property: "og:title", content: "Dublin Hacx — September 26, 2026" },
+      { property: "og:title", content: "Dublin Hacx — October 3, 2026" },
       {
         property: "og:description",
         content:
@@ -44,10 +44,10 @@ export const Route = createRootRoute({
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Dublin Hacx — September 26, 2026" },
-      { name: "description", content: "Dublin's very first Dublin Hacx — bring any idea, build it into reality. September 26, 2026 at the SAP Office in San Ramon." },
-      { property: "og:description", content: "Dublin's very first Dublin Hacx — bring any idea, build it into reality. September 26, 2026 at the SAP Office in San Ramon." },
-      { name: "twitter:description", content: "Dublin's very first Dublin Hacx — bring any idea, build it into reality. September 26, 2026 at the SAP Office in San Ramon." },
+      { name: "twitter:title", content: "Dublin Hacx — October 3, 2026" },
+      { name: "description", content: "Dublin's very first Dublin Hacx — bring any idea, build it into reality. October 3, 2026 at the SAP Office in San Ramon." },
+      { property: "og:description", content: "Dublin's very first Dublin Hacx — bring any idea, build it into reality. October 3, 2026 at the SAP Office in San Ramon." },
+      { name: "twitter:description", content: "Dublin's very first Dublin Hacx — bring any idea, build it into reality. October 3, 2026 at the SAP Office in San Ramon." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/1408ccfa-b62e-43e9-9cc1-9e38e29d5c6e/id-preview-9e2707ab--97213956-dc45-4934-92dd-6a417c311157.lovable.app-1777184056394.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/1408ccfa-b62e-43e9-9cc1-9e38e29d5c6e/id-preview-9e2707ab--97213956-dc45-4934-92dd-6a417c311157.lovable.app-1777184056394.png" },
     ],

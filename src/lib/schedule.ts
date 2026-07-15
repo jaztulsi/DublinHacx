@@ -10,16 +10,16 @@ export interface ScheduleItem {
 }
 
 /**
- * The event date is final: Saturday, September 26, 2026 at the SAP Office in San Ramon.
+ * The event date is final: Saturday, October 3, 2026 at the SAP Office in San Ramon.
  * EVENT_DATE_TBD is false, so the live countdown is shown.
  */
 export const EVENT_DATE_TBD = false;
 
 /**
- * Event start anchor: 10:00 AM Pacific (PDT, UTC-7) on September 26, 2026. Used by
+ * Event start anchor: 10:00 AM Pacific (PDT, UTC-7) on October 3, 2026. Used by
  * the relative schedule math and the countdown logic.
  */
-export const EVENT_START = new Date("2026-09-26T10:00:00-07:00");
+export const EVENT_START = new Date("2026-10-03T10:00:00-07:00");
 
 export const schedule: ScheduleItem[] = [
   { offsetMin: 0,   time: "10:00 AM", title: "Check-In",                    description: "Arrive, sign in, grab your badge & swag bag.",            tag: "Event" },

@@ -25,7 +25,7 @@ export function ScheduleSection() {
             Here's how the day looks.
           </h2>
           <p className="mt-4 text-sm text-muted-foreground">
-            Saturday, September 26, 2026 · SAP Office, San Ramon, CA
+            Saturday, October 3, 2026 · SAP Office, San Ramon, CA
           </p>
         </motion.div>
 

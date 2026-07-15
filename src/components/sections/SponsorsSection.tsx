@@ -4,7 +4,6 @@ import { Download, Heart, Rocket, Sparkles, Target } from "lucide-react";
 const stats = [
   { value: "170", label: "High-school hackers" },
   { value: "12h", label: "Non-stop building" },
-  { value: "1st", label: "Single-day hackathon in Dublin" },
   { value: "100%", label: "Of funds fuel the event" },
 ];
 

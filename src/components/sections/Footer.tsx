@@ -6,6 +6,7 @@ const VOLUNTEER_URL =
 
 const SOCIALS = [
   { name: "Instagram", href: "https://www.instagram.com/dublin.hacx/", icon: "📷" },
+  { name: "Discord", href: "https://discord.com/invite/wnwAhkPS3", icon: "💬" },
 ];
 
 export function Footer() {
@@ -21,7 +22,7 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-3 text-sm text-muted-foreground">
-              Dublin's very first Dublin Hacx. September 26, 2026 at the SAP Office in San Ramon.
+              Dublin's very first Dublin Hacx. October 3, 2026 at the SAP Office in San Ramon.
             </p>
           </div>
 

@@ -134,14 +134,24 @@ export function SponsorsSection() {
             engineers — for a full 12 hours, and in every story they tell afterward. Every dollar
             funds free meals, swag, and prizes.
           </p>
-          <a
-            href="/prospectus.pdf"
-            download="Dublin-Hacx-Sponsorship-Prospectus.pdf"
-            className="mt-6 inline-flex items-center gap-2 rounded-full border border-primary/50 bg-primary/10 px-6 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary/20"
-          >
-            <Download size={16} aria-hidden />
-            Download our sponsorship prospectus
-          </a>
+          <div className="mt-6 flex flex-col items-center gap-3">
+            <a
+              href="/prospectus.html"
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center gap-2 rounded-full border border-primary/50 bg-primary/10 px-6 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary/20"
+            >
+              View our sponsorship prospectus
+            </a>
+            <a
+              href="/prospectus.pdf"
+              download="Dublin-Hacx-Sponsorship-Prospectus.pdf"
+              className="inline-flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-primary"
+            >
+              <Download size={13} aria-hidden />
+              Download as PDF
+            </a>
+          </div>
         </motion.div>
 
         {/* Stats strip */}

@@ -9,11 +9,11 @@
 /* Site display font (public/fonts) + web fonts the site itself uses */
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=VT323&display=swap");
 
-@font-face { font-family: "Monaspace Krypton"; src: url("public/fonts/MonaspaceKrypton-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
-@font-face { font-family: "Monaspace Krypton"; src: url("public/fonts/MonaspaceKrypton-Medium.woff2") format("woff2"); font-weight: 500; font-display: swap; }
-@font-face { font-family: "Monaspace Krypton"; src: url("public/fonts/MonaspaceKrypton-SemiBold.woff2") format("woff2"); font-weight: 600; font-display: swap; }
-@font-face { font-family: "Monaspace Krypton"; src: url("public/fonts/MonaspaceKrypton-Bold.woff2") format("woff2"); font-weight: 700; font-display: swap; }
-@font-face { font-family: "Monaspace Krypton"; src: url("public/fonts/MonaspaceKrypton-ExtraBold.woff2") format("woff2"); font-weight: 800; font-display: swap; }
+@font-face { font-family: "Monaspace Krypton"; src: url("fonts/MonaspaceKrypton-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Monaspace Krypton"; src: url("fonts/MonaspaceKrypton-Medium.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Monaspace Krypton"; src: url("fonts/MonaspaceKrypton-SemiBold.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Monaspace Krypton"; src: url("fonts/MonaspaceKrypton-Bold.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Monaspace Krypton"; src: url("fonts/MonaspaceKrypton-ExtraBold.woff2") format("woff2"); font-weight: 800; font-display: swap; }
 
 :root{
   /* matches src/styles.css theme (oklch values approximated in hex) */
@@ -346,6 +346,74 @@ table.tiers .tag-min{
   font-size:12px; color:var(--gray-dim); font-family: var(--font-pixel); letter-spacing:2px;
 }
 
+.tiers-scroll{ margin-top:18px; }
+.tiers-scroll table.tiers{ margin-top:0; }
+
+/* Chrome's PDF printer paints text-shadow glows and background-clip:text
+   gradients as solid rectangles — strip them when printing. */
+@media print{
+  *{ text-shadow:none !important; box-shadow:none !important; filter:none !important; }
+  .cover-title .x-glow{ background:none !important; -webkit-background-clip:border-box !important; background-clip:border-box !important; color:var(--purple) !important; }
+}
+
+/* ---------- on-screen viewing (the PDF print layout above stays untouched) ---------- */
+@media screen{
+  body{ padding: 16px 0; }
+  .page{ margin-bottom: 20px; box-shadow: 0 0 0 1px var(--line); border-radius: 6px; }
+}
+
+@media screen and (max-width: 880px){
+  .page{
+    width:100%; height:auto; min-height:0;
+    border-radius:0; margin-bottom:12px;
+    padding-bottom: 28px;
+  }
+  body{ padding:0; }
+  .star{ display:none; }
+
+  /* cover */
+  .cover-bg{ height: 420px; }
+  .cover-eyebrow{ margin-top:110px; font-size:11px; letter-spacing:2px; padding:0 16px; }
+  .cover-logo{ margin-top:28px; }
+  .cover-logo img{ height:96px; }
+  .cover-title{ margin-top:24px; font-size: clamp(52px, 17vw, 96px); letter-spacing:-3px; }
+  .cover-date{ margin-top:20px; font-size:21px; }
+  .cover-venue{ font-size:13px; letter-spacing:2px; padding:0 16px; }
+  .cover-rule{ margin-top:20px; }
+  .cover-foot{ position:static; margin-top:56px; padding:0 16px; }
+  .cover-foot .mono{ font-size:13px; }
+
+  /* chrome shared by inner pages */
+  .topbar{ margin:14px 14px 0; height:50px; padding:0 14px; border-radius:12px; }
+  .logo-img{ height:26px; }
+  .topbar .date-chip{ font-size:11px; letter-spacing:1px; }
+  .content{ padding: 18px 14px 0; }
+  h1.big{ font-size:26px; letter-spacing:-1px; }
+  .pagefoot{ position:static; display:flex; gap:10px; flex-wrap:wrap; margin:26px 14px 0; font-size:11px; }
+
+  /* info page */
+  .grid2{ flex-direction:column; gap:12px; margin-top:16px; }
+  .block{ padding:18px 18px; }
+  .stats-row{ flex-wrap:wrap; gap:12px; }
+  .stat-card{ flex:1 1 40%; padding:16px; }
+  .footnote{ text-align:left; }
+
+  /* schedule page */
+  .tl-time{ width:74px; font-size:13px; }
+  .founders{ flex-direction:column; gap:12px; }
+
+  /* tiers page */
+  .custom-banner .top{ flex-direction:column; align-items:flex-start; gap:4px; }
+  .custom-list .item{ width:100%; }
+  .tiers-scroll{ overflow-x:auto; -webkit-overflow-scrolling:touch; margin-left:-14px; margin-right:-14px; padding:0 14px; }
+  .tiers-scroll table.tiers{ min-width:640px; }
+
+  /* cta */
+  .cta-block{ margin:20px 14px 0; padding:24px 18px; }
+  .cta-buttons{ flex-direction:column; align-items:center; }
+  .cta-btn{ width:100%; max-width:320px; text-align:center; }
+}
+
 </style>
 </head>
 <body>
@@ -355,7 +423,7 @@ table.tiers .tag-min{
 
   <!-- Wolf-on-the-cliff night sky, same image and scrim as the site hero -->
   <div class="cover-bg">
-    <img src="src/assets/hero-night.jpg" alt="Starry night with a wolf on a cliff under a full moon">
+    <img src="hero-night.jpg" alt="Starry night with a wolf on a cliff under a full moon">
     <div class="scrim"></div>
   </div>
 
@@ -374,7 +442,7 @@ table.tiers .tag-min{
   <div class="cover-eyebrow mono">DUBLIN'S VERY FIRST DUBLIN HACX</div>
 
   <div class="cover-logo">
-    <img src="src/assets/dublin-hacx-logo.svg" alt="Dublin Hacx logo">
+    <img src="dublin-hacx-logo.svg" alt="Dublin Hacx logo">
   </div>
 
   <div class="cover-title">DUBLIN<br><span class="x-glow">HACX</span></div>
@@ -394,7 +462,7 @@ table.tiers .tag-min{
 <!-- ============ PAGE 2 : INFO ============ -->
 <div class="page">
   <div class="topbar">
-    <img class="logo-img" src="src/assets/dublin-hacx-logo.svg" alt="Dublin Hacx logo">
+    <img class="logo-img" src="dublin-hacx-logo.svg" alt="Dublin Hacx logo">
     <div class="date-chip">OCT 3, 2026 &middot; SAN RAMON</div>
   </div>
 
@@ -434,7 +502,7 @@ table.tiers .tag-min{
 <!-- ============ PAGE 3 : SCHEDULE / TEAM ============ -->
 <div class="page">
   <div class="topbar">
-    <img class="logo-img" src="src/assets/dublin-hacx-logo.svg" alt="Dublin Hacx logo">
+    <img class="logo-img" src="dublin-hacx-logo.svg" alt="Dublin Hacx logo">
     <div class="date-chip">OCT 3, 2026 &middot; SAN RAMON</div>
   </div>
 
@@ -477,7 +545,7 @@ table.tiers .tag-min{
 <!-- ============ PAGE 4 : SPONSORSHIP TIERS ============ -->
 <div class="page">
   <div class="topbar">
-    <img class="logo-img" src="src/assets/dublin-hacx-logo.svg" alt="Dublin Hacx logo">
+    <img class="logo-img" src="dublin-hacx-logo.svg" alt="Dublin Hacx logo">
     <div class="date-chip">OCT 3, 2026 &middot; SAN RAMON</div>
   </div>
 
@@ -498,6 +566,7 @@ table.tiers .tag-min{
       </div>
     </div>
 
+    <div class="tiers-scroll">
     <table class="tiers">
       <thead>
         <tr>
@@ -527,6 +596,7 @@ table.tiers .tag-min{
         <tr><td class="feature">Main event co-branding</td><td><span class="dot">&middot;</span></td><td><span class="dot">&middot;</span></td><td><span class="dot">&middot;</span></td><td><span class="chk">&#10003;</span></td></tr>
       </tbody>
     </table>
+    </div>
 
     <div class="tiers-note">Pricing reflects Dublin Hacx's venue, duration, and reach as our first year. In-kind contributions (food, swag, hardware, mentors) are always welcome and matched to value.</div>
   </div>
@@ -537,7 +607,7 @@ table.tiers .tag-min{
 <!-- ============ PAGE 5 : FAQ + CTA ============ -->
 <div class="page">
   <div class="topbar">
-    <img class="logo-img" src="src/assets/dublin-hacx-logo.svg" alt="Dublin Hacx logo">
+    <img class="logo-img" src="dublin-hacx-logo.svg" alt="Dublin Hacx logo">
     <div class="date-chip">OCT 3, 2026 &middot; SAN RAMON</div>
   </div>
 

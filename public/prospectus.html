@@ -84,6 +84,8 @@ body{
   border: 1px solid var(--line);
 }
 .logo-img{ height: 34px; width: auto; display:block; }
+.x-sep{ font-family: var(--font-sans); font-weight:300; color: var(--gray); font-size:18px; margin: 0 10px; }
+.topbar .sap-img{ height: 20px; width:auto; display:block; }
 .topbar .date-chip{
   margin-left:auto;
   font-family: var(--font-pixel);
@@ -129,11 +131,14 @@ body{
 }
 .cover-logo{
   margin-top: 0.45in;
+  display:flex; align-items:center; justify-content:center; gap:6px;
 }
 .cover-logo img{
   height: 150px; width:auto;
   filter: drop-shadow(0 0 40px rgba(171,128,248,0.65));
 }
+.cover-logo .x-sep{ font-size:36px; margin:0 14px; }
+.cover-logo .sap-img{ height:58px; filter: drop-shadow(0 0 24px rgba(255,255,255,0.25)); }
 .cover-title{
   margin-top: 0.35in;
   font-family: var(--font-display);
@@ -376,6 +381,8 @@ table.tiers .tag-min{
   .cover-eyebrow{ margin-top:110px; font-size:11px; letter-spacing:2px; padding:0 16px; }
   .cover-logo{ margin-top:28px; }
   .cover-logo img{ height:96px; }
+  .cover-logo .x-sep{ font-size:24px; margin:0 8px; }
+  .cover-logo .sap-img{ height:38px; }
   .cover-title{ margin-top:24px; font-size: clamp(52px, 17vw, 96px); letter-spacing:-3px; }
   .cover-date{ margin-top:20px; font-size:21px; }
   .cover-venue{ font-size:13px; letter-spacing:2px; padding:0 16px; }
@@ -386,6 +393,8 @@ table.tiers .tag-min{
   /* chrome shared by inner pages */
   .topbar{ margin:14px 14px 0; height:50px; padding:0 14px; border-radius:12px; }
   .logo-img{ height:26px; }
+  .x-sep{ font-size:14px; margin:0 6px; }
+  .topbar .sap-img{ height:15px; }
   .topbar .date-chip{ font-size:11px; letter-spacing:1px; }
   .content{ padding: 18px 14px 0; }
   h1.big{ font-size:26px; letter-spacing:-1px; }
@@ -443,6 +452,8 @@ table.tiers .tag-min{
 
   <div class="cover-logo">
     <img src="dublin-hacx-logo.svg" alt="Dublin Hacx logo">
+    <span class="x-sep">&times;</span>
+    <img class="sap-img" src="sap-logo.svg" alt="SAP logo">
   </div>
 
   <div class="cover-title">DUBLIN<br><span class="x-glow">HACX</span></div>
@@ -463,6 +474,8 @@ table.tiers .tag-min{
 <div class="page">
   <div class="topbar">
     <img class="logo-img" src="dublin-hacx-logo.svg" alt="Dublin Hacx logo">
+    <span class="x-sep">&times;</span>
+    <img class="sap-img" src="sap-logo.svg" alt="SAP logo">
     <div class="date-chip">OCT 3, 2026 &middot; SAN RAMON</div>
   </div>
 
@@ -503,6 +516,8 @@ table.tiers .tag-min{
 <div class="page">
   <div class="topbar">
     <img class="logo-img" src="dublin-hacx-logo.svg" alt="Dublin Hacx logo">
+    <span class="x-sep">&times;</span>
+    <img class="sap-img" src="sap-logo.svg" alt="SAP logo">
     <div class="date-chip">OCT 3, 2026 &middot; SAN RAMON</div>
   </div>
 
@@ -546,6 +561,8 @@ table.tiers .tag-min{
 <div class="page">
   <div class="topbar">
     <img class="logo-img" src="dublin-hacx-logo.svg" alt="Dublin Hacx logo">
+    <span class="x-sep">&times;</span>
+    <img class="sap-img" src="sap-logo.svg" alt="SAP logo">
     <div class="date-chip">OCT 3, 2026 &middot; SAN RAMON</div>
   </div>
 
@@ -608,6 +625,8 @@ table.tiers .tag-min{
 <div class="page">
   <div class="topbar">
     <img class="logo-img" src="dublin-hacx-logo.svg" alt="Dublin Hacx logo">
+    <span class="x-sep">&times;</span>
+    <img class="sap-img" src="sap-logo.svg" alt="SAP logo">
     <div class="date-chip">OCT 3, 2026 &middot; SAN RAMON</div>
   </div>
 

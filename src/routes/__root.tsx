@@ -35,12 +35,12 @@ export const Route = createRootRoute({
       { property: "og:title", content: "Dublin Hacx — October 3, 2026" },
       { property: "og:description", content: "Dublin's very first Dublin Hacx — bring any idea, build it into reality. October 3, 2026 at the SAP Office in San Ramon." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://dublinhacx.com" },
+      { property: "og:url", content: "https://www.dublinhacx.com" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Dublin Hacx — October 3, 2026" },
       { name: "twitter:description", content: "Dublin's very first Dublin Hacx — bring any idea, build it into reality. October 3, 2026 at the SAP Office in San Ramon." },
-      { property: "og:image", content: "https://dublinhacx.com/og-image.png" },
-      { name: "twitter:image", content: "https://dublinhacx.com/og-image.png" },
+      { property: "og:image", content: "https://www.dublinhacx.com/og-image.png" },
+      { name: "twitter:image", content: "https://www.dublinhacx.com/og-image.png" },
     ],
     links: [
       {

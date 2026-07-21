@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { CustomCursor } from "@/components/CustomCursor";
 import { CosmicBackground } from "@/components/CosmicBackground";
@@ -41,6 +41,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [introDone, setIntroDone] = useState(false);
+  const navigate = useNavigate();
 
   const scrollToId = (id: string) => {
     const el = document.getElementById(id);
@@ -66,13 +67,7 @@ function Index() {
 
       <main className="relative z-10">
         <HeroSection
-          onApply={() =>
-            window.open(
-              "https://docs.google.com/forms/d/e/1FAIpQLSdnmbxMou0EOQ4BbJJEeekJ_B7FVXqV9IioHKOfzYSVIGmKNg/viewform",
-              "_blank",
-              "noopener,noreferrer",
-            )
-          }
+          onApply={() => navigate({ to: "/form" })}
           onLearnMore={() => scrollToId("about")}
         />
         <StorySection />

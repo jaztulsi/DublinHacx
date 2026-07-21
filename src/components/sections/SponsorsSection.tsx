@@ -374,22 +374,10 @@ export function SponsorsSection() {
           <p className="text-center font-pixel text-sm uppercase tracking-widest text-muted-foreground">
             Current Sponsors
           </p>
-          <a
-            href="https://www.sap.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="SAP — Partner Sponsor"
-            className="mt-6 flex flex-col items-center justify-center gap-4 rounded-3xl border border-gold/50 bg-gradient-to-b from-gold/10 to-transparent p-10 backdrop-blur-md gold-glow transition-colors hover:border-gold md:p-14"
-          >
-            <span className="rounded-full bg-gold px-4 py-1 font-pixel text-xs uppercase tracking-widest text-gold-foreground">
-              Partner Sponsor
-            </span>
-            <img src="/sap-logo.svg" alt="SAP" className="h-24 w-auto md:h-36" />
-            <span className="text-sm text-muted-foreground">
-              Hosting Dublin Hacx at the SAP Office, San Ramon
-            </span>
-          </a>
-          <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-4">
+          <p className="mt-2 text-center text-xs text-muted-foreground">
+            Venue partner: SAP Office, San Ramon
+          </p>
+          <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4">
             <a
               href="https://www.yriscience.com/"
               target="_blank"

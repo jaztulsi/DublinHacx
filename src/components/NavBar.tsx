@@ -64,10 +64,6 @@ export function NavBar() {
             alt="Dublin Hacx"
             className="h-8 w-auto sm:h-10 transition-transform duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_18px_oklch(0.78_0.17_305_/_0.9)]"
           />
-          <span aria-hidden className="font-light text-muted-foreground/70 text-base sm:text-lg">
-            ×
-          </span>
-          <img src="/sap-logo.svg" alt="SAP" className="h-4 w-auto sm:h-5" />
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">

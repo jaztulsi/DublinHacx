@@ -3,6 +3,10 @@ import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import logo from "@/assets/dublin-hacx-logo.svg";
 
+// Registration is handled entirely through an external Google Form.
+const REGISTER_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdnmbxMou0EOQ4BbJJEeekJ_B7FVXqV9IioHKOfzYSVIGmKNg/viewform";
+
 const VOLUNTEER_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLScdfNpcAJTRDc2Z9PKoUv1vNVHyYfiwte9zLMTC30vcF-0vIw/viewform?usp=dialog";
 
@@ -80,12 +84,14 @@ export function NavBar() {
           >
             Volunteer
           </a>
-          <Link
-            to="/form"
+          <a
+            href={REGISTER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="ml-2 rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground purple-glow transition-transform hover:scale-105"
           >
             Register →
-          </Link>
+          </a>
         </nav>
 
         <button
@@ -138,13 +144,15 @@ export function NavBar() {
             >
               Volunteer
             </a>
-            <Link
-              to="/form"
+            <a
+              href={REGISTER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setOpen(false)}
               className="mt-2 rounded-full bg-primary px-5 py-3 text-center text-sm font-semibold text-primary-foreground"
             >
               Register →
-            </Link>
+            </a>
           </div>
         </motion.div>
       )}

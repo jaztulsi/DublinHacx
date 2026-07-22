@@ -1,4 +1,5 @@
-import { Link } from "@tanstack/react-router";
+const REGISTER_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdnmbxMou0EOQ4BbJJEeekJ_B7FVXqV9IioHKOfzYSVIGmKNg/viewform";
 
 const VOLUNTEER_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLScdfNpcAJTRDc2Z9PKoUv1vNVHyYfiwte9zLMTC30vcF-0vIw/viewform?usp=dialog";
@@ -55,9 +56,14 @@ export function Footer() {
               <p className="mb-3 font-pixel text-sm uppercase tracking-widest text-primary">Get involved</p>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <Link to="/form" className="hover:text-foreground">
+                  <a
+                    href={REGISTER_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-foreground"
+                  >
                     Sign Up
-                  </Link>
+                  </a>
                 </li>
                 <li>
                   <a

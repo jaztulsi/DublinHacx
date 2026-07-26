@@ -40,7 +40,7 @@ const FAQS = [
   },
   {
     q: "How do I become a sponsor?",
-    a: "Email us at dublinhacx.sponsor@gmail.com. We have Bronze, Silver, and Gold tiers — see the Sponsors section for details.",
+    a: "Email us at dublinhacx@gmail.com. We have Bronze, Silver, and Gold tiers — see the Sponsors section for details.",
   },
 ];
 

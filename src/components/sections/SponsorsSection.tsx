@@ -259,7 +259,7 @@ export function SponsorsSection() {
               brand. We'll chat it through over email and tailor everything to your goals and budget.
             </p>
             <a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=dublinhacx.sponsor@gmail.com&su=Dublin%20Hacx%20Custom%20Sponsorship"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=dublinhacx@gmail.com&su=Dublin%20Hacx%20Custom%20Sponsorship"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-base font-semibold text-primary-foreground transition-transform hover:scale-105 purple-glow"
@@ -345,7 +345,7 @@ export function SponsorsSection() {
 
         {/* CTA */}
         <motion.a
-          href="mailto:dublinhacx.sponsor@gmail.com?subject=Dublin%20Hacx%20Sponsorship"
+          href="mailto:dublinhacx@gmail.com?subject=Dublin%20Hacx%20Sponsorship"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -354,7 +354,7 @@ export function SponsorsSection() {
         >
           <div>
             <p className="font-pixel text-sm uppercase tracking-widest text-primary">Get in touch</p>
-            <p className="mt-1 font-display text-xl font-bold md:text-2xl">dublinhacx.sponsor@gmail.com</p>
+            <p className="mt-1 font-display text-xl font-bold md:text-2xl">dublinhacx@gmail.com</p>
             <p className="mt-1 text-sm text-muted-foreground">
               Tell us your goals and we'll send a tailored package within 48 hours.
             </p>

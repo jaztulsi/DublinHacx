@@ -377,7 +377,27 @@ export function SponsorsSection() {
           <p className="mt-2 text-center text-xs text-muted-foreground">
             Venue partner: SAP Office, San Ramon
           </p>
-          <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4">
+          {/* Headline sponsor — Context66 */}
+          <a
+            href="https://context66.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Context66"
+            className="mt-6 flex flex-col items-center justify-center gap-3 rounded-2xl border border-primary/40 bg-card/20 p-6 transition-colors hover:border-primary/70 purple-glow md:p-8"
+          >
+            <span className="flex w-full items-center justify-center rounded-xl bg-white px-6 py-6">
+              <img
+                src="/context66-logo.png"
+                alt="Context66"
+                className="mx-auto max-h-24 w-auto max-w-[50%] object-contain"
+              />
+            </span>
+            <span className="font-pixel text-xs uppercase tracking-widest text-primary">
+              Headline Sponsor
+            </span>
+          </a>
+
+          <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-4">
             <a
               href="https://www.yriscience.com/"
               target="_blank"

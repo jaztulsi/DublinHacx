@@ -4,6 +4,9 @@ const REGISTER_URL =
 const VOLUNTEER_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLScdfNpcAJTRDc2Z9PKoUv1vNVHyYfiwte9zLMTC30vcF-0vIw/viewform?usp=dialog";
 
+const JUDGE_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdOLyt1u0iAMp_2dX_JKVOr_CjRBjqTXRA-A8IXgGv1zV2sDQ/viewform";
+
 const SOCIALS = [
   { name: "Instagram", href: "https://www.instagram.com/dublin.hacx/", icon: "📷" },
   { name: "Discord", href: "https://discord.com/invite/wnwAhkPS3", icon: "💬" },
@@ -73,6 +76,16 @@ export function Footer() {
                     className="hover:text-foreground"
                   >
                     Volunteer
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={JUDGE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-foreground"
+                  >
+                    Judge
                   </a>
                 </li>
                 <li>

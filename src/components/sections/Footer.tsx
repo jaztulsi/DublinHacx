@@ -89,11 +89,6 @@ export function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="#sponsors" className="hover:text-foreground">
-                    Sponsor
-                  </a>
-                </li>
-                <li>
                   <a href="mailto:dublinhacx@gmail.com" className="hover:text-foreground">
                     Contact
                   </a>

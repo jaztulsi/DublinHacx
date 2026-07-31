@@ -16,7 +16,6 @@ import { ScheduleSection } from "@/components/sections/ScheduleSection";
 import { JudgesSection } from "@/components/sections/JudgesSection";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { DiscordSection } from "@/components/sections/DiscordSection";
-import { SponsorsSection } from "@/components/sections/SponsorsSection";
 import { Footer } from "@/components/sections/Footer";
 
 export const Route = createFileRoute("/")({
@@ -84,7 +83,6 @@ function Index() {
         <JudgesSection />
         <FaqSection />
         <DiscordSection />
-        <SponsorsSection />
         <Footer />
       </main>
     </div>

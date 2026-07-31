@@ -14,6 +14,7 @@ const NAV_ITEMS = [
   { id: "about", label: "About" },
   { id: "theme", label: "Theme" },
   { id: "schedule", label: "Schedule" },
+  { id: "judges", label: "Judges" },
   { id: "faq", label: "FAQ" },
   { id: "sponsors", label: "Sponsors" },
 ];

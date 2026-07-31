@@ -3,6 +3,9 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Stars } from "@react-three/drei";
 import * as THREE from "three";
 
+// Hex mirror of the --purple-* scale in styles.css (three.js can't read CSS vars).
+const PURPLE = { light: "#d8b4fe", base: "#c084fc", deep: "#8b3ff0" } as const;
+
 function ShootingStar() {
   const ref = useRef<THREE.Mesh>(null!);
   const start = useRef(Math.random() * 20);
@@ -51,8 +54,8 @@ function ParticleField() {
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
     const palette = [
-      new THREE.Color("#c084fc"),
-      new THREE.Color("#a78bfa"),
+      new THREE.Color(PURPLE.base),
+      new THREE.Color(PURPLE.light),
       new THREE.Color("#e9d5ff"),
       new THREE.Color("#ffffff"),
     ];
@@ -131,9 +134,9 @@ export function CosmicBackground() {
           <fog attach="fog" args={["#08051a", 8, 30]} />
           <Stars radius={80} depth={50} count={4000} factor={4} saturation={0.5} fade speed={0.6} />
           <ParticleField />
-          <NebulaCloud position={[-4, 2, -8]} color="#7c3aed" scale={6} />
-          <NebulaCloud position={[5, -3, -10]} color="#a855f7" scale={8} />
-          <NebulaCloud position={[0, 4, -12]} color="#6366f1" scale={5} />
+          <NebulaCloud position={[-4, 2, -8]} color={PURPLE.deep} scale={6} />
+          <NebulaCloud position={[5, -3, -10]} color={PURPLE.base} scale={8} />
+          <NebulaCloud position={[0, 4, -12]} color={PURPLE.deep} scale={5} />
           <ShootingStar />
           <ShootingStar />
           <MouseParallax />

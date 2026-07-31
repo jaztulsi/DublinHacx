@@ -84,7 +84,7 @@ function GlitchText({ children }: { children: string }) {
         className="absolute inset-0"
         style={{
           transform: "translate(-2px, 0)",
-          color: "#22d3ee",
+          color: "var(--gold)",
           mixBlendMode: "screen",
           opacity: 0.5,
         }}

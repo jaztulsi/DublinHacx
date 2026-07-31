@@ -1,5 +1,11 @@
 import { motion } from "framer-motion";
 import { Download, Heart, Rocket, Sparkles, Target } from "lucide-react";
+import OrbitingCirclesGlobe from "@/components/ui/orbiting-circles-02";
+import {
+  ContainerScroll,
+  ContainerSticky,
+  TierCard,
+} from "@/components/ui/tier-timeline";
 
 const stats = [
   { value: "170", label: "High-school hackers" },
@@ -30,44 +36,35 @@ const reasons = [
   },
 ];
 
-const presenting = {
-  name: "Partner",
-  price: "$6,000",
-  tagline: "Our top tier — main event co-branding",
-  perks: [
-    "Everything in Gold, plus:",
-    "Main event co-branding",
-    "15-min ceremony speaking slot",
-    "XL logo on the t-shirt back",
-    "Participant resumes (opt-in)",
-    "Participant emails (opt-in)",
-  ],
-};
-
-const tiers: {
+// Tier ladder in progression order (Bronze → Partner) for the horizontal
+// scroll-pinned timeline. Copy is preserved verbatim from SITE_AUDIT §5.
+type TierVariant = "default" | "silver" | "featured" | "gold";
+const ladder: {
   name: string;
   price: string;
   perks: string[];
-  featured?: boolean;
-  accent?: boolean;
+  variant: TierVariant;
+  accent: string;
+  tagline?: string;
   badge?: string;
 }[] = [
   {
-    name: "Gold",
-    price: "$3,500",
-    featured: true,
+    name: "Bronze",
+    price: "$600",
+    variant: "default",
+    accent: "text-foreground",
     perks: [
-      "Everything in Silver, plus:",
-      "Large logo on the t-shirt",
-      "5-min ceremony speaking slot",
-      "Judge panel seat",
-      "Company-specific track",
+      "Logo on the website footer",
+      "Swag/stickers in welcome bags",
+      "Mention in the opening ceremony",
+      "Included in emails",
     ],
   },
   {
     name: "Silver",
     price: "$1,800",
-    accent: true,
+    variant: "silver",
+    accent: "text-gold/90",
     perks: [
       "Everything in Bronze, plus:",
       "Small logo on the t-shirt",
@@ -77,13 +74,32 @@ const tiers: {
     ],
   },
   {
-    name: "Bronze",
-    price: "$600",
+    name: "Gold",
+    price: "$3,500",
+    variant: "featured",
+    accent: "text-primary",
     perks: [
-      "Logo on the website footer",
-      "Swag/stickers in welcome bags",
-      "Mention in the opening ceremony",
-      "Included in emails",
+      "Everything in Silver, plus:",
+      "Large logo on the t-shirt",
+      "5-min ceremony speaking slot",
+      "Judge panel seat",
+      "Company-specific track",
+    ],
+  },
+  {
+    name: "Partner",
+    price: "$6,000",
+    variant: "gold",
+    accent: "text-gold",
+    tagline: "Our top tier — main event co-branding",
+    badge: "TOP TIER",
+    perks: [
+      "Everything in Gold, plus:",
+      "Main event co-branding",
+      "15-min ceremony speaking slot",
+      "XL logo on the t-shirt back",
+      "Participant resumes (opt-in)",
+      "Participant emails (opt-in)",
     ],
   },
 ];
@@ -114,9 +130,109 @@ function Check({ className = "" }: { className?: string }) {
   );
 }
 
+type Tier = (typeof ladder)[number];
+
+/** Perks + heading shared by the timeline card and the mobile stacked card. */
+function TierBody({ t }: { t: Tier }) {
+  return (
+    <div className="flex flex-1 flex-col gap-4 p-6 md:p-7">
+      <div className="flex items-baseline justify-between gap-3">
+        <h4 className={`font-display text-2xl font-extrabold ${t.accent}`}>{t.name}</h4>
+        {t.badge && (
+          <span className="shrink-0 rounded-full bg-gold px-3 py-1 text-xs font-bold text-gold-foreground">
+            {t.badge}
+          </span>
+        )}
+      </div>
+      <p className="font-sans text-4xl font-bold">{t.price}</p>
+      {t.tagline && <p className="text-sm font-medium text-gold/90">{t.tagline}</p>}
+      <ul className="mt-1 space-y-2.5 text-sm">
+        {t.perks.map((p) => (
+          <li key={p} className="flex items-start gap-2 text-muted-foreground">
+            <Check className={t.accent} />
+            <span>{p}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+/** Vertical tab that peeks out from behind each stacked card in the timeline. */
+function TierTab({ t, step }: { t: Tier; step: number }) {
+  return (
+    <div className="flex w-[84px] shrink-0 flex-col items-center justify-between border-r border-white/5 py-6">
+      <span className="font-pixel text-sm text-muted-foreground">0{step}</span>
+      <span
+        className={`font-display text-lg font-extrabold uppercase tracking-widest ${t.accent}`}
+        style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+      >
+        {t.name}
+      </span>
+      <span className="font-pixel text-xs text-muted-foreground">{t.price}</span>
+    </div>
+  );
+}
+
+/**
+ * Horizontal scroll-pinned tier ladder (desktop). The section scrolls tall;
+ * the row stays pinned while cards slide in from the right and stack left,
+ * ending on Partner. Mobile gets a plain vertical stack instead.
+ */
+function TierLadder() {
+  return (
+    <>
+      {/* Desktop: scroll-pinned horizontal timeline */}
+      <ContainerScroll className="hidden min-h-[300vh] md:block">
+        <ContainerSticky className="flex h-screen items-center">
+          <div className="flex w-full">
+            {ladder.map((t, i) => (
+              <TierCard
+                key={t.name}
+                variant={t.variant}
+                size="md"
+                index={i}
+                itemsLength={ladder.length}
+                className="h-[520px] shadow-2xl"
+              >
+                <TierTab t={t} step={i + 1} />
+                <TierBody t={t} />
+              </TierCard>
+            ))}
+          </div>
+        </ContainerSticky>
+      </ContainerScroll>
+
+      {/* Mobile: vertical stack */}
+      <div className="grid gap-5 md:hidden">
+        {ladder.map((t) => (
+          <motion.div
+            key={t.name}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6 }}
+            className={`flex overflow-hidden rounded-3xl border backdrop-blur-md ${
+              t.variant === "gold"
+                ? "border-gold/50 bg-gradient-to-br from-gold/15 via-card/40 to-transparent gold-glow"
+                : t.variant === "featured"
+                  ? "border-primary/60 bg-gradient-to-br from-primary/15 via-card/50 to-transparent purple-glow"
+                  : t.variant === "silver"
+                    ? "border-gold/25 bg-card/40"
+                    : "border-border bg-card/40"
+            }`}
+          >
+            <TierBody t={t} />
+          </motion.div>
+        ))}
+      </div>
+    </>
+  );
+}
+
 export function SponsorsSection() {
   return (
-    <section id="sponsors" className="relative px-6 py-24 md:py-32">
+    <section id="sponsors" className="relative px-6 pt-24 md:pt-32">
       <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -208,35 +324,8 @@ export function SponsorsSection() {
           </p>
         </motion.div>
 
-        {/* Presenting sponsor — full width hero card */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="relative mb-6 overflow-hidden rounded-3xl border border-gold/50 bg-gradient-to-br from-gold/15 via-card/40 to-transparent p-8 backdrop-blur-md gold-glow md:p-10"
-        >
-          <span className="absolute right-6 top-6 rounded-full bg-gold px-3 py-1 text-xs font-bold text-gold-foreground">
-            TOP TIER
-          </span>
-          <div className="grid gap-8 md:grid-cols-[minmax(0,1fr)_1.4fr] md:items-center">
-            <div>
-              <h4 className="font-display text-3xl font-extrabold text-gold md:text-4xl">
-                {presenting.name}
-              </h4>
-              <p className="mt-3 font-sans text-5xl font-bold">{presenting.price}</p>
-              <p className="mt-3 text-sm font-medium text-gold/90">{presenting.tagline}</p>
-            </div>
-            <ul className="grid gap-3 sm:grid-cols-2">
-              {presenting.perks.map((p) => (
-                <li key={p} className="flex items-start gap-2 text-sm text-muted-foreground">
-                  <Check className="text-gold" />
-                  <span>{p}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </motion.div>
+        {/* Tier ladder — horizontal scroll-pinned timeline (Bronze → Partner) */}
+        <TierLadder />
 
         {/* Custom package — most popular, full-width hero */}
         <motion.div
@@ -268,50 +357,6 @@ export function SponsorsSection() {
             </a>
           </div>
         </motion.div>
-
-        {/* Core tiers */}
-        <div className="grid gap-6 md:grid-cols-3">
-          {tiers.map((t, i) => (
-            <motion.div
-              key={t.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className={`relative flex flex-col rounded-3xl border p-7 backdrop-blur-md ${
-                t.featured
-                  ? "border-primary/60 bg-gradient-to-b from-primary/15 to-transparent purple-glow"
-                  : t.accent
-                    ? "border-gold/30 bg-card/30"
-                    : "border-border bg-card/30"
-              }`}
-            >
-              {t.badge && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-primary px-3 py-1 text-xs font-bold text-primary-foreground">
-                  {t.badge}
-                </span>
-              )}
-              <h4
-                className={`font-display text-2xl font-extrabold ${
-                  t.featured ? "text-primary" : t.accent ? "text-gold" : ""
-                }`}
-              >
-                {t.name}
-              </h4>
-              <p className="mt-2 font-sans text-4xl font-bold">{t.price}</p>
-              <ul className="mt-6 space-y-3 text-sm">
-                {t.perks.map((p) => (
-                  <li key={p} className="flex items-start gap-2 text-muted-foreground">
-                    <Check
-                      className={t.featured ? "text-primary" : t.accent ? "text-gold" : "text-primary"}
-                    />
-                    <span>{p}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </div>
 
         {/* In-kind / community — full width */}
         <motion.div
@@ -450,6 +495,11 @@ export function SponsorsSection() {
             </a>
           </div>
         </motion.div>
+      </div>
+
+      {/* Orbiting globe — flush to the very bottom, above the footer line */}
+      <div className="mt-16">
+        <OrbitingCirclesGlobe />
       </div>
     </section>
   );

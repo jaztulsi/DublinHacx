@@ -16,6 +16,7 @@ const NAV_ITEMS = [
   { id: "schedule", label: "Schedule" },
   { id: "judges", label: "Judges" },
   { id: "faq", label: "FAQ" },
+  { id: "sponsors", label: "Sponsors" },
 ];
 
 export function NavBar() {

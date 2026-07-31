@@ -15,21 +15,21 @@ function getRemaining() {
 }
 
 /**
- * Single split-flap digit. The static top half snaps to the new digit at the
- * start of a flip (hidden behind the rotating flap), the rotating flap folds
- * the old digit down over the top half, and once it is edge-on (invisible)
- * the static bottom half snaps to the new digit too.
+ * Single split-flap card holding the whole 2-digit value (e.g. "59"). The
+ * static top half snaps to the new value at the start of a flip (hidden behind
+ * the rotating flap), the rotating flap folds the old value down over the top
+ * half, and once it is edge-on (invisible) the static bottom half snaps too.
  */
-function FlipCard({ digit }: { digit: number }) {
-  const [display, setDisplay] = useState(digit);
-  const [flapValue, setFlapValue] = useState(digit);
+function FlipCard({ value }: { value: string }) {
+  const [display, setDisplay] = useState(value);
+  const [flapValue, setFlapValue] = useState(value);
   const [flipping, setFlipping] = useState(false);
-  const displayRef = useRef(digit);
+  const displayRef = useRef(value);
   displayRef.current = display;
   const timers = useRef<number[]>([]);
 
   useEffect(() => {
-    if (digit === displayRef.current) return;
+    if (value === displayRef.current) return;
     const prev = displayRef.current;
 
     const reduced =
@@ -37,32 +37,32 @@ function FlipCard({ digit }: { digit: number }) {
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (reduced) {
-      setDisplay(digit);
+      setDisplay(value);
       return;
     }
 
     setFlapValue(prev);
-    setDisplay(digit);
+    setDisplay(value);
     setFlipping(true);
 
     timers.current.forEach((t) => window.clearTimeout(t));
     timers.current = [
       // At this instant the flap is edge-on, so the static bottom half can
-      // snap to the new digit (and the flap can be unmounted) seamlessly.
+      // snap to the new value (and the flap can be unmounted) seamlessly.
       window.setTimeout(() => setFlipping(false), FLIP_HALF_MS),
     ];
     return () => timers.current.forEach((t) => window.clearTimeout(t));
-  }, [digit]);
+  }, [value]);
 
-  const bottomDigit = flipping ? flapValue : display;
+  const bottomValue = flipping ? flapValue : display;
 
   return (
-    <div className="flip-card" aria-label={String(digit)}>
+    <div className="flip-card" aria-label={value}>
       <div className="flip-card-face flip-card-top">
         <span className="flip-card-digit">{display}</span>
       </div>
       <div className="flip-card-face flip-card-bottom">
-        <span className="flip-card-digit">{bottomDigit}</span>
+        <span className="flip-card-digit">{bottomValue}</span>
       </div>
       {flipping && (
         <div className="flip-flap">
@@ -75,14 +75,9 @@ function FlipCard({ digit }: { digit: number }) {
 }
 
 function FlipUnit({ value, label }: { value: number; label: string }) {
-  const str = pad2(value);
   return (
     <div className="flex flex-col items-center">
-      <div className="flex gap-0.5 md:gap-1.5">
-        {str.split("").map((ch, i) => (
-          <FlipCard key={`${label}-${i}`} digit={parseInt(ch, 10)} />
-        ))}
-      </div>
+      <FlipCard value={pad2(value)} />
       <span className="flip-label">{label}</span>
     </div>
   );

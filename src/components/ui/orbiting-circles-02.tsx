@@ -3,16 +3,19 @@
 import React from "react";
 import ParticleSphereAnimation from "@/components/ui/orbiting-circles-02-utils/particalsphear";
 
+// Every ring is sized as a fraction of --gd (the outer-ring diameter), which
+// is itself viewport-relative — so the whole globe scales fluidly and always
+// fits the frame at any screen size instead of snapping at breakpoints.
 const orbits = [
   {
-    size: "w-110 h-110 md:w-180 md:h-180",
+    scale: 0.68, // was md:w-180 (180/265)
     duration: 18,
     icons: [
       { src: "/context66-logo.png", alt: "Context66", angle: 0, plate: true },
     ],
   },
   {
-    size: "w-150 h-150 md:w-220 md:h-220",
+    scale: 0.83, // was md:w-220 (220/265)
     duration: 24,
     icons: [
       { src: "/yri-science-logo.png", alt: "YRI Science", angle: 0, plate: true },
@@ -20,7 +23,7 @@ const orbits = [
     ],
   },
   {
-    size: "w-180 h-180 md:w-265 md:h-265",
+    scale: 1, // outer ring == --gd
     duration: 30,
     icons: [
       { src: "/pcbway-logo.png", alt: "PCBWay", angle: 45, plate: true },
@@ -31,7 +34,20 @@ const orbits = [
 
 export default function OrbitingCirclesGlobeDemo() {
   return (
-    <div className="relative w-full h-110 md:h-160 overflow-hidden flex justify-center">
+    <div
+      className="relative w-full overflow-hidden flex justify-center"
+      style={
+        {
+          // Outer-ring diameter: caps at 1040px, otherwise viewport width minus
+          // a FIXED 9rem so the ~64px side logo plates always clear the edges —
+          // the plates don't scale with %, so the margin can't be a % either.
+          "--gd": "min(100vw - 9rem, 1040px)",
+          // Semicircle sits at the bottom, so it's half a diameter tall + room
+          // for the plates that poke above the top of the outer ring.
+          height: "calc(var(--gd) / 2 + 3.5rem)",
+        } as React.CSSProperties
+      }
+    >
       <style>{`
         @keyframes orbit-cw {
           from { transform: rotate(var(--start-angle)) }
@@ -52,7 +68,10 @@ export default function OrbitingCirclesGlobeDemo() {
       `}</style>
 
       {/* Center particle globe */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 aspect-square pointer-events-none w-75 md:w-145 z-10">
+      <div
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 aspect-square pointer-events-none z-10"
+        style={{ width: "calc(var(--gd) * 0.547)" }}
+      >
         <ParticleSphereAnimation />
       </div>
 
@@ -74,7 +93,11 @@ export default function OrbitingCirclesGlobeDemo() {
         return (
           <div
             key={index}
-            className={`absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 rounded-full border border-primary/40 ${orbit.size}`}
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 rounded-full border border-primary/40"
+            style={{
+              width: `calc(var(--gd) * ${orbit.scale})`,
+              height: `calc(var(--gd) * ${orbit.scale})`,
+            }}
           >
             {allIcons.map((iconData, iconIndex) => (
               <div

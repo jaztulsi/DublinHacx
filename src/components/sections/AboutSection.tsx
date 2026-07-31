@@ -65,13 +65,13 @@ function OrganizerAvatar({ name, img }: { name: string; img?: string }) {
         src={img}
         alt={name}
         onError={() => setErrored(true)}
-        className="h-14 w-14 shrink-0 rounded-full object-cover"
+        className="h-24 w-24 shrink-0 rounded-full object-cover ring-2 ring-primary/30"
       />
     );
   }
 
   return (
-    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary-glow font-display text-lg font-bold text-primary-foreground">
+    <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary-glow font-display text-2xl font-bold text-primary-foreground">
       {initials}
     </div>
   );
@@ -128,52 +128,50 @@ export function AboutSection() {
           </footer>
         </motion.blockquote>
 
-        <div className="grid gap-12 md:grid-cols-2">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7 }}
-          >
-            <h3 className="font-display text-3xl font-bold">One day that actually sticks.</h3>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              It's Dublin's very first Dublin Hacx — 10am to 10pm, 170 people from around the Bay
-              Area, one room. First time touching code or your tenth project, doesn't matter. You
-              leave with something you actually built and a few people you didn't know that morning.
-            </p>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              Run out of the EHS Hacking & Coding Club at Emerald High. By students, for students.
-            </p>
-          </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7 }}
+          className="mx-auto max-w-3xl text-center"
+        >
+          <h3 className="font-display text-3xl font-bold">One day that actually sticks.</h3>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+            It's Dublin's very first Dublin Hacx — 10am to 10pm, 170 people from around the Bay
+            Area, one room. First time touching code or your tenth project, doesn't matter. You
+            leave with something you actually built and a few people you didn't know that morning.
+          </p>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+            Run out of the EHS Hacking & Coding Club at Emerald High. By students, for students.
+          </p>
+        </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7 }}
-            className="grid gap-4"
-          >
-            <div className="flex items-center gap-3">
-              <span className="font-pixel text-sm uppercase tracking-widest text-primary">
-                The Board
-              </span>
-              <span className="h-px flex-1 bg-gradient-to-r from-primary/50 to-transparent" />
-            </div>
+        {/* The Board — full-width horizontal roster, no cards */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7 }}
+          className="mt-20"
+        >
+          <div className="mb-12 flex items-center justify-center gap-3">
+            <span className="h-px w-10 bg-gradient-to-r from-transparent to-primary/50" />
+            <span className="font-pixel text-sm uppercase tracking-widest text-primary">
+              The Board
+            </span>
+            <span className="h-px w-10 bg-gradient-to-l from-transparent to-primary/50" />
+          </div>
+          <div className="flex flex-wrap items-start justify-center gap-x-12 gap-y-10">
             {board.map((o) => (
-              <div
-                key={o.name}
-                className="flex items-center gap-4 rounded-2xl border border-border bg-card/30 p-5 backdrop-blur-md"
-              >
+              <div key={o.name} className="flex w-48 flex-col items-center text-center">
                 <OrganizerAvatar name={o.name} img={o.img} />
-                <div>
-                  <h4 className="font-semibold">{o.name}</h4>
-                  <p className="text-xs text-primary">{o.role}</p>
-                  <p className="mt-1 text-sm text-muted-foreground">{o.bio}</p>
-                </div>
+                <h4 className="mt-4 font-display text-lg font-bold">{o.name}</h4>
+                <p className="text-xs uppercase tracking-widest text-primary">{o.role}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{o.bio}</p>
               </div>
             ))}
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

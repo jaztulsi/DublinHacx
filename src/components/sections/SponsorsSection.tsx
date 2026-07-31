@@ -1,40 +1,6 @@
 import { motion } from "framer-motion";
-import { Download, Heart, Rocket, Sparkles, Target } from "lucide-react";
+import { Download, Sparkles } from "lucide-react";
 import OrbitingCirclesGlobe from "@/components/ui/orbiting-circles-02";
-import {
-  ContainerScroll,
-  ContainerSticky,
-  TierCard,
-} from "@/components/ui/tier-timeline";
-
-const stats = [
-  { value: "170", label: "High-school hackers" },
-  { value: "12h", label: "Non-stop building" },
-  { value: "100%", label: "Of funds fuel the event" },
-];
-
-const reasons = [
-  {
-    icon: Target,
-    title: "Recruit early talent",
-    body: "Meet motivated builders before anyone else — with opt-in access to their resumes, GitHubs, and projects.",
-  },
-  {
-    icon: Rocket,
-    title: "Drive product adoption",
-    body: "Put your API, hardware, or platform in 170 hands. Sponsor a challenge and watch students ship with your tools.",
-  },
-  {
-    icon: Sparkles,
-    title: "Real brand love",
-    body: "Logo on the shirts, the banners, the site. You're in every photo people post and every story they tell their friends after.",
-  },
-  {
-    icon: Heart,
-    title: "Invest in community",
-    body: "Fund Dublin's very first Dublin Hacx. Your support goes straight to meals, swag, and prizes.",
-  },
-];
 
 // Tier ladder in progression order (Bronze → Partner) for the horizontal
 // scroll-pinned timeline. Copy is preserved verbatim from SITE_AUDIT §5.
@@ -158,75 +124,78 @@ function TierBody({ t }: { t: Tier }) {
   );
 }
 
-/** Vertical tab that peeks out from behind each stacked card in the timeline. */
-function TierTab({ t, step }: { t: Tier; step: number }) {
-  return (
-    <div className="flex w-[84px] shrink-0 flex-col items-center justify-between border-r border-white/5 py-6">
-      <span className="font-pixel text-sm text-muted-foreground">0{step}</span>
-      <span
-        className={`font-display text-lg font-extrabold uppercase tracking-widest ${t.accent}`}
-        style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
-      >
-        {t.name}
-      </span>
-      <span className="font-pixel text-xs text-muted-foreground">{t.price}</span>
-    </div>
-  );
-}
+const tierClass = (variant: TierVariant) =>
+  variant === "gold"
+    ? "border-gold/50 bg-gradient-to-br from-gold/15 via-card/40 to-transparent gold-glow"
+    : variant === "featured"
+      ? "border-primary/60 bg-gradient-to-br from-primary/15 via-card/50 to-transparent purple-glow"
+      : variant === "silver"
+        ? "border-gold/25 bg-card/40"
+        : "border-border bg-card/40";
 
 /**
- * Horizontal scroll-pinned tier ladder (desktop). The section scrolls tall;
- * the row stays pinned while cards slide in from the right and stack left,
- * ending on Partner. Mobile gets a plain vertical stack instead.
+ * Bento tier layout: Partner (top tier, wide) sits beside a smallish
+ * "Build your own" card on top; Bronze / Silver / Gold fill a row below.
  */
 function TierLadder() {
+  const partner = ladder.find((t) => t.name === "Partner")!;
+  const lower = ladder.filter((t) => t.name !== "Partner");
   return (
-    <>
-      {/* Desktop: scroll-pinned horizontal timeline */}
-      <ContainerScroll id="tier-pin" className="hidden min-h-[300vh] md:block">
-        <ContainerSticky className="flex h-screen items-center">
-          <div className="flex w-full">
-            {ladder.map((t, i) => (
-              <TierCard
-                key={t.name}
-                variant={t.variant}
-                size="md"
-                index={i}
-                itemsLength={ladder.length}
-                className="h-[520px] shadow-2xl"
-              >
-                <TierTab t={t} step={i + 1} />
-                <TierBody t={t} />
-              </TierCard>
-            ))}
-          </div>
-        </ContainerSticky>
-      </ContainerScroll>
+    <div className="space-y-5">
+      {/* Top row: Partner (wide) + Build your own (smallish) */}
+      <div className="grid gap-5 md:grid-cols-3">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5 }}
+          className={`flex overflow-hidden rounded-3xl border backdrop-blur-md md:col-span-2 ${tierClass(partner.variant)}`}
+        >
+          <TierBody t={partner} />
+        </motion.div>
 
-      {/* Mobile: vertical stack */}
-      <div className="grid gap-5 md:hidden">
-        {ladder.map((t) => (
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, delay: 0.08 }}
+          className="relative flex flex-col justify-center gap-3 overflow-hidden rounded-3xl border-2 border-primary bg-gradient-to-br from-primary/20 via-card/50 to-transparent p-6 backdrop-blur-md purple-glow"
+        >
+          <span className="inline-flex w-fit items-center gap-1 rounded-full bg-primary px-3 py-1 text-xs font-bold uppercase tracking-wide text-primary-foreground">
+            <Sparkles size={13} /> Most popular
+          </span>
+          <h4 className="font-display text-2xl font-extrabold text-gradient-primary">Build your own</h4>
+          <p className="text-sm text-muted-foreground">
+            Mix, match, and dream up your own package — a branded challenge, a custom prize, a
+            workshop. We'll tailor it to your goals and budget.
+          </p>
+          <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=dublinhacx@gmail.com&su=Dublin%20Hacx%20Custom%20Sponsorship"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-1 inline-flex w-fit items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-transform hover:scale-105 purple-glow"
+          >
+            Let's chat over email →
+          </a>
+        </motion.div>
+      </div>
+
+      {/* Lower tiers: Bronze, Silver, Gold */}
+      <div className="grid gap-5 sm:grid-cols-3">
+        {lower.map((t, i) => (
           <motion.div
             key={t.name}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6 }}
-            className={`flex overflow-hidden rounded-3xl border backdrop-blur-md ${
-              t.variant === "gold"
-                ? "border-gold/50 bg-gradient-to-br from-gold/15 via-card/40 to-transparent gold-glow"
-                : t.variant === "featured"
-                  ? "border-primary/60 bg-gradient-to-br from-primary/15 via-card/50 to-transparent purple-glow"
-                  : t.variant === "silver"
-                    ? "border-gold/25 bg-card/40"
-                    : "border-border bg-card/40"
-            }`}
+            transition={{ duration: 0.5, delay: i * 0.08 }}
+            className={`flex overflow-hidden rounded-3xl border backdrop-blur-md ${tierClass(t.variant)}`}
           >
             <TierBody t={t} />
           </motion.div>
         ))}
       </div>
-    </>
+    </div>
   );
 }
 
@@ -270,44 +239,6 @@ export function SponsorsSection() {
           </div>
         </motion.div>
 
-        {/* Stats strip */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="mb-16 grid grid-cols-2 gap-4 rounded-3xl border border-border bg-card/30 p-6 backdrop-blur-md md:grid-cols-4 md:p-8"
-        >
-          {stats.map((s) => (
-            <div key={s.label} className="text-center">
-              <p className="font-sans text-4xl font-bold text-gradient-primary md:text-5xl">
-                {s.value}
-              </p>
-              <p className="mt-1 font-pixel text-sm text-muted-foreground md:text-base">{s.label}</p>
-            </div>
-          ))}
-        </motion.div>
-
-        {/* Why sponsor */}
-        <div className="mb-20 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {reasons.map((r, i) => (
-            <motion.div
-              key={r.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="rounded-2xl border border-border bg-card/30 p-6 backdrop-blur-md transition-colors hover:border-primary/50"
-            >
-              <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/15 text-primary">
-                <r.icon size={20} />
-              </div>
-              <h3 className="mt-4 font-display text-lg font-bold">{r.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{r.body}</p>
-            </motion.div>
-          ))}
-        </div>
-
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -326,37 +257,6 @@ export function SponsorsSection() {
 
         {/* Tier ladder — horizontal scroll-pinned timeline (Bronze → Partner) */}
         <TierLadder />
-
-        {/* Custom package — most popular, full-width hero */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="relative mb-6 overflow-hidden rounded-3xl border-2 border-primary bg-gradient-to-br from-primary/20 via-card/50 to-transparent p-8 backdrop-blur-md purple-glow md:p-12"
-        >
-          <span className="absolute right-6 top-6 flex items-center gap-1 rounded-full bg-primary px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-primary-foreground">
-            <Sparkles size={14} /> Most popular
-          </span>
-          <div className="text-center md:text-left">
-            <h4 className="font-display text-4xl font-extrabold text-gradient-primary md:text-6xl">
-              Build your own
-            </h4>
-            <p className="mt-4 max-w-2xl text-base text-muted-foreground md:text-lg">
-              Our most-loved option. Don't see the perfect fit above? Mix, match, and dream up your
-              own package — a branded challenge, a custom prize, a workshop, whatever moves your
-              brand. We'll chat it through over email and tailor everything to your goals and budget.
-            </p>
-            <a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=dublinhacx@gmail.com&su=Dublin%20Hacx%20Custom%20Sponsorship"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-base font-semibold text-primary-foreground transition-transform hover:scale-105 purple-glow"
-            >
-              Let's chat over email →
-            </a>
-          </div>
-        </motion.div>
 
         {/* In-kind / community — full width */}
         <motion.div

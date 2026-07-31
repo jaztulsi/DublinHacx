@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { type KeyboardEvent, useEffect, useRef, useState } from "react";
-import { schedule } from "@/lib/schedule";
+import { EVENT_END_MIN, schedule } from "@/lib/schedule";
 
 /**
  * Schedule layout:
@@ -173,6 +173,8 @@ function ScheduleTrack() {
   const hour = Math.floor(hour24 / 60);
   const isNight = hour >= 20 || hour < 6;
   const activeItem = schedule[activeIdx];
+  // 0 → 1 through the 12-hour day, drives the orbiting body's position.
+  const progress = Math.min(1, Math.max(0, displayMinutes / EVENT_END_MIN));
 
   return (
     <div className="relative grid gap-10 md:grid-cols-[280px_1fr] md:gap-16">
@@ -181,7 +183,7 @@ function ScheduleTrack() {
           <p className="mb-4 text-sm font-display font-bold uppercase tracking-widest text-foreground/80">
             {isNight ? "Evening" : "Daytime"}
           </p>
-          <ScheduleOrb time={timeLabel} isNight={isNight} pulsing={!isIdle} />
+          <ScheduleOrb time={timeLabel} isNight={isNight} pulsing={!isIdle} progress={progress} />
           <p className="sr-only" aria-live="polite" aria-atomic="true">
             Active schedule time: {activeItem.time}, {activeItem.title}.
           </p>
@@ -227,9 +229,9 @@ function ScheduleTrack() {
               }`}
             >
               <span
-                className={`absolute -left-[37px] top-2 h-3 w-3 rounded-full border-2 transition-all ${
+                className={`absolute -left-[38px] top-2 h-2.5 w-2.5 rotate-45 rounded-[1px] border transition-all ${
                   i === activeIdx
-                    ? "border-primary bg-primary purple-glow scale-125"
+                    ? "border-primary bg-primary purple-glow scale-150"
                     : "border-border bg-background"
                 }`}
               />
@@ -271,10 +273,12 @@ function ScheduleOrb({
   time,
   isNight,
   pulsing,
+  progress,
 }: {
   time: string;
   isNight: boolean;
   pulsing: boolean;
+  progress: number;
 }) {
   return (
     <div className="relative h-44 w-44 sm:h-56 sm:w-56 md:h-64 md:w-64">
@@ -288,6 +292,30 @@ function ScheduleOrb({
             : "inset -16px -22px 50px oklch(0.02 0 0), 0 0 60px oklch(0.55 0.15 270 / 0.35)",
         }}
       />
+
+      {/* Slowly spinning galaxy swirl */}
+      <div aria-hidden className="absolute inset-0 overflow-hidden rounded-full">
+        <motion.div
+          className="absolute inset-[-30%]"
+          style={{
+            background:
+              "conic-gradient(from 0deg, transparent 0deg, oklch(0.7 0.18 305 / 0.22) 45deg, transparent 100deg, oklch(0.72 0.16 210 / 0.16) 210deg, transparent 270deg, oklch(0.7 0.18 305 / 0.22) 320deg, transparent 360deg)",
+          }}
+          animate={{ rotate: 360 }}
+          transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
+        />
+      </div>
+
+      {/* Orbit ring + a body that sweeps to the current time's position */}
+      <div aria-hidden className="absolute inset-[7%] rounded-full border border-white/10" />
+      <motion.div
+        aria-hidden
+        className="absolute inset-0"
+        animate={{ rotate: progress * 360 }}
+        transition={{ type: "spring", stiffness: 55, damping: 14 }}
+      >
+        <span className="absolute left-1/2 top-[6%] h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-white shadow-[0_0_12px_4px_oklch(0.8_0.15_305_/_0.75)]" />
+      </motion.div>
 
       {!isNight && (
         <div

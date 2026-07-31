@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import heroImg from "@/assets/hero-night.jpg";
 import logo from "@/assets/dublin-hacx-logo.svg";
-import { CalendarCountdown } from "@/components/FlipboardCountdown";
+import { FlipboardCountdown } from "@/components/FlipboardCountdown";
 import { EVENT_DATE_TBD } from "@/lib/schedule";
 
 interface Props {
@@ -174,7 +174,7 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
           custom={1}
           className="mb-6 font-pixel text-base uppercase tracking-[0.25em] text-primary"
         >
-          SAP Office, San Ramon · Oct 3, 2026 · 10am–10pm
+          SAP Office, San Ramon · Oct 3, 2026
         </motion.p>
 
         <motion.div variants={fadeUp} initial="hidden" animate="show" custom={1.5}>
@@ -185,7 +185,7 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
               </span>
             </div>
           ) : (
-            <CalendarCountdown />
+            <FlipboardCountdown />
           )}
         </motion.div>
 

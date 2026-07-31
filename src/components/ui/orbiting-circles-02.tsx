@@ -5,12 +5,12 @@ import ParticleSphereAnimation from "@/components/ui/orbiting-circles-02-utils/p
 
 const orbits = [
   {
-    size: "w-48 h-48 lg:w-180 lg:h-180",
+    size: "w-[min(58vw,224px)] h-[min(58vw,224px)] lg:w-180 lg:h-180",
     duration: 18,
     icons: [{ src: "/context66-logo.png", alt: "Context66", angle: 0, plate: true }],
   },
   {
-    size: "w-60 h-60 lg:w-220 lg:h-220",
+    size: "w-[min(68vw,272px)] h-[min(68vw,272px)] lg:w-220 lg:h-220",
     duration: 24,
     icons: [
       { src: "/yri-science-logo.png", alt: "YRI Science", angle: 0, plate: true },
@@ -18,7 +18,7 @@ const orbits = [
     ],
   },
   {
-    size: "w-72 h-72 lg:w-265 lg:h-265",
+    size: "w-[min(86vw,320px)] h-[min(86vw,320px)] lg:w-265 lg:h-265",
     duration: 30,
     icons: [
       { src: "/pcbway-logo.png", alt: "PCBWay", angle: 45, plate: true },
@@ -29,7 +29,7 @@ const orbits = [
 
 export default function OrbitingCirclesGlobeDemo() {
   return (
-    <div className="relative w-full h-48 lg:h-160 overflow-hidden flex justify-center">
+    <div className="relative w-full h-[min(52vw,224px)] lg:h-160 overflow-hidden flex justify-center">
       <style>{`
         @keyframes orbit-cw {
           from { transform: rotate(var(--start-angle)) }
@@ -50,7 +50,7 @@ export default function OrbitingCirclesGlobeDemo() {
       `}</style>
 
       {/* Center particle globe */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 aspect-square pointer-events-none w-36 lg:w-145 z-10">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 aspect-square pointer-events-none w-[min(42vw,176px)] lg:w-145 z-10">
         <ParticleSphereAnimation />
       </div>
 

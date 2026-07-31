@@ -1,0 +1,104 @@
+import { motion } from "framer-motion";
+import { useState } from "react";
+
+type Judge = {
+  name: string;
+  title: string;
+  company: string;
+  location: string;
+  education: string;
+  tags: string[];
+  bio: string;
+  img?: string;
+};
+
+const judges: Judge[] = [
+  {
+    name: "Vasuki Uday Kiran Vudathala",
+    title: "Staff Performance Engineer",
+    company: "ServiceNow",
+    location: "Pleasanton, California",
+    education: "MCA, Computer Science — Jawaharlal Nehru Technological University",
+    img: "/uday-vudathala.jpg",
+    tags: [
+      "Generative AI",
+      "Cloud & Reliability",
+      "Performance Engineering",
+      "Google Cloud Certified — Generative AI",
+    ],
+    bio: "15+ years in performance engineering and distributed systems, building scalable enterprise cloud and Generative AI platforms. Google Cloud certified in GenAI; has judged and mentored at hackathons including UC Berkeley's AI Hackathon 2026.",
+  },
+];
+
+function JudgeAvatar({ name, img }: { name: string; img?: string }) {
+  const [errored, setErrored] = useState(false);
+  const initials = name
+    .split(" ")
+    .map((n) => n[0])
+    .slice(0, 2)
+    .join("");
+
+  if (img && !errored) {
+    return (
+      <img
+        src={img}
+        alt={name}
+        onError={() => setErrored(true)}
+        className="h-16 w-16 shrink-0 rounded-full object-cover"
+      />
+    );
+  }
+
+  return (
+    <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary-glow font-display text-xl font-bold text-primary-foreground">
+      {initials}
+    </div>
+  );
+}
+
+export function JudgesSection() {
+  return (
+    <section id="judges" className="relative px-6 py-24 md:py-32">
+      <div className="mx-auto max-w-4xl">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7 }}
+          className="mb-16 text-center"
+        >
+          <p className="mb-3 font-pixel text-sm uppercase tracking-widest text-primary">Judges</p>
+          <h2 className="font-display text-4xl font-extrabold tracking-tight md:text-6xl">
+            The people judging your <span className="text-gradient-primary">build</span>.
+          </h2>
+        </motion.div>
+
+        <div className="flex flex-wrap justify-center gap-6">
+          {judges.map((j, i) => (
+            <motion.div
+              key={j.name}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              className="w-full max-w-xs rounded-2xl border border-border bg-card/30 p-5 backdrop-blur-md"
+            >
+              <div className="flex items-center gap-3">
+                <JudgeAvatar name={j.name} img={j.img} />
+                <div className="min-w-0">
+                  <h3 className="font-display text-base font-bold leading-tight">{j.name}</h3>
+                  <p className="text-xs text-primary">
+                    {j.title} @ {j.company}
+                  </p>
+                  <p className="mt-0.5 text-[11px] text-muted-foreground">{j.location}</p>
+                </div>
+              </div>
+
+              <p className="mt-3 text-xs leading-relaxed text-muted-foreground">{j.bio}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

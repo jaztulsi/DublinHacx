@@ -13,6 +13,7 @@ import { BackedBySection } from "@/components/sections/BackedBySection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { ThemeSection } from "@/components/sections/ThemeSection";
 import { ScheduleSection } from "@/components/sections/ScheduleSection";
+import { JudgesSection } from "@/components/sections/JudgesSection";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { DiscordSection } from "@/components/sections/DiscordSection";
 import { SponsorsSection } from "@/components/sections/SponsorsSection";
@@ -80,6 +81,7 @@ function Index() {
         <AboutSection />
         <ThemeSection />
         <ScheduleSection />
+        <JudgesSection />
         <FaqSection />
         <DiscordSection />
         <SponsorsSection />

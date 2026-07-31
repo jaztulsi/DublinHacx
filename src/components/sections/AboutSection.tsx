@@ -21,17 +21,23 @@ const stats = [
   { value: 0, suffix: "", label: "Cost — totally free", isText: "$0" },
 ];
 
-const organizers: { name: string; role: string; bio: string; img?: string }[] = [
+const board: { name: string; role: string; bio: string; img?: string }[] = [
   {
     name: "Jasraj Tulsi",
-    role: "Co-Founder · Emerald HS",
-    bio: "Runs the club, sends the emails. Probably the one who'll reply to you.",
+    role: "Event Manager",
+    bio: "Event logistics, the money, judges handling, and outreach.",
     img: "/jasraj-tulsi.png",
   },
   {
+    name: "Svanik Thakur",
+    role: "Sponsor Outreach",
+    bio: "Runs sponsor outreach and partnerships.",
+    img: "/svanik-thakur.png",
+  },
+  {
     name: "Rachit Panchal",
-    role: "Admin · Co-Founder · Emerald HS",
-    bio: "Handles the logistics so the day actually happens. Co-founder.",
+    role: "Social Media",
+    bio: "Handles social media — posts, promos, and everything in between.",
     img: "/rachit-panchal.jpg",
   },
 ];
@@ -84,7 +90,8 @@ export function AboutSection() {
         >
           <p className="mb-3 font-pixel text-sm uppercase tracking-widest text-primary">About</p>
           <h2 className="font-display text-4xl font-extrabold tracking-tight md:text-6xl">
-            Made by students who got tired of <span className="text-gradient-primary">waiting</span>.
+            Made by students who got tired of <span className="text-gradient-primary">waiting</span>
+            .
           </h2>
         </motion.div>
 
@@ -130,10 +137,9 @@ export function AboutSection() {
           >
             <h3 className="font-display text-3xl font-bold">One day that actually sticks.</h3>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              It's Dublin's very first Dublin Hacx — 10am to 10pm, 170 people
-              from around the Bay Area, one room. First time touching code or your tenth project,
-              doesn't matter. You leave with something you actually built and a few people you didn't
-              know that morning.
+              It's Dublin's very first Dublin Hacx — 10am to 10pm, 170 people from around the Bay
+              Area, one room. First time touching code or your tenth project, doesn't matter. You
+              leave with something you actually built and a few people you didn't know that morning.
             </p>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
               Run out of the EHS Hacking & Coding Club at Emerald High. By students, for students.
@@ -147,7 +153,13 @@ export function AboutSection() {
             transition={{ duration: 0.7 }}
             className="grid gap-4"
           >
-            {organizers.map((o) => (
+            <div className="flex items-center gap-3">
+              <span className="font-pixel text-sm uppercase tracking-widest text-primary">
+                The Board
+              </span>
+              <span className="h-px flex-1 bg-gradient-to-r from-primary/50 to-transparent" />
+            </div>
+            {board.map((o) => (
               <div
                 key={o.name}
                 className="flex items-center gap-4 rounded-2xl border border-border bg-card/30 p-5 backdrop-blur-md"

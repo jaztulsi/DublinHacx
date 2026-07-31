@@ -1,7 +1,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import heroImg from "@/assets/hero-night.jpg";
 import logo from "@/assets/dublin-hacx-logo.svg";
+import { CalendarCountdown } from "@/components/FlipboardCountdown";
 import { EVENT_DATE_TBD } from "@/lib/schedule";
 
 interface Props {
@@ -84,7 +85,7 @@ function GlitchText({ children }: { children: string }) {
         className="absolute inset-0"
         style={{
           transform: "translate(-2px, 0)",
-          color: "var(--gold)",
+          color: "#22d3ee",
           mixBlendMode: "screen",
           opacity: 0.5,
         }}
@@ -93,64 +94,6 @@ function GlitchText({ children }: { children: string }) {
       </span>
       <span className="relative text-gradient-primary text-glow-soft">{children}</span>
     </span>
-  );
-}
-
-// Countdown target — 10:00 AM PDT on October 3, 2026.
-const EVENT_TS = new Date("2026-10-03T10:00:00-07:00").getTime();
-
-function getRemaining() {
-  const diff = Math.max(0, EVENT_TS - Date.now());
-  const days = Math.floor(diff / 86_400_000);
-  const hours = Math.floor((diff % 86_400_000) / 3_600_000);
-  const minutes = Math.floor((diff % 3_600_000) / 60_000);
-  const seconds = Math.floor((diff % 60_000) / 1000);
-  return { days, hours, minutes, seconds };
-}
-
-function Countdown() {
-  // Start null so the server-rendered HTML and the first client render match
-  // (the live time only differs after mount), avoiding a hydration mismatch.
-  const [time, setTime] = useState<ReturnType<typeof getRemaining> | null>(null);
-
-  useEffect(() => {
-    setTime(getRemaining());
-    const id = setInterval(() => setTime(getRemaining()), 1000);
-    return () => clearInterval(id);
-  }, []);
-
-  const blocks = [
-    { value: time?.days ?? 0, label: "Days" },
-    { value: time?.hours ?? 0, label: "Hours" },
-    { value: time?.minutes ?? 0, label: "Minutes" },
-    { value: time?.seconds ?? 0, label: "Seconds" },
-  ];
-
-  return (
-    <div className="mb-8 flex flex-col items-center gap-4">
-      <span className="font-sans text-4xl font-bold text-gold gold-glow sm:text-5xl md:text-6xl">
-        October 3, 2026
-      </span>
-      <div className="flex items-center justify-center gap-3 font-mono sm:gap-5">
-      {blocks.map((b, i) => (
-        <div key={b.label} className="flex items-center gap-3 sm:gap-5">
-          <div className="flex flex-col items-center">
-            <span className="font-sans text-4xl font-bold tabular-nums text-gold gold-glow sm:text-5xl md:text-6xl">
-              {b.value.toString().padStart(2, "0")}
-            </span>
-            <span className="mt-1 font-pixel text-xs uppercase tracking-widest text-muted-foreground sm:text-sm">
-              {b.label}
-            </span>
-          </div>
-          {i < blocks.length - 1 && (
-            <span aria-hidden className="text-2xl text-border sm:text-3xl">
-              ·
-            </span>
-          )}
-        </div>
-      ))}
-      </div>
-    </div>
   );
 }
 
@@ -171,10 +114,7 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
       className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-24"
     >
       {/* Parallax night background */}
-      <motion.div
-        style={{ y: yImg, scale: scaleImg }}
-        className="absolute inset-0 -z-10"
-      >
+      <motion.div style={{ y: yImg, scale: scaleImg }} className="absolute inset-0 -z-10">
         <img
           src={heroImg}
           alt="Starry night with a wolf on a cliff under a full moon"
@@ -237,12 +177,7 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
           SAP Office, San Ramon · Oct 3, 2026 · 10am–10pm
         </motion.p>
 
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          animate="show"
-          custom={1.5}
-        >
+        <motion.div variants={fadeUp} initial="hidden" animate="show" custom={1.5}>
           {EVENT_DATE_TBD ? (
             <div className="mb-8 flex items-center justify-center font-mono">
               <span className="font-sans text-4xl font-bold text-gold gold-glow sm:text-5xl md:text-6xl">
@@ -250,7 +185,7 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
               </span>
             </div>
           ) : (
-            <Countdown />
+            <CalendarCountdown />
           )}
         </motion.div>
 
@@ -273,8 +208,8 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
           custom={3}
           className="mx-auto mt-8 max-w-2xl text-base text-muted-foreground md:text-lg"
         >
-          Dublin's very first Dublin Hacx. 12 hours, 10am to 10pm.
-          Walk in with an idea. Walk out with something real.
+          Dublin's very first Dublin Hacx. 12 hours, 10am to 10pm. Walk in with an idea. Walk out
+          with something real.
         </motion.p>
 
         <motion.div
@@ -285,7 +220,9 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
           className="mt-10 flex flex-wrap justify-center gap-4"
         >
           <MagneticButton onClick={onApply}>Apply to Hack →</MagneticButton>
-          <MagneticButton onClick={onLearnMore} variant="secondary">What's the deal?</MagneticButton>
+          <MagneticButton onClick={onLearnMore} variant="secondary">
+            What's the deal?
+          </MagneticButton>
         </motion.div>
       </div>
 
@@ -296,9 +233,7 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
         transition={{ delay: 1.5 }}
         className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-[10px] uppercase tracking-widest text-muted-foreground">
-          Scroll
-        </span>
+        <span className="text-[10px] uppercase tracking-widest text-muted-foreground">Scroll</span>
         <div className="relative h-10 w-px overflow-hidden bg-border">
           <motion.div
             animate={{ y: [-40, 40] }}

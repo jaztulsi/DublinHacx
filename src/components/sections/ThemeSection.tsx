@@ -24,9 +24,9 @@ const pillars = [
     title: "Ship in 12 hours",
     desc: "From first commit to live demo, the only constraint is the clock. Mentors and workshops keep you moving.",
     chip: "The clock",
-    // full-width bottom banner, gold accent
+    // full-width bottom banner
     span: "md:col-span-3",
-    accent: "gold" as const,
+    accent: "purple" as const,
   },
 ];
 
@@ -61,53 +61,34 @@ export function ThemeSection() {
         </motion.div>
 
         <div className="grid gap-5 md:grid-cols-3">
-          {pillars.map((p, i) => {
-            const gold = p.accent === "gold";
-            return (
-              <motion.div
-                key={p.title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className={`group relative overflow-hidden rounded-2xl border p-6 backdrop-blur-md transition-colors ${p.span} ${
-                  gold
-                    ? "border-[var(--gold)]/25 bg-card/30 hover:border-[var(--gold)]/50"
-                    : "border-border bg-card/30 hover:border-primary/40"
-                }`}
-              >
-                {/* purple dot-grid wash on hover */}
-                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,oklch(0.78_0.17_305_/_0.10)_1px,transparent_1px)] bg-[length:5px_5px] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          {pillars.map((p, i) => (
+            <motion.div
+              key={p.title}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className={`group relative overflow-hidden rounded-2xl border border-border bg-card/30 p-6 backdrop-blur-md transition-colors hover:border-primary/40 ${p.span}`}
+            >
+              {/* purple dot-grid wash on hover */}
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,oklch(0.78_0.17_305_/_0.10)_1px,transparent_1px)] bg-[length:5px_5px] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-                <div className="relative flex flex-col">
-                  <div className="mb-4 flex items-center justify-between">
-                    <div
-                      className={`inline-flex h-11 w-11 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-105 ${
-                        gold
-                          ? "gold-glow bg-[var(--gold)]/15 text-[var(--gold)]"
-                          : "purple-glow bg-primary/15 text-primary"
-                      }`}
-                    >
-                      <p.icon size={20} />
-                    </div>
-                    <span
-                      className={`rounded-full border px-2.5 py-1 font-pixel text-xs uppercase tracking-widest ${
-                        gold
-                          ? "border-[var(--gold)]/30 text-[var(--gold)]"
-                          : "border-primary/30 text-primary"
-                      }`}
-                    >
-                      {p.chip}
-                    </span>
+              <div className="relative flex flex-col">
+                <div className="mb-4 flex items-center justify-between">
+                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl purple-glow bg-primary/15 text-primary transition-transform duration-300 group-hover:scale-105">
+                    <p.icon size={20} />
                   </div>
-                  <h3 className="font-sans text-xl font-bold">{p.title}</h3>
-                  <p className="mt-2 max-w-prose text-sm leading-relaxed text-muted-foreground">
-                    {p.desc}
-                  </p>
+                  <span className="rounded-full border border-primary/30 px-2.5 py-1 font-pixel text-xs uppercase tracking-widest text-primary">
+                    {p.chip}
+                  </span>
                 </div>
-              </motion.div>
-            );
-          })}
+                <h3 className="font-sans text-xl font-bold">{p.title}</h3>
+                <p className="mt-2 max-w-prose text-sm leading-relaxed text-muted-foreground">
+                  {p.desc}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

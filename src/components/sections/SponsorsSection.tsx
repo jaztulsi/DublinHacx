@@ -183,7 +183,7 @@ function TierLadder() {
   return (
     <>
       {/* Desktop: scroll-pinned horizontal timeline */}
-      <ContainerScroll className="hidden min-h-[300vh] md:block">
+      <ContainerScroll id="tier-pin" className="hidden min-h-[300vh] md:block">
         <ContainerSticky className="flex h-screen items-center">
           <div className="flex w-full">
             {ladder.map((t, i) => (

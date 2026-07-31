@@ -9,27 +9,27 @@ export function BackedBySection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
-          className="relative overflow-hidden rounded-3xl border border-gold/30 bg-gold/[0.06] p-10 text-center backdrop-blur-md md:p-14"
-          style={{ boxShadow: "0 0 60px oklch(0.85 0.15 85 / 0.18)" }}
+          className="relative overflow-hidden rounded-3xl border border-emerald-400/30 bg-emerald-500/[0.06] p-10 text-center backdrop-blur-md md:p-14"
+          style={{ boxShadow: "0 0 60px oklch(0.72 0.16 160 / 0.18)" }}
         >
-          {/* Gold glow accent */}
-          <div className="pointer-events-none absolute -top-24 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-gold/20 blur-3xl" />
+          {/* Emerald glow accent */}
+          <div className="pointer-events-none absolute -top-24 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-emerald-500/20 blur-3xl" />
 
           <img
             src="/ehcc-logo.png"
             alt="Emerald Hacking & Coding Club logo"
-            className="relative mx-auto mb-6 h-40 w-auto object-contain drop-shadow-[0_0_40px_oklch(0.85_0.15_85_/_0.5)]"
+            className="relative mx-auto mb-6 h-40 w-auto object-contain drop-shadow-[0_0_40px_oklch(0.72_0.16_160_/_0.5)]"
           />
 
-          <p className="relative mb-5 font-pixel text-sm uppercase tracking-[0.25em] text-gold">
+          <p className="relative mb-5 font-pixel text-sm uppercase tracking-[0.25em] text-emerald-300">
             Officially Backed
           </p>
 
           <h2 className="relative font-display text-3xl font-extrabold tracking-tight md:text-5xl">
             This is backed by the{" "}
             <span
-              className="text-gold"
-              style={{ textShadow: "0 0 30px oklch(0.85 0.15 85 / 0.6), 0 0 60px oklch(0.85 0.15 85 / 0.3)" }}
+              className="text-emerald-400"
+              style={{ textShadow: "0 0 30px oklch(0.72 0.16 160 / 0.6), 0 0 60px oklch(0.72 0.16 160 / 0.3)" }}
             >
               Emerald Hacking &amp; Coding Club
             </span>

@@ -67,7 +67,13 @@ export function ContainerScroll({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
   const scrollRef = React.useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: scrollRef });
+  // Map progress 0→1 across the pinned region (sticky child fills the viewport
+  // from when the container's top reaches the top until its bottom does), so
+  // the four cards reveal evenly while pinned.
+  const { scrollYProgress } = useScroll({
+    target: scrollRef,
+    offset: ["start start", "end end"],
+  });
   // Smooth the raw scroll progress so the slide reads like Schedule's snap,
   // not a hard 1:1 scrub.
   const smooth = useSpring(scrollYProgress, {

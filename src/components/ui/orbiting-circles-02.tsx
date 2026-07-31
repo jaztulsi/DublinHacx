@@ -5,14 +5,12 @@ import ParticleSphereAnimation from "@/components/ui/orbiting-circles-02-utils/p
 
 const orbits = [
   {
-    size: "w-110 h-110 md:w-180 md:h-180",
+    size: "w-48 h-48 lg:w-180 lg:h-180",
     duration: 18,
-    icons: [
-      { src: "/context66-logo.png", alt: "Context66", angle: 0, plate: true },
-    ],
+    icons: [{ src: "/context66-logo.png", alt: "Context66", angle: 0, plate: true }],
   },
   {
-    size: "w-150 h-150 md:w-220 md:h-220",
+    size: "w-60 h-60 lg:w-220 lg:h-220",
     duration: 24,
     icons: [
       { src: "/yri-science-logo.png", alt: "YRI Science", angle: 0, plate: true },
@@ -20,7 +18,7 @@ const orbits = [
     ],
   },
   {
-    size: "w-180 h-180 md:w-265 md:h-265",
+    size: "w-72 h-72 lg:w-265 lg:h-265",
     duration: 30,
     icons: [
       { src: "/pcbway-logo.png", alt: "PCBWay", angle: 45, plate: true },
@@ -31,7 +29,7 @@ const orbits = [
 
 export default function OrbitingCirclesGlobeDemo() {
   return (
-    <div className="relative w-full h-110 md:h-160 overflow-hidden flex justify-center">
+    <div className="relative w-full h-48 lg:h-160 overflow-hidden flex justify-center">
       <style>{`
         @keyframes orbit-cw {
           from { transform: rotate(var(--start-angle)) }
@@ -52,7 +50,7 @@ export default function OrbitingCirclesGlobeDemo() {
       `}</style>
 
       {/* Center particle globe */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 aspect-square pointer-events-none w-75 md:w-145 z-10">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 aspect-square pointer-events-none w-36 lg:w-145 z-10">
         <ParticleSphereAnimation />
       </div>
 
@@ -79,7 +77,7 @@ export default function OrbitingCirclesGlobeDemo() {
             {allIcons.map((iconData, iconIndex) => (
               <div
                 key={iconIndex}
-                className="absolute top-0 left-1/2 h-1/2 -ml-8 origin-bottom flex flex-col justify-start items-center"
+                className="absolute top-0 left-1/2 h-1/2 -ml-6 md:-ml-8 origin-bottom flex flex-col justify-start items-center"
                 style={
                   {
                     "--start-angle": `${iconData.angle}deg`,
@@ -88,7 +86,7 @@ export default function OrbitingCirclesGlobeDemo() {
                 }
               >
                 <div
-                  className={`p-3 sm:p-4 border border-border rounded-full -mt-8 relative z-10 ${iconData.plate ? "bg-white/95" : "bg-background"}`}
+                  className={`p-3 sm:p-4 border border-border rounded-full -mt-6 md:-mt-8 relative z-10 ${iconData.plate ? "bg-white/95" : "bg-background"}`}
                   style={
                     {
                       "--counter-offset": `${-iconData.angle}deg`,

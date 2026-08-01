@@ -12,7 +12,7 @@ const orbits = [
     duration: 18,
     icons: [
       { src: "/context66-logo.png", alt: "Context66", angle: 0, plate: true },
-      { src: "/codecrafters-logo.png", alt: "CodeCrafters", angle: 90, plate: false },
+      { src: "/codecrafters-logo.png", alt: "CodeCrafters", angle: 90, plate: false, bare: true },
     ],
   },
   {
@@ -113,7 +113,11 @@ export default function OrbitingCirclesGlobeDemo() {
                 }
               >
                 <div
-                  className={`p-3 sm:p-4 border border-border rounded-full -mt-8 relative z-10 ${iconData.plate ? "bg-white/95" : "bg-background"}`}
+                  className={
+                    iconData.bare
+                      ? "-mt-8 relative z-10"
+                      : `p-3 sm:p-4 border border-border rounded-full -mt-8 relative z-10 ${iconData.plate ? "bg-white/95" : "bg-background"}`
+                  }
                   style={
                     {
                       "--counter-offset": `${-iconData.angle}deg`,
@@ -127,7 +131,11 @@ export default function OrbitingCirclesGlobeDemo() {
                     title={iconData.alt.replace(/-mirror$/, "")}
                     width={32}
                     height={32}
-                    className="w-6 h-6 md:w-8 md:h-8 object-contain"
+                    className={
+                      iconData.bare
+                        ? "w-12 h-12 md:w-16 md:h-16 object-contain"
+                        : "w-6 h-6 md:w-8 md:h-8 object-contain"
+                    }
                   />
                 </div>
               </div>

@@ -342,7 +342,21 @@ export function SponsorsSection() {
             </span>
           </a>
 
-          <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-5">
+          <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-3">
+            <a
+              href="https://codecrafters.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="CodeCrafters"
+              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
+            >
+              <img
+                src="/codecrafters-logo.svg"
+                alt="CodeCrafters"
+                className="max-h-16 w-auto object-contain"
+              />
+              <span className="text-xs text-muted-foreground">CodeCrafters</span>
+            </a>
             <a
               href="https://elevenlabs.io/"
               target="_blank"

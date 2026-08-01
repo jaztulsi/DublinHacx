@@ -353,7 +353,7 @@ export function SponsorsSection() {
               <img
                 src="/codecrafters-logo.png"
                 alt="CodeCrafters"
-                className="max-h-16 w-auto object-contain"
+                className="w-2/3 max-h-24 object-contain"
               />
               <span className="text-xs text-muted-foreground">CodeCrafters</span>
             </a>
@@ -364,11 +364,11 @@ export function SponsorsSection() {
               aria-label="ElevenLabs"
               className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
             >
-              <span className="flex items-center justify-center rounded-lg bg-white px-3 py-2">
+              <span className="flex w-2/3 items-center justify-center rounded-lg bg-white px-4 py-3">
                 <img
                   src="/elevenlabs-logo.svg"
                   alt="ElevenLabs"
-                  className="max-h-14 w-auto object-contain"
+                  className="max-h-16 w-full object-contain"
                 />
               </span>
               <span className="text-xs text-muted-foreground">ElevenLabs</span>

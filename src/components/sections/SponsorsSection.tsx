@@ -342,7 +342,23 @@ export function SponsorsSection() {
             </span>
           </a>
 
-          <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-4">
+          <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-5">
+            <a
+              href="https://elevenlabs.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="ElevenLabs"
+              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
+            >
+              <span className="flex items-center justify-center rounded-lg bg-white px-3 py-2">
+                <img
+                  src="/elevenlabs-logo.svg"
+                  alt="ElevenLabs"
+                  className="max-h-14 w-auto object-contain"
+                />
+              </span>
+              <span className="text-xs text-muted-foreground">ElevenLabs</span>
+            </a>
             <a
               href="https://www.yriscience.com/"
               target="_blank"

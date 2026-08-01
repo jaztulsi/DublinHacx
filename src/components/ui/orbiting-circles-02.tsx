@@ -27,6 +27,7 @@ const orbits = [
     duration: 30,
     icons: [
       { src: "/pcbway-logo.png", alt: "PCBWay", angle: 45, plate: true },
+      { src: "/elevenlabs-logo.svg", alt: "ElevenLabs", angle: 90, plate: true },
       { src: "/xyz-logo.png", alt: ".xyz", angle: 135, plate: true },
     ],
   },

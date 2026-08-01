@@ -351,7 +351,7 @@ export function SponsorsSection() {
               className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
             >
               <img
-                src="/codecrafters-logo.svg"
+                src="/codecrafters-logo.png"
                 alt="CodeCrafters"
                 className="max-h-16 w-auto object-contain"
               />

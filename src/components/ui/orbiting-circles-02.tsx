@@ -12,6 +12,7 @@ const orbits = [
     duration: 18,
     icons: [
       { src: "/context66-logo.png", alt: "Context66", angle: 0, plate: true },
+      { src: "/codecrafters-logo.png", alt: "CodeCrafters", angle: 90, plate: false },
     ],
   },
   {

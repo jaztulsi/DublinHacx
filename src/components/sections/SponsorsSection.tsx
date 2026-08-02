@@ -342,6 +342,26 @@ export function SponsorsSection() {
             </span>
           </a>
 
+          {/* Featured sponsor — Dream College Path (bigger than the grid, smaller than headline) */}
+          <a
+            href="https://www.dreamcollegepath.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Dream College Path"
+            className="mx-auto mt-4 flex w-full max-w-md flex-col items-center justify-center gap-2.5 rounded-2xl border border-primary/30 bg-card/20 p-5 transition-colors hover:border-primary/60 md:p-6"
+          >
+            <span className="flex w-full items-center justify-center rounded-xl bg-white px-5 py-5">
+              <img
+                src="/dream-college-path-logo.jpg"
+                alt="Dream College Path"
+                className="mx-auto max-h-20 w-auto max-w-[45%] object-contain"
+              />
+            </span>
+            <span className="font-pixel text-xs uppercase tracking-widest text-primary">
+              Featured Sponsor
+            </span>
+          </a>
+
           <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-3">
             <a
               href="https://codecrafters.io/"

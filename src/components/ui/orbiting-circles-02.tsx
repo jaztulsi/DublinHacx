@@ -12,6 +12,7 @@ const orbits = [
     duration: 18,
     icons: [
       { src: "/context66-logo.png", alt: "Context66", angle: 0, plate: true },
+      { src: "/dream-college-path-logo.jpg", alt: "Dream College Path", angle: 45, plate: true },
       { src: "/codecrafters-badge.png", alt: "CodeCrafters", angle: 90, plate: false, bare: true },
     ],
   },

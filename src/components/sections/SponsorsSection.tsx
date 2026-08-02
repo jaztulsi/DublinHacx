@@ -350,11 +350,11 @@ export function SponsorsSection() {
             aria-label="Dream College Path"
             className="mx-auto mt-4 flex w-full max-w-md flex-col items-center justify-center gap-2.5 rounded-2xl border border-primary/30 bg-card/20 p-5 transition-colors hover:border-primary/60 md:p-6"
           >
-            <span className="flex w-full items-center justify-center rounded-xl bg-white px-5 py-5">
+            <span className="flex items-center justify-center rounded-xl bg-white p-4">
               <img
                 src="/dream-college-path-logo.jpg"
                 alt="Dream College Path"
-                className="mx-auto max-h-20 w-auto max-w-[45%] object-contain"
+                className="h-40 w-auto object-contain"
               />
             </span>
             <span className="font-pixel text-xs uppercase tracking-widest text-primary">

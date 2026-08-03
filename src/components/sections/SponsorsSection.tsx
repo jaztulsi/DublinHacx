@@ -348,7 +348,7 @@ export function SponsorsSection() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Dream College Path"
-            className="mx-auto mt-4 flex w-full max-w-md flex-col items-center justify-center gap-2.5 rounded-2xl border border-primary/30 bg-card/20 p-5 transition-colors hover:border-primary/60 md:p-6"
+            className="mr-auto mt-4 flex w-[calc(50%-0.5rem)] flex-col items-center justify-center gap-2.5 rounded-2xl border border-primary/30 bg-card/20 p-5 transition-colors hover:border-primary/60 md:mx-auto md:w-full md:max-w-md md:p-6"
           >
             <span className="flex items-center justify-center rounded-xl bg-white p-4">
               <img

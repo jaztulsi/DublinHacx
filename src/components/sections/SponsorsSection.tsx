@@ -354,7 +354,8 @@ export function SponsorsSection() {
               <img
                 src="/dream-college-path-logo.jpg"
                 alt="Dream College Path"
-                className="h-40 w-auto object-contain"
+                // Featured tier: taller than the grid logos, shorter than the 96px Context66 headline.
+                className="h-[88px] w-auto object-contain"
               />
             </span>
             <span className="font-pixel text-xs uppercase tracking-widest text-primary">
@@ -447,10 +448,45 @@ export function SponsorsSection() {
         </motion.div>
       </div>
 
-      {/* Orbiting globe — flush to the very bottom, above the footer line */}
-      <div className="mt-16">
+      {/* Orbiting globe — desktop/tablet only; the globe is too congested on
+          phones, so mobile gets a compact scrolling logo belt instead. */}
+      <div className="mt-16 hidden md:block">
         <OrbitingCirclesGlobe />
       </div>
+      <div className="mt-12 md:hidden">
+        <SponsorBelt />
+      </div>
     </section>
+  );
+}
+
+// Mobile-only conveyor belt of sponsor logos — duplicated once so the -50%
+// translate loops seamlessly.
+const beltLogos = [
+  { src: "/context66-logo.png", alt: "Context66" },
+  { src: "/dream-college-path-logo.jpg", alt: "Dream College Path" },
+  { src: "/codecrafters-logo.png", alt: "CodeCrafters" },
+  { src: "/elevenlabs-logo.svg", alt: "ElevenLabs" },
+  { src: "/yri-science-logo.png", alt: "YRI Science" },
+  { src: "/medo-logo.png", alt: "MeDo" },
+  { src: "/pcbway-logo.png", alt: "PCBWay" },
+  { src: "/xyz-logo.png", alt: ".xyz" },
+];
+
+function SponsorBelt() {
+  return (
+    <div className="relative overflow-hidden py-2 [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
+      <style>{`@keyframes belt{from{transform:translateX(0)}to{transform:translateX(-50%)}}`}</style>
+      <div className="flex w-max gap-3" style={{ animation: "belt 25s linear infinite" }}>
+        {[...beltLogos, ...beltLogos].map((l, i) => (
+          <span
+            key={i}
+            className="flex h-14 w-24 shrink-0 items-center justify-center rounded-xl bg-white p-2.5"
+          >
+            <img src={l.src} alt={l.alt} className="max-h-full max-w-full object-contain" />
+          </span>
+        ))}
+      </div>
+    </div>
   );
 }

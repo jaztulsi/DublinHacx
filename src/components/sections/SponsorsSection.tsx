@@ -355,7 +355,7 @@ export function SponsorsSection() {
                 src="/dream-college-path-logo.jpg"
                 alt="Dream College Path"
                 // Featured tier: taller than the grid logos, shorter than the 96px Context66 headline.
-                className="h-[88px] w-auto object-contain"
+                className="h-[88px] w-auto object-contain md:h-[92px]"
               />
             </span>
             <span className="font-pixel text-xs uppercase tracking-widest text-primary">

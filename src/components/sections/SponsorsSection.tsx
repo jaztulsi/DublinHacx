@@ -444,6 +444,18 @@ export function SponsorsSection() {
               </span>
               <span className="text-xs text-muted-foreground">.xyz</span>
             </a>
+            <a
+              href="https://crakd.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Crakd"
+              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
+            >
+              <span className="flex items-center justify-center rounded-lg bg-white px-3 py-2">
+                <img src="/crakd-logo.jpeg" alt="Crakd" className="max-h-16 w-auto object-contain" />
+              </span>
+              <span className="text-xs text-muted-foreground">Crakd</span>
+            </a>
           </div>
         </motion.div>
       </div>
@@ -471,6 +483,7 @@ const beltLogos = [
   { src: "/medo-logo.png", alt: "MeDo" },
   { src: "/pcbway-logo.png", alt: "PCBWay" },
   { src: "/xyz-logo.png", alt: ".xyz" },
+  { src: "/crakd-logo.jpeg", alt: "Crakd" },
 ];
 
 function SponsorBelt() {

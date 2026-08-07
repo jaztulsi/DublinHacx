@@ -342,26 +342,48 @@ export function SponsorsSection() {
             </span>
           </a>
 
-          {/* Featured sponsor — Dream College Path (bigger than the grid, smaller than headline) */}
-          <a
-            href="https://www.dreamcollegepath.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Dream College Path"
-            className="mr-auto mt-4 flex w-[calc(50%-0.5rem)] flex-col items-center justify-center gap-2.5 rounded-2xl border border-primary/30 bg-card/20 p-5 transition-colors hover:border-primary/60 md:mx-auto md:w-full md:max-w-md md:p-6"
-          >
-            <span className="flex items-center justify-center rounded-xl bg-white p-4">
-              <img
-                src="/dream-college-path-logo.jpg"
-                alt="Dream College Path"
-                // Featured tier: taller than the grid logos, shorter than the 96px Context66 headline.
-                className="h-[88px] w-auto object-contain md:h-[92px]"
-              />
-            </span>
-            <span className="font-pixel text-xs uppercase tracking-widest text-primary">
-              Featured Sponsor
-            </span>
-          </a>
+          {/* Featured sponsors — Dream College Path + Crakd, side by side
+              (bigger than the grid, smaller than headline). */}
+          <div className="mt-4 flex justify-center gap-4">
+            <a
+              href="https://www.dreamcollegepath.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Dream College Path"
+              className="flex w-[calc(50%-0.5rem)] flex-col items-center justify-center gap-2.5 rounded-2xl border border-primary/30 bg-card/20 p-5 transition-colors hover:border-primary/60 md:w-full md:max-w-md md:p-6"
+            >
+              <span className="flex items-center justify-center rounded-xl bg-white p-4">
+                <img
+                  src="/dream-college-path-logo.jpg"
+                  alt="Dream College Path"
+                  // Featured tier: taller than the grid logos, shorter than the 96px Context66 headline.
+                  className="h-[88px] w-auto object-contain md:h-[92px]"
+                />
+              </span>
+              <span className="font-pixel text-xs uppercase tracking-widest text-primary">
+                Featured Sponsor
+              </span>
+            </a>
+            <a
+              href="https://crakd.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Crakd"
+              className="flex w-[calc(50%-0.5rem)] flex-col items-center justify-center gap-2.5 rounded-2xl border border-primary/30 bg-card/20 p-5 transition-colors hover:border-primary/60 md:w-full md:max-w-md md:p-6"
+            >
+              {/* Square logo w/ baked-in white bg: minimal padding so it fills the box. */}
+              <span className="flex items-center justify-center overflow-hidden rounded-xl bg-white">
+                <img
+                  src="/crakd-logo.jpeg"
+                  alt="Crakd"
+                  className="h-[120px] w-auto object-contain md:h-[124px]"
+                />
+              </span>
+              <span className="font-pixel text-xs uppercase tracking-widest text-primary">
+                Featured Sponsor
+              </span>
+            </a>
+          </div>
 
           <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-3">
             <a
@@ -443,18 +465,6 @@ export function SponsorsSection() {
                 <img src="/xyz-logo.png" alt=".xyz" className="max-h-16 w-auto object-contain" />
               </span>
               <span className="text-xs text-muted-foreground">.xyz</span>
-            </a>
-            <a
-              href="https://crakd.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Crakd"
-              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
-            >
-              <span className="flex items-center justify-center rounded-lg bg-white px-3 py-2">
-                <img src="/crakd-logo.jpeg" alt="Crakd" className="max-h-16 w-auto object-contain" />
-              </span>
-              <span className="text-xs text-muted-foreground">Crakd</span>
             </a>
           </div>
         </motion.div>

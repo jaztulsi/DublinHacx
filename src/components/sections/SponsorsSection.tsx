@@ -365,7 +365,7 @@ export function SponsorsSection() {
               </span>
             </a>
             <a
-              href="https://crakd.com/"
+              href="https://crackd.it/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Crakd"

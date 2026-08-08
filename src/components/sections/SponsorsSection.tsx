@@ -401,6 +401,95 @@ export function SponsorsSection() {
               <span className="text-xs text-muted-foreground">CodeCrafters</span>
             </a>
             <a
+              href="https://featherless.ai/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Featherless.ai"
+              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
+            >
+              <span className="flex w-2/3 items-center justify-center rounded-lg bg-white px-4 py-3">
+                <img
+                  src="/featherless-logo.svg"
+                  alt="Featherless.ai"
+                  className="max-h-12 w-full object-contain"
+                />
+              </span>
+              <span className="text-xs text-muted-foreground">Featherless.ai</span>
+            </a>
+            <a
+              href="https://nordvpn.com/hackathons"
+              target="_blank"
+              rel="noopener noreferrer nofollow sponsored"
+              aria-label="NordVPN"
+              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
+            >
+              <span className="flex items-center justify-center rounded-lg bg-white px-4 py-3">
+                <img src="/nordvpn-logo.png" alt="NordVPN" className="max-h-10 w-auto object-contain" />
+              </span>
+              <span className="text-xs text-muted-foreground">NordVPN</span>
+            </a>
+            <a
+              href="https://nordpass.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="NordPass"
+              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
+            >
+              <span className="flex w-2/3 items-center justify-center rounded-lg bg-white px-4 py-3">
+                <img src="/nordpass-logo.png" alt="NordPass" className="max-h-8 w-full object-contain" />
+              </span>
+              <span className="text-xs text-muted-foreground">NordPass</span>
+            </a>
+            <a
+              href="https://coveron.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Coveron"
+              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
+            >
+              <span className="flex items-center justify-center rounded-lg bg-white px-4 py-3">
+                <img src="/coveron-logo.png" alt="Coveron" className="max-h-9 w-auto object-contain" />
+              </span>
+              <span className="text-xs text-muted-foreground">Coveron</span>
+            </a>
+            <a
+              href="https://incogni.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Incogni"
+              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
+            >
+              <span className="flex items-center justify-center rounded-lg bg-white px-4 py-3">
+                <img src="/incogni-logo.png" alt="Incogni" className="max-h-9 w-auto object-contain" />
+              </span>
+              <span className="text-xs text-muted-foreground">Incogni</span>
+            </a>
+            <a
+              href="https://saily.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Saily"
+              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
+            >
+              <span className="flex items-center justify-center rounded-lg bg-white px-4 py-3">
+                <img src="/saily-logo.png" alt="Saily" className="max-h-10 w-auto object-contain" />
+              </span>
+              <span className="text-xs text-muted-foreground">Saily</span>
+            </a>
+            <a
+              href="https://n8n.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="n8n"
+              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
+            >
+              {/* n8n brand: white wordmark → dark tile (#040506); icon stays pink. */}
+              <span className="flex w-2/3 items-center justify-center rounded-lg bg-[#040506] px-4 py-3">
+                <img src="/n8n-logo.png" alt="n8n" className="max-h-9 w-full object-contain" />
+              </span>
+              <span className="text-xs text-muted-foreground">n8n</span>
+            </a>
+            <a
               href="https://elevenlabs.io/"
               target="_blank"
               rel="noopener noreferrer"
@@ -494,6 +583,13 @@ const beltLogos = [
   { src: "/pcbway-logo.png", alt: "PCBWay" },
   { src: "/xyz-logo.png", alt: ".xyz" },
   { src: "/crakd-logo.jpeg", alt: "Crakd" },
+  { src: "/featherless-logo.svg", alt: "Featherless.ai" },
+  { src: "/nordvpn-logo.png", alt: "NordVPN" },
+  { src: "/nordpass-logo.png", alt: "NordPass" },
+  { src: "/coveron-logo.png", alt: "Coveron" },
+  { src: "/incogni-logo.png", alt: "Incogni" },
+  { src: "/saily-logo.png", alt: "Saily" },
+  { src: "/n8n-logo.png", alt: "n8n", dark: true },
 ];
 
 function SponsorBelt() {
@@ -504,7 +600,7 @@ function SponsorBelt() {
         {[...beltLogos, ...beltLogos].map((l, i) => (
           <span
             key={i}
-            className="flex h-14 w-24 shrink-0 items-center justify-center rounded-xl bg-white p-2.5"
+            className={`flex h-14 w-24 shrink-0 items-center justify-center rounded-xl p-2.5 ${l.dark ? "bg-[#040506]" : "bg-white"}`}
           >
             <img src={l.src} alt={l.alt} className="max-h-full max-w-full object-contain" />
           </span>

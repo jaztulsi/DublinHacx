@@ -423,8 +423,8 @@ export function SponsorsSection() {
               aria-label="NordVPN"
               className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
             >
-              <span className="flex items-center justify-center rounded-lg bg-white px-4 py-3">
-                <img src="/nordvpn-logo.png" alt="NordVPN" className="max-h-10 w-auto object-contain" />
+              <span className="flex w-full items-center justify-center rounded-lg bg-white px-3 py-2.5">
+                <img src="/nordvpn-logo.png" alt="NordVPN" className="max-h-14 w-full object-contain" />
               </span>
               <span className="text-xs text-muted-foreground">NordVPN</span>
             </a>
@@ -435,8 +435,8 @@ export function SponsorsSection() {
               aria-label="NordPass"
               className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
             >
-              <span className="flex w-2/3 items-center justify-center rounded-lg bg-white px-4 py-3">
-                <img src="/nordpass-logo.png" alt="NordPass" className="max-h-8 w-full object-contain" />
+              <span className="flex w-full items-center justify-center rounded-lg bg-white px-3 py-2.5">
+                <img src="/nordpass-logo.png" alt="NordPass" className="max-h-10 w-full object-contain" />
               </span>
               <span className="text-xs text-muted-foreground">NordPass</span>
             </a>
@@ -447,8 +447,8 @@ export function SponsorsSection() {
               aria-label="Coveron"
               className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
             >
-              <span className="flex items-center justify-center rounded-lg bg-white px-4 py-3">
-                <img src="/coveron-logo.png" alt="Coveron" className="max-h-9 w-auto object-contain" />
+              <span className="flex w-full items-center justify-center rounded-lg bg-white px-3 py-2.5">
+                <img src="/coveron-logo.png" alt="Coveron" className="max-h-11 w-full object-contain" />
               </span>
               <span className="text-xs text-muted-foreground">Coveron</span>
             </a>
@@ -459,8 +459,8 @@ export function SponsorsSection() {
               aria-label="Incogni"
               className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
             >
-              <span className="flex items-center justify-center rounded-lg bg-white px-4 py-3">
-                <img src="/incogni-logo.png" alt="Incogni" className="max-h-9 w-auto object-contain" />
+              <span className="flex w-full items-center justify-center rounded-lg bg-white px-3 py-2.5">
+                <img src="/incogni-logo.png" alt="Incogni" className="max-h-11 w-full object-contain" />
               </span>
               <span className="text-xs text-muted-foreground">Incogni</span>
             </a>
@@ -471,8 +471,8 @@ export function SponsorsSection() {
               aria-label="Saily"
               className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
             >
-              <span className="flex items-center justify-center rounded-lg bg-white px-4 py-3">
-                <img src="/saily-logo.png" alt="Saily" className="max-h-10 w-auto object-contain" />
+              <span className="flex w-full items-center justify-center rounded-lg bg-white px-3 py-2.5">
+                <img src="/saily-logo.png" alt="Saily" className="max-h-12 w-full object-contain" />
               </span>
               <span className="text-xs text-muted-foreground">Saily</span>
             </a>
@@ -484,8 +484,8 @@ export function SponsorsSection() {
               className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
             >
               {/* n8n brand: white wordmark → dark tile (#040506); icon stays pink. */}
-              <span className="flex w-2/3 items-center justify-center rounded-lg bg-[#040506] px-4 py-3">
-                <img src="/n8n-logo.png" alt="n8n" className="max-h-9 w-full object-contain" />
+              <span className="flex w-full items-center justify-center rounded-lg bg-[#040506] px-3 py-2.5">
+                <img src="/n8n-logo.png" alt="n8n" className="max-h-11 w-full object-contain" />
               </span>
               <span className="text-xs text-muted-foreground">n8n</span>
             </a>

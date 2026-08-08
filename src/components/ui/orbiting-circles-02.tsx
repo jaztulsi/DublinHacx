@@ -12,8 +12,10 @@ const orbits = [
     duration: 18,
     icons: [
       { src: "/context66-logo.png", alt: "Context66", angle: 0, plate: true },
-      { src: "/dream-college-path-logo.jpg", alt: "Dream College Path", angle: 45, plate: true },
-      { src: "/codecrafters-badge.png", alt: "CodeCrafters", angle: 90, plate: false, bare: true },
+      { src: "/dream-college-path-logo.jpg", alt: "Dream College Path", angle: 72, plate: true },
+      { src: "/codecrafters-badge.png", alt: "CodeCrafters", angle: 144, plate: false, bare: true },
+      { src: "/featherless-mark.svg", alt: "Featherless.ai", angle: 216, plate: true },
+      { src: "/saily-logo.png", alt: "Saily", angle: 288, plate: true },
     ],
   },
   {
@@ -21,16 +23,22 @@ const orbits = [
     duration: 24,
     icons: [
       { src: "/yri-science-logo.png", alt: "YRI Science", angle: 0, plate: true },
-      { src: "/medo-logo.png", alt: "MeDo", angle: 90, plate: true },
+      { src: "/medo-logo.png", alt: "MeDo", angle: 72, plate: true },
+      { src: "/nordvpn-logo.png", alt: "NordVPN", angle: 144, plate: true },
+      // n8n wordmark is white → needs the dark plate (plate:false === bg-background).
+      { src: "/n8n-logo.png", alt: "n8n", angle: 216, plate: false },
+      { src: "/nordpass-logo.png", alt: "NordPass", angle: 288, plate: true },
     ],
   },
   {
     scale: 1, // outer ring == --gd
     duration: 30,
     icons: [
-      { src: "/pcbway-logo.png", alt: "PCBWay", angle: 45, plate: true },
-      { src: "/elevenlabs-logo.svg", alt: "ElevenLabs", angle: 90, plate: true },
-      { src: "/xyz-logo.png", alt: ".xyz", angle: 135, plate: true },
+      { src: "/pcbway-logo.png", alt: "PCBWay", angle: 0, plate: true },
+      { src: "/elevenlabs-logo.svg", alt: "ElevenLabs", angle: 72, plate: true },
+      { src: "/xyz-logo.png", alt: ".xyz", angle: 144, plate: true },
+      { src: "/coveron-logo.png", alt: "Coveron", angle: 216, plate: true },
+      { src: "/incogni-logo.png", alt: "Incogni", angle: 288, plate: true },
     ],
   },
 ];

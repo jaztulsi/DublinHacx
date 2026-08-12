@@ -27,6 +27,7 @@ export const schedule: ScheduleItem[] = [
   { offsetMin: 60,  time: "11:00 AM", title: "Hacking Begins",             description: "12 hours start now. Build, ship, repeat.",               tag: "Event" },
   { offsetMin: 180, time: "1:00 PM",  title: "Lunch",                      description: "Hot meal to keep you fueled for the afternoon.",         tag: "Food" },
   { offsetMin: 300, time: "3:00 PM",  title: "Workshops",                  description: "Beginner-friendly sessions on web, AI, and hardware.",   tag: "Fun" },
+  { offsetMin: 420, time: "5:00 PM",  title: "Dastar Band",                description: "Turban-tying session — learn to tie a dastar with us.",  tag: "Fun" },
   { offsetMin: 480, time: "6:00 PM",  title: "Dinner",                     description: "Refuel for the final stretch of building.",              tag: "Food" },
   { offsetMin: 600, time: "8:00 PM",  title: "Hacking Ends / Submissions Due", description: "Final commits, demo prep, and devpost uploads.",     tag: "Event" },
   { offsetMin: 630, time: "8:30 PM",  title: "Judging",                    description: "Show your project to industry mentors.",                 tag: "Event" },

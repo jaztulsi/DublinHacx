@@ -12,7 +12,8 @@ const orbits = [
     duration: 18,
     icons: [
       { src: "/context66-logo.png", alt: "Context66", angle: 0, plate: true },
-      { src: "/dream-college-path-logo.jpg", alt: "Dream College Path", angle: 72, plate: true },
+      // Logo is white-on-transparent → needs the dark plate.
+      { src: "/dream-college-path-logo.png", alt: "Dream College Path", angle: 72, plate: false },
       { src: "/codecrafters-badge.png", alt: "CodeCrafters", angle: 144, plate: false, bare: true },
       { src: "/featherless-mark.svg", alt: "Featherless.ai", angle: 216, plate: true },
       { src: "/saily-logo.png", alt: "Saily", angle: 288, plate: true },

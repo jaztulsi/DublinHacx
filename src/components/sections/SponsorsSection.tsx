@@ -352,9 +352,9 @@ export function SponsorsSection() {
               aria-label="Dream College Path"
               className="flex w-[calc(50%-0.5rem)] flex-col items-center justify-center gap-2.5 rounded-2xl border border-primary/30 bg-card/20 p-5 transition-colors hover:border-primary/60 md:w-full md:max-w-md md:p-6"
             >
-              <span className="flex items-center justify-center rounded-xl bg-white p-4">
+              <span className="flex items-center justify-center rounded-xl bg-[#122335] p-4">
                 <img
-                  src="/dream-college-path-logo.jpg"
+                  src="/dream-college-path-logo.png"
                   alt="Dream College Path"
                   // Featured tier: taller than the grid logos, shorter than the 96px Context66 headline.
                   className="h-[88px] w-auto object-contain md:h-[92px]"
@@ -575,7 +575,7 @@ export function SponsorsSection() {
 // translate loops seamlessly.
 const beltLogos = [
   { src: "/context66-logo.png", alt: "Context66" },
-  { src: "/dream-college-path-logo.jpg", alt: "Dream College Path" },
+  { src: "/dream-college-path-logo.png", alt: "Dream College Path", dark: true },
   { src: "/codecrafters-logo.png", alt: "CodeCrafters" },
   { src: "/elevenlabs-logo.svg", alt: "ElevenLabs" },
   { src: "/yri-science-logo.png", alt: "YRI Science" },

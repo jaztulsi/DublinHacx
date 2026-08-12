@@ -345,25 +345,40 @@ export function SponsorsSection() {
           {/* Featured sponsors — Dream College Path + Crakd, side by side
               (bigger than the grid, smaller than headline). */}
           <div className="mt-4 flex justify-center gap-4">
-            <a
-              href="https://www.dreamcollegepath.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Dream College Path"
-              className="flex w-[calc(50%-0.5rem)] flex-col items-center justify-center gap-2.5 rounded-2xl border border-primary/30 bg-card/20 p-5 transition-colors hover:border-primary/60 md:w-full md:max-w-md md:p-6"
-            >
-              <span className="flex items-center justify-center rounded-xl bg-[#122335] p-4">
-                <img
-                  src="/dream-college-path-logo.png"
-                  alt="Dream College Path"
-                  // Featured tier: taller than the grid logos, shorter than the 96px Context66 headline.
-                  className="h-[88px] w-auto object-contain md:h-[92px]"
-                />
-              </span>
+            {/* Not an <a>: the card holds nested tel:/mailto: links, so the
+                logo gets its own anchor and the wrapper stays a div. */}
+            <div className="flex w-[calc(50%-0.5rem)] flex-col items-center justify-center gap-2.5 rounded-2xl border border-primary/30 bg-card/20 p-5 md:w-full md:max-w-md md:p-6">
+              <a
+                href="https://www.dreamcollegepath.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Dream College Path"
+                className="rounded-xl transition-opacity hover:opacity-80"
+              >
+                <span className="flex items-center justify-center rounded-xl bg-[#122335] p-4">
+                  <img
+                    src="/dream-college-path-logo.png"
+                    alt="Dream College Path"
+                    // Featured tier: taller than the grid logos, shorter than the 96px Context66 headline.
+                    className="h-[88px] w-auto object-contain md:h-[92px]"
+                  />
+                </span>
+              </a>
               <span className="font-pixel text-xs uppercase tracking-widest text-primary">
                 Featured Sponsor
               </span>
-            </a>
+              <div className="flex flex-col items-center gap-0.5 text-xs text-muted-foreground">
+                <a href="tel:+19253077711" className="transition-colors hover:text-primary">
+                  +1 925-307-7711
+                </a>
+                <a
+                  href="mailto:admin@dreamcollegepath.com"
+                  className="break-all transition-colors hover:text-primary"
+                >
+                  admin@dreamcollegepath.com
+                </a>
+              </div>
+            </div>
             <a
               href="https://crackd.it/"
               target="_blank"

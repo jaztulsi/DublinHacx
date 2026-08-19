@@ -28,6 +28,21 @@ const judges: Judge[] = [
     ],
     bio: "15+ years in performance engineering and distributed systems, building scalable enterprise cloud and Generative AI platforms. Google Cloud certified in GenAI; has judged and mentored at hackathons including UC Berkeley's AI Hackathon 2026.",
   },
+  {
+    name: "Sourabh Kukar",
+    title: "Director of Technical Consulting",
+    company: "Salesforce",
+    location: "United States",
+    education: "IEEE Senior Member — 23 industry certifications",
+    img: "/sourabh-kukar.jpg",
+    tags: [
+      "Revenue Cloud & CPQ",
+      "Agentforce",
+      "Enterprise Architecture",
+      "IEEE Senior Member",
+    ],
+    bio: "Leads a team of enterprise architects delivering Revenue Cloud, CPQ, and Agentforce solutions for major enterprise clients. Holds 23 industry certifications, is an IEEE Senior Member, and was named Salesforce's FY24 CMT Technical Architect of the Year. An active mentor and judge across the tech community — hackathons, IEEE conference reviewing, and industry awards panels — passionate about helping the next generation of technologists build and present real-world solutions.",
+  },
 ];
 
 function JudgeAvatar({ name, img }: { name: string; img?: string }) {

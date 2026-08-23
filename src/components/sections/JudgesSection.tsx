@@ -43,6 +43,21 @@ const judges: Judge[] = [
     ],
     bio: "Leads a team of enterprise architects delivering Revenue Cloud, CPQ, and Agentforce solutions for major enterprise clients. Holds 23 industry certifications, is an IEEE Senior Member, and was named Salesforce's FY24 CMT Technical Architect of the Year. An active mentor and judge across the tech community — hackathons, IEEE conference reviewing, and industry awards panels — passionate about helping the next generation of technologists build and present real-world solutions.",
   },
+  {
+    name: "Sashank Agarwal",
+    title: "Senior Cloud Infrastructure & Software Engineer",
+    company: "NVIDIA",
+    location: "United States",
+    education: "Previously Intuit & Red Hat",
+    img: "/sashank-agarwal.jpg",
+    tags: [
+      "AI Infrastructure",
+      "Distributed Systems",
+      "Kubernetes",
+      "Cloud-Native Platforms",
+    ],
+    bio: "Senior Cloud Infrastructure and Software Engineer at NVIDIA, specializing in AI infrastructure, distributed systems, Kubernetes, and cloud-native platforms. Previously at Intuit and Red Hat, where he contributed to large-scale infrastructure, observability systems, and open-source cloud-native technologies including the Loki Operator ecosystem. His expertise spans AI infrastructure, high-performance computing, platform engineering, observability, and scalable distributed systems.",
+  },
 ];
 
 function JudgeAvatar({ name, img }: { name: string; img?: string }) {

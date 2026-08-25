@@ -42,8 +42,8 @@ const board: { name: string; role: string; bio: string; img?: string }[] = [
   },
   {
     name: "Shaurya",
-    role: "Volunteer & Guest Speaker Outreach",
-    bio: "Coordinates volunteers and reaches out to guest speakers.",
+    role: "Community & Volunteer Manager",
+    bio: "Manages the community and coordinates volunteers and guest speaker outreach.",
     img: "/shaurya.jpg",
   },
 ];

@@ -119,7 +119,7 @@ function JudgeAvatar({ name, img }: { name: string; img?: string }) {
 export function JudgesSection() {
   return (
     <section id="judges" className="relative px-6 py-24 md:py-32">
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -133,7 +133,7 @@ export function JudgesSection() {
           </h2>
         </motion.div>
 
-        <div className="flex flex-wrap justify-center gap-6">
+        <div className="mx-auto grid max-w-xs grid-cols-1 justify-center gap-6 sm:max-w-2xl sm:grid-cols-2 lg:max-w-4xl lg:grid-cols-3 xl:max-w-6xl xl:grid-cols-4">
           {judges.map((j, i) => (
             <motion.div
               key={j.name}

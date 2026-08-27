@@ -58,6 +58,36 @@ const judges: Judge[] = [
     ],
     bio: "Senior Cloud Infrastructure and Software Engineer at NVIDIA, specializing in AI infrastructure, distributed systems, Kubernetes, and cloud-native platforms. Previously at Intuit and Red Hat, where he contributed to large-scale infrastructure, observability systems, and open-source cloud-native technologies including the Loki Operator ecosystem. His expertise spans AI infrastructure, high-performance computing, platform engineering, observability, and scalable distributed systems.",
   },
+  {
+    name: "Yash Shah",
+    title: "Software Engineer II",
+    company: "Apple",
+    location: "Cupertino, California",
+    education: "M.S. Computer Science — University of Texas at Dallas",
+    img: "/yash-shah.jpg",
+    tags: [
+      "AI/ML Systems",
+      "Distributed Systems",
+      "Developer Tooling",
+      "Cloud Infrastructure",
+    ],
+    bio: "Software Engineer II at Apple, building backend and distributed systems. Previously at Microsoft, Oracle OCI, and HSBC, working with Go, Java, Python, Kafka, Kubernetes, and AWS. Holds an M.S. in Computer Science from UT Dallas. His interests sit at the intersection of AI/ML systems, developer tooling, and cloud infrastructure, and he especially enjoys mentoring early-career builders.",
+  },
+  {
+    name: "Mandar Chaudhari",
+    title: "Full-Stack Geospatial Software Developer",
+    company: "Land IQ",
+    location: "United States",
+    education: "M.S. Computer Science — George Mason University",
+    img: "/mandar-chaudhari.png",
+    tags: [
+      "Geospatial Platforms",
+      "AI/ML",
+      "Aviation Decision-Support",
+      "AWS Certified Solutions Architect",
+    ],
+    bio: "Full-Stack Geospatial Software Developer at Land IQ and Research Assistant at George Mason University's Center for Air Transportation Systems Research. His work spans production AI/ML and geospatial platforms for California state agencies and AI-enabled decision-support systems in aviation. He holds an M.S. in Computer Science from George Mason University and is an AWS Certified Solutions Architect.",
+  },
 ];
 
 function JudgeAvatar({ name, img }: { name: string; img?: string }) {

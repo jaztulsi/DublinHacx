@@ -48,3 +48,13 @@ ds-bundle/
 .design-sync/.cache/
 .design-sync/learnings/
 .design-sync/node_modules
+
+# Tooling / scratch
+.claude-flow/
+.claude/
+.mcp.json
+.playwright-mcp/
+.design-refs/
+public/.claude-flow/
+main.py
+*.png

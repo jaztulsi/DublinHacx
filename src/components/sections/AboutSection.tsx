@@ -40,12 +40,6 @@ const board: { name: string; role: string; bio: string; img?: string }[] = [
     bio: "Handles social media — posts, promos, and everything in between.",
     img: "/rachit-panchal.jpg",
   },
-  {
-    name: "Shaurya",
-    role: "Community & Volunteer Manager",
-    bio: "Manages the community and coordinates volunteers and guest speaker outreach.",
-    img: "/shaurya.jpg",
-  },
 ];
 
 /** Avatar: shows the organizer photo if provided, else falls back to initials. */

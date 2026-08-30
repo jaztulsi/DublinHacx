@@ -88,6 +88,21 @@ const judges: Judge[] = [
     ],
     bio: "Full-Stack Geospatial Software Developer at Land IQ and Research Assistant at George Mason University's Center for Air Transportation Systems Research. His work spans production AI/ML and geospatial platforms for California state agencies and AI-enabled decision-support systems in aviation. He holds an M.S. in Computer Science from George Mason University and is an AWS Certified Solutions Architect.",
   },
+  {
+    name: "Palvinder Singh",
+    title: "Co-Founder & CTO",
+    company: "Context66",
+    location: "United States",
+    education: "Distinguished Engineer & Inventor",
+    img: "/palvinder-singh.png",
+    tags: [
+      "Distinguished Engineer",
+      "Inventor",
+      "Enterprise Leadership",
+      "Applied Innovation",
+    ],
+    bio: "Co-Founder and CTO of Context66. He previously held senior leadership roles at Salesforce, Viasat, Intel, and LG Electronics. He's recognized as a distinguished engineer and inventor, known for bringing cutting-edge technology into practical, everyday use.",
+  },
 ];
 
 function JudgeAvatar({ name, img }: { name: string; img?: string }) {

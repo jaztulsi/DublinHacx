@@ -10,9 +10,26 @@ type Judge = {
   tags: string[];
   bio: string;
   img?: string;
+  emphasize?: boolean;
 };
 
 const judges: Judge[] = [
+  {
+    name: "Palvinder Singh",
+    title: "Co-Founder & CTO",
+    company: "Context66",
+    location: "United States",
+    education: "Distinguished Engineer & Inventor",
+    img: "/palvinder-singh.png",
+    emphasize: true,
+    tags: [
+      "Distinguished Engineer",
+      "Inventor",
+      "Enterprise Leadership",
+      "Applied Innovation",
+    ],
+    bio: "Co-Founder and CTO of Context66. He previously held senior leadership roles at Salesforce, Viasat, Intel, and LG Electronics. He's recognized as a distinguished engineer and inventor, known for bringing cutting-edge technology into practical, everyday use.",
+  },
   {
     name: "Vasuki Uday Kiran Vudathala",
     title: "Staff Performance Engineer",
@@ -88,21 +105,6 @@ const judges: Judge[] = [
     ],
     bio: "Full-Stack Geospatial Software Developer at Land IQ and Research Assistant at George Mason University's Center for Air Transportation Systems Research. His work spans production AI/ML and geospatial platforms for California state agencies and AI-enabled decision-support systems in aviation. He holds an M.S. in Computer Science from George Mason University and is an AWS Certified Solutions Architect.",
   },
-  {
-    name: "Palvinder Singh",
-    title: "Co-Founder & CTO",
-    company: "Context66",
-    location: "United States",
-    education: "Distinguished Engineer & Inventor",
-    img: "/palvinder-singh.png",
-    tags: [
-      "Distinguished Engineer",
-      "Inventor",
-      "Enterprise Leadership",
-      "Applied Innovation",
-    ],
-    bio: "Co-Founder and CTO of Context66. He previously held senior leadership roles at Salesforce, Viasat, Intel, and LG Electronics. He's recognized as a distinguished engineer and inventor, known for bringing cutting-edge technology into practical, everyday use.",
-  },
 ];
 
 function JudgeAvatar({ name, img }: { name: string; img?: string }) {
@@ -161,15 +163,15 @@ export function JudgesSection() {
               <div className="flex items-center gap-3">
                 <JudgeAvatar name={j.name} img={j.img} />
                 <div className="min-w-0">
-                  <h3 className="font-display text-base font-bold leading-tight">{j.name}</h3>
-                  <p className="text-xs text-primary">
+                  <h3 className={`font-display font-bold leading-tight ${j.emphasize ? "text-lg" : "text-base"}`}>{j.name}</h3>
+                  <p className={`text-primary ${j.emphasize ? "text-sm" : "text-xs"}`}>
                     {j.title} @ {j.company}
                   </p>
-                  <p className="mt-0.5 text-[11px] text-muted-foreground">{j.location}</p>
+                  <p className={`mt-0.5 text-muted-foreground ${j.emphasize ? "text-xs" : "text-[11px]"}`}>{j.location}</p>
                 </div>
               </div>
 
-              <p className="mt-3 text-xs leading-relaxed text-muted-foreground">{j.bio}</p>
+              <p className={`mt-3 leading-relaxed text-muted-foreground ${j.emphasize ? "text-sm" : "text-xs"}`}>{j.bio}</p>
             </motion.div>
           ))}
         </div>

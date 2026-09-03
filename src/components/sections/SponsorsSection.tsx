@@ -400,23 +400,14 @@ export function SponsorsSection() {
             </a>
           </div>
 
-          {/* Exea Labs — white-on-black mark, so it keeps its dark tile. */}
-          <div className="mt-4 flex justify-center">
-            <div className="flex w-full max-w-md flex-col items-center justify-center gap-2.5 rounded-2xl border border-primary/30 bg-card/20 p-5 md:p-6">
-              <span className="flex w-full items-center justify-center rounded-xl bg-black p-6">
-                <img
-                  src="/exea-labs-logo.webp"
-                  alt="Exea Labs"
-                  className="h-[88px] w-auto object-contain md:h-[92px]"
-                />
-              </span>
-              <span className="font-pixel text-xs uppercase tracking-widest text-primary">
-                Featured Sponsor
-              </span>
-            </div>
-          </div>
-
           <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-3">
+            {/* Exea Labs — white-on-black mark, so it keeps a dark tile. */}
+            <div className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4">
+              <span className="flex w-full items-center justify-center rounded-lg bg-black px-3 py-2.5">
+                <img src="/exea-labs-logo.webp" alt="Exea Labs" className="max-h-11 w-full object-contain" />
+              </span>
+              <span className="text-xs text-muted-foreground">Exea Labs</span>
+            </div>
             <a
               href="https://codecrafters.io/"
               target="_blank"

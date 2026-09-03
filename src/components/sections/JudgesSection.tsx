@@ -4,7 +4,7 @@ import { useState } from "react";
 type Judge = {
   name: string;
   title: string;
-  company: string;
+  company?: string;
   location: string;
   education: string;
   tags: string[];
@@ -105,6 +105,20 @@ const judges: Judge[] = [
     ],
     bio: "Full-Stack Geospatial Software Developer at Land IQ and Research Assistant at George Mason University's Center for Air Transportation Systems Research. His work spans production AI/ML and geospatial platforms for California state agencies and AI-enabled decision-support systems in aviation. He holds an M.S. in Computer Science from George Mason University and is an AWS Certified Solutions Architect.",
   },
+  {
+    name: "Santosh",
+    title: "Senior Staff Software Engineer",
+    location: "United States",
+    education: "IEEE Senior Member",
+    img: "/santosh.jpg",
+    tags: [
+      "Distributed Systems",
+      "Kubernetes",
+      "AI/ML Platforms",
+      "IEEE Senior Member",
+    ],
+    bio: "Senior Staff Software Engineer with expertise in distributed systems, Kubernetes, cloud infrastructure, and AI/ML platforms. He has architected and built large-scale production systems for high-throughput, low-latency workloads, focusing recently on streaming data platforms using Kafka, Benthos, and Kubernetes. His broader interests span platform engineering, observability, reliability, LLM inference and serving, and scalable AI infrastructure. Santosh is an IEEE Senior Member and enjoys mentoring builders and evaluating projects for technical depth, practical impact, and real-world scalability.",
+  },
 ];
 
 function JudgeAvatar({ name, img }: { name: string; img?: string }) {
@@ -165,7 +179,7 @@ export function JudgesSection() {
                 <div className="min-w-0">
                   <h3 className={`font-display font-bold leading-tight ${j.emphasize ? "text-lg" : "text-base"}`}>{j.name}</h3>
                   <p className={`text-primary ${j.emphasize ? "text-sm" : "text-xs"}`}>
-                    {j.title} @ {j.company}
+                    {j.title}{j.company ? ` @ ${j.company}` : ""}
                   </p>
                   <p className={`mt-0.5 text-muted-foreground ${j.emphasize ? "text-xs" : "text-[11px]"}`}>{j.location}</p>
                 </div>
@@ -175,6 +189,22 @@ export function JudgesSection() {
             </motion.div>
           ))}
         </div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6 }}
+          className="mt-12 text-center text-sm text-muted-foreground"
+        >
+          Want to become a judge? Email{" "}
+          <a
+            href="mailto:parvaan.dublinhacx@gmail.com"
+            className="text-primary underline underline-offset-4"
+          >
+            parvaan.dublinhacx@gmail.com
+          </a>
+        </motion.p>
       </div>
     </section>
   );

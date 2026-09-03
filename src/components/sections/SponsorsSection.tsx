@@ -400,6 +400,22 @@ export function SponsorsSection() {
             </a>
           </div>
 
+          {/* Exea Labs — white-on-black mark, so it keeps its dark tile. */}
+          <div className="mt-4 flex justify-center">
+            <div className="flex w-full max-w-md flex-col items-center justify-center gap-2.5 rounded-2xl border border-primary/30 bg-card/20 p-5 md:p-6">
+              <span className="flex w-full items-center justify-center rounded-xl bg-black p-6">
+                <img
+                  src="/exea-labs-logo.webp"
+                  alt="Exea Labs"
+                  className="h-[88px] w-auto object-contain md:h-[92px]"
+                />
+              </span>
+              <span className="font-pixel text-xs uppercase tracking-widest text-primary">
+                Featured Sponsor
+              </span>
+            </div>
+          </div>
+
           <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-3">
             <a
               href="https://codecrafters.io/"
@@ -598,6 +614,7 @@ const beltLogos = [
   { src: "/pcbway-logo.png", alt: "PCBWay" },
   { src: "/xyz-logo.png", alt: ".xyz" },
   { src: "/crakd-logo.jpeg", alt: "Crakd" },
+  { src: "/exea-labs-logo.webp", alt: "Exea Labs", dark: true },
   { src: "/featherless-logo.svg", alt: "Featherless.ai" },
   { src: "/nordvpn-logo.png", alt: "NordVPN" },
   { src: "/nordpass-logo.png", alt: "NordPass" },

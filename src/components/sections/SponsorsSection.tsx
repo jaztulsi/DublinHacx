@@ -401,15 +401,21 @@ export function SponsorsSection() {
           </div>
 
           <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-3">
-            {/* Exea Labs — logo is already a black square, so no tile; sized like CodeCrafters. */}
-            <div className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4">
+            {/* Exea Labs — logo is already a black square, so no tile. */}
+            <a
+              href="https://www.exealabs.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Exea Labs"
+              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
+            >
               <img
                 src="/exea-labs-logo.webp"
                 alt="Exea Labs"
-                className="w-2/3 max-h-24 object-contain"
+                className="w-3/4 max-h-28 object-contain"
               />
               <span className="text-xs text-muted-foreground">Exea Labs</span>
-            </div>
+            </a>
             <a
               href="https://codecrafters.io/"
               target="_blank"

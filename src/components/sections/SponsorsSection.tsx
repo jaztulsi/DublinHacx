@@ -401,11 +401,13 @@ export function SponsorsSection() {
           </div>
 
           <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-3">
-            {/* Exea Labs — white-on-black mark, so it keeps a dark tile. */}
+            {/* Exea Labs — logo is already a black square, so no tile; sized like CodeCrafters. */}
             <div className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4">
-              <span className="flex w-full items-center justify-center rounded-lg bg-black px-3 py-2.5">
-                <img src="/exea-labs-logo.webp" alt="Exea Labs" className="max-h-11 w-full object-contain" />
-              </span>
+              <img
+                src="/exea-labs-logo.webp"
+                alt="Exea Labs"
+                className="w-2/3 max-h-24 object-contain"
+              />
               <span className="text-xs text-muted-foreground">Exea Labs</span>
             </div>
             <a

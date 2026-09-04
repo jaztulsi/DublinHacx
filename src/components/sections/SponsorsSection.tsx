@@ -550,30 +550,6 @@ export function SponsorsSection() {
               <span className="text-xs text-muted-foreground">YRI Science</span>
             </a>
             <a
-              href="https://medo.dev/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="MeDo"
-              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
-            >
-              <span className="flex items-center justify-center rounded-lg bg-white px-3 py-2">
-                <img src="/medo-logo.png" alt="MeDo" className="max-h-20 w-auto object-contain" />
-              </span>
-              <span className="text-xs text-muted-foreground">MeDo</span>
-            </a>
-            <a
-              href="https://www.pcbway.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="PCBWay"
-              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
-            >
-              <span className="flex items-center justify-center rounded-lg bg-white px-3 py-2">
-                <img src="/pcbway-logo.png" alt="PCBWay" className="max-h-16 w-auto object-contain" />
-              </span>
-              <span className="text-xs text-muted-foreground">PCBWay</span>
-            </a>
-            <a
               href="https://gen.xyz/"
               target="_blank"
               rel="noopener noreferrer"
@@ -609,8 +585,6 @@ const beltLogos = [
   { src: "/codecrafters-logo.png", alt: "CodeCrafters" },
   { src: "/elevenlabs-logo.svg", alt: "ElevenLabs" },
   { src: "/yri-science-logo.png", alt: "YRI Science" },
-  { src: "/medo-logo.png", alt: "MeDo" },
-  { src: "/pcbway-logo.png", alt: "PCBWay" },
   { src: "/xyz-logo.png", alt: ".xyz" },
   { src: "/crakd-logo.jpeg", alt: "Crakd" },
   { src: "/exea-labs-logo.webp", alt: "Exea Labs", dark: true },

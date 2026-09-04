@@ -24,22 +24,20 @@ const orbits = [
     duration: 24,
     icons: [
       { src: "/yri-science-logo.png", alt: "YRI Science", angle: 0, plate: true },
-      { src: "/medo-logo.png", alt: "MeDo", angle: 72, plate: true },
-      { src: "/nordvpn-logo.png", alt: "NordVPN", angle: 144, plate: true },
+      { src: "/nordvpn-logo.png", alt: "NordVPN", angle: 90, plate: true },
       // n8n wordmark is white → needs the dark plate (plate:false === bg-background).
-      { src: "/n8n-logo.png", alt: "n8n", angle: 216, plate: false },
-      { src: "/nordpass-logo.png", alt: "NordPass", angle: 288, plate: true },
+      { src: "/n8n-logo.png", alt: "n8n", angle: 180, plate: false },
+      { src: "/nordpass-logo.png", alt: "NordPass", angle: 270, plate: true },
     ],
   },
   {
     scale: 1, // outer ring == --gd
     duration: 30,
     icons: [
-      { src: "/pcbway-logo.png", alt: "PCBWay", angle: 0, plate: true },
-      { src: "/elevenlabs-logo.svg", alt: "ElevenLabs", angle: 72, plate: true },
-      { src: "/xyz-logo.png", alt: ".xyz", angle: 144, plate: true },
-      { src: "/coveron-logo.png", alt: "Coveron", angle: 216, plate: true },
-      { src: "/incogni-logo.png", alt: "Incogni", angle: 288, plate: true },
+      { src: "/elevenlabs-logo.svg", alt: "ElevenLabs", angle: 0, plate: true },
+      { src: "/xyz-logo.png", alt: ".xyz", angle: 90, plate: true },
+      { src: "/coveron-logo.png", alt: "Coveron", angle: 180, plate: true },
+      { src: "/incogni-logo.png", alt: "Incogni", angle: 270, plate: true },
     ],
   },
 ];

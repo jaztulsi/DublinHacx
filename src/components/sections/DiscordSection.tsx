@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-const DISCORD_URL = "https://discord.com/invite/wnwAhkPS3";
+const DISCORD_URL = "https://discord.com/invite/agweG2vXS";
 
 export function DiscordSection() {
   return (

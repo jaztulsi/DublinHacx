@@ -9,7 +9,7 @@ const JUDGE_URL =
 
 const SOCIALS = [
   { name: "Instagram", href: "https://www.instagram.com/dublin.hacx/", icon: "📷" },
-  { name: "Discord", href: "https://discord.com/invite/wnwAhkPS3", icon: "💬" },
+  { name: "Discord", href: "https://discord.com/invite/agweG2vXS", icon: "💬" },
 ];
 
 export function Footer() {

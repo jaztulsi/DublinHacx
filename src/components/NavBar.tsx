@@ -74,7 +74,7 @@ export function NavBar() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Major League Hacking 2026 Hackathon Season"
-            className="absolute left-16 top-2 block w-9 shrink-0 sm:left-24 sm:w-12"
+            className="absolute left-24 top-2 block w-11 shrink-0 sm:left-32 sm:w-16"
           >
             <img
               src="https://logged-assets.s3.amazonaws.com/trust-badge/2027/mlh-trust-badge-2027-blue.svg"

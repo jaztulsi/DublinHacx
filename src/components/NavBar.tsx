@@ -67,6 +67,22 @@ export function NavBar() {
           />
         </Link>
 
+        <div className="flex items-center gap-2 sm:gap-3">
+        <a
+          id="mlh-trust-badge"
+          href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2026-season&utm_content=white"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Major League Hacking 2026 Hackathon Season"
+          className="block w-10 shrink-0 sm:w-12"
+        >
+          <img
+            src="https://logged-assets.s3.amazonaws.com/trust-badge/2027/mlh-trust-badge-2027-white.svg"
+            alt="Major League Hacking 2026 Hackathon Season"
+            className="w-full"
+          />
+        </a>
+
         <nav className="hidden items-center gap-1 md:flex">
           {NAV_ITEMS.map((item) => (
             <button
@@ -117,6 +133,7 @@ export function NavBar() {
             )}
           </svg>
         </button>
+        </div>
       </div>
 
       {open && (

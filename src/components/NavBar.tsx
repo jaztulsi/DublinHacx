@@ -58,7 +58,7 @@ export function NavBar() {
         scrolled ? "bg-background/80 backdrop-blur-xl border-b border-border" : ""
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+      <div className="relative mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <div className="flex items-center gap-3">
           <Link to="/" aria-label="Dublin Hacx home" className="flex items-center gap-2.5 group">
             <img
@@ -74,7 +74,7 @@ export function NavBar() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Major League Hacking 2026 Hackathon Season"
-            className="block w-9 shrink-0 sm:w-12"
+            className="absolute left-16 top-2 block w-9 shrink-0 sm:left-24 sm:w-12"
           >
             <img
               src="https://logged-assets.s3.amazonaws.com/trust-badge/2027/mlh-trust-badge-2027-blue.svg"

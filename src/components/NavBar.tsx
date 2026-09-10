@@ -59,28 +59,13 @@ export function NavBar() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <div className="flex items-center gap-4">
-          <Link to="/" aria-label="Dublin Hacx home" className="flex items-center gap-2.5 group">
-            <img
-              src={logo}
-              alt="Dublin Hacx"
-              className="h-11 w-auto transition-transform duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_18px_oklch(0.78_0.17_305_/_0.9)]"
-            />
-          </Link>
-          <a
-            id="mlh-trust-badge"
-            href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2026-season&utm_content=white"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block w-24 max-w-[100px]"
-          >
-            <img
-              src="https://logged-assets.s3.amazonaws.com/trust-badge/2027/mlh-trust-badge-2027-white.svg"
-              alt="Major League Hacking 2026 Hackathon Season"
-              className="w-full"
-            />
-          </a>
-        </div>
+        <Link to="/" aria-label="Dublin Hacx home" className="flex items-center gap-2.5 group">
+          <img
+            src={logo}
+            alt="Dublin Hacx"
+            className="h-8 w-auto sm:h-10 transition-transform duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_18px_oklch(0.78_0.17_305_/_0.9)]"
+          />
+        </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
           {NAV_ITEMS.map((item) => (

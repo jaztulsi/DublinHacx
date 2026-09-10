@@ -64,7 +64,7 @@ export function NavBar() {
             <img
               src={logo}
               alt="Dublin Hacx"
-              className="h-10 w-auto transition-transform duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_18px_oklch(0.78_0.17_305_/_0.9)]"
+              className="h-12 w-auto sm:h-14 transition-transform duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_18px_oklch(0.78_0.17_305_/_0.9)]"
             />
           </Link>
           <a
@@ -72,7 +72,7 @@ export function NavBar() {
             href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2026-season&utm_content=white"
             target="_blank"
             rel="noopener noreferrer"
-            className="block w-14 sm:w-16"
+            className="block w-20 sm:w-24"
           >
             <img
               src="https://logged-assets.s3.amazonaws.com/trust-badge/2027/mlh-trust-badge-2027-white.svg"

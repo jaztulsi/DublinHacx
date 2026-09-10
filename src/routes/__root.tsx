@@ -62,6 +62,19 @@ function RootShell({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {children}
+        <a
+          id="mlh-trust-badge"
+          style={{ display: "block", maxWidth: 100, minWidth: 60, position: "fixed", left: 20, top: 90, width: "10%", zIndex: 30 }}
+          href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2026-season&utm_content=blue"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="https://logged-assets.s3.amazonaws.com/trust-badge/2027/mlh-trust-badge-2027-blue.svg"
+            alt="Major League Hacking 2026 Hackathon Season"
+            style={{ width: "100%" }}
+          />
+        </a>
         <Scripts />
       </body>
     </html>

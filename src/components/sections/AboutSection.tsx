@@ -21,26 +21,86 @@ const stats = [
   { value: 0, suffix: "", label: "Cost — totally free", isText: "$0" },
 ];
 
-const board: { name: string; role: string; bio: string; img?: string }[] = [
+type Member = { name: string; role: string; bio: string; img?: string };
+
+const coFounders: Member[] = [
   {
     name: "Jasraj Tulsi",
-    role: "Event Manager",
-    bio: "Event logistics, the money, judges handling, and outreach.",
+    role: "Executive Event Manager",
+    bio: "Directs the event end to end and serves as the central line of communication across every team — driving sponsorship partnerships and steering the operation wherever it needs to go.",
     img: "/jasraj-tulsi.png",
   },
   {
     name: "Svanik Thakur",
-    role: "Sponsor Outreach",
-    bio: "Runs sponsor outreach and partnerships.",
+    role: "Director of Sponsorship & Partnerships",
+    bio: "Builds and stewards the sponsor relationships that fund the event, from first outreach through partnership.",
     img: "/svanik-thakur.png",
   },
   {
     name: "Rachit Panchal",
-    role: "Social Media",
-    bio: "Handles social media — posts, promos, and everything in between.",
+    role: "Director of Brand & Communications",
+    bio: "Owns the public voice of Dublin Hacx — social presence, promotion, and everything in between.",
     img: "/rachit-panchal.jpg",
   },
 ];
+
+const board: Member[] = [
+  {
+    name: "Joseph Shin",
+    role: "Executive Director of Venue & Scheduling",
+    bio: "Secures and manages the venue, and architects the master run-of-show that keeps all twelve hours running to the minute.",
+    img: "/joseph-shin.jpg",
+  },
+  {
+    name: "Parvaan Singh",
+    role: "Executive Director of Judging & Outreach",
+    bio: "Assembles and leads the judging panel, sets the evaluation criteria, and heads external outreach to the wider community.",
+    img: "/parvaan-singh.jpg",
+  },
+  {
+    name: "Shaurya Nigam",
+    role: "Executive Director of Volunteer & Speaker Relations",
+    bio: "Recruits and coordinates the volunteer corps, and brings in the guest speakers who headline the day.",
+    img: "/shaurya-nigam.jpg",
+  },
+];
+
+/** One titled roster row (Co-Founders, The Board, …). */
+function Roster({
+  title,
+  people,
+  className = "",
+}: {
+  title: string;
+  people: Member[];
+  className?: string;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.7 }}
+      className={className}
+    >
+      <div className="mb-12 flex items-center justify-center gap-3">
+        <span className="h-px w-10 bg-gradient-to-r from-transparent to-primary/50" />
+        <span className="font-pixel text-sm uppercase tracking-widest text-primary">{title}</span>
+        <span className="h-px w-10 bg-gradient-to-l from-transparent to-primary/50" />
+      </div>
+      <div className="flex flex-wrap items-start justify-center gap-x-12 gap-y-10">
+        {people.map((o) => (
+          <div key={o.name} className="flex w-48 flex-col items-center text-center">
+            <OrganizerAvatar name={o.name} img={o.img} />
+            <h4 className="mt-4 font-display text-lg font-bold">{o.name}</h4>
+            <p className="text-xs uppercase tracking-widest text-primary">{o.role}</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{o.bio}</p>
+          </div>
+        ))}
+      </div>
+    </motion.div>
+  );
+}
 
 /** Avatar: shows the organizer photo if provided, else falls back to initials. */
 function OrganizerAvatar({ name, img }: { name: string; img?: string }) {
@@ -146,32 +206,9 @@ export function AboutSection() {
           </p>
         </motion.div>
 
-        {/* The Board — full-width horizontal roster, no cards */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
-          className="mt-20"
-        >
-          <div className="mb-12 flex items-center justify-center gap-3">
-            <span className="h-px w-10 bg-gradient-to-r from-transparent to-primary/50" />
-            <span className="font-pixel text-sm uppercase tracking-widest text-primary">
-              The Board
-            </span>
-            <span className="h-px w-10 bg-gradient-to-l from-transparent to-primary/50" />
-          </div>
-          <div className="flex flex-wrap items-start justify-center gap-x-12 gap-y-10">
-            {board.map((o) => (
-              <div key={o.name} className="flex w-48 flex-col items-center text-center">
-                <OrganizerAvatar name={o.name} img={o.img} />
-                <h4 className="mt-4 font-display text-lg font-bold">{o.name}</h4>
-                <p className="text-xs uppercase tracking-widest text-primary">{o.role}</p>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{o.bio}</p>
-              </div>
-            ))}
-          </div>
-        </motion.div>
+        {/* Team — full-width horizontal rosters, no cards */}
+        <Roster title="Co-Founders" people={coFounders} className="mt-20" />
+        <Roster title="The Board" people={board} className="mt-16" />
       </div>
     </section>
   );

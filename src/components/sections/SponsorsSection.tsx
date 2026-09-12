@@ -211,9 +211,17 @@ const gridSponsors: {
   /** Backdrop: white for dark marks, dark for light marks, none for logos that
    *  already bake in their own background. Defaults to white. */
   tile?: "white" | "dark" | "none";
+  /** Renders at full tile size instead of the slightly reduced default. */
+  full?: boolean;
   rel?: string;
 }[] = [
-  { name: "Exea Labs", href: "https://www.exealabs.org/", src: "/exea-labs-logo.webp", tile: "none" },
+  {
+    name: "Exea Labs",
+    href: "https://www.exealabs.org/",
+    src: "/exea-labs-logo.webp",
+    tile: "none",
+    full: true,
+  },
   { name: "CodeCrafters", href: "https://codecrafters.io/", src: "/codecrafters-logo.png", tile: "none" },
   { name: "Featherless.ai", href: "https://featherless.ai/", src: "/featherless-logo.svg" },
   {
@@ -447,6 +455,8 @@ export function SponsorsSection() {
               >
                 <span
                   className={`flex min-h-0 w-full flex-1 items-center justify-center overflow-hidden rounded-lg ${
+                    s.full ? "" : "scale-90"
+                  } ${
                     s.tile === "none"
                       ? ""
                       : s.tile === "dark"

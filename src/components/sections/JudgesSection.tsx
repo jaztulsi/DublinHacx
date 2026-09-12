@@ -106,7 +106,7 @@ const judges: Judge[] = [
     bio: "Full-Stack Geospatial Software Developer at Land IQ and Research Assistant at George Mason University's Center for Air Transportation Systems Research. His work spans production AI/ML and geospatial platforms for California state agencies and AI-enabled decision-support systems in aviation. He holds an M.S. in Computer Science from George Mason University and is an AWS Certified Solutions Architect.",
   },
   {
-    name: "Santosh",
+    name: "Santosh Koti",
     title: "Senior Staff Software Engineer",
     location: "United States",
     education: "IEEE Senior Member",
@@ -150,7 +150,7 @@ const judges: Judge[] = [
     bio: "Principal AI Scientist at SAP Labs, where he works on artificial intelligence and machine learning with more than 12 years of experience in the field. He has judged several hackathons and competed in many of them himself. He believes in AI as a way to build things that actually matter — and in hackathons as one of the best places to put that belief to work.",
   },
   {
-    name: "Nandish",
+    name: "Nandish Nanjappa",
     title: "Staff Software Engineer",
     location: "United States",
     education: "Distributed Systems & Agentic AI Platforms",

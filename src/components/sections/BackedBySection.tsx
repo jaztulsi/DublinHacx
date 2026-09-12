@@ -17,7 +17,7 @@ export function BackedBySection() {
 
           <img
             src="/ehcc-logo.png"
-            alt="Emerald Hacking & Coding Club logo"
+            alt="Emerald Hacking and Innovation Club logo"
             className="relative mx-auto mb-6 h-40 w-auto object-contain drop-shadow-[0_0_40px_oklch(0.72_0.16_160_/_0.5)]"
           />
 
@@ -31,13 +31,13 @@ export function BackedBySection() {
               className="text-emerald-400"
               style={{ textShadow: "0 0 30px oklch(0.72 0.16 160 / 0.6), 0 0 60px oklch(0.72 0.16 160 / 0.3)" }}
             >
-              Emerald Hacking &amp; Coding Club
+              Emerald Hacking and Innovation Club
             </span>
             .
           </h2>
 
           <p className="relative mx-auto mt-5 max-w-xl text-base text-muted-foreground">
-            We run the Emerald Hacking &amp; Coding Club. Dublin Hacx is the event we
+            We run the Emerald Hacking and Innovation Club. Dublin Hacx is the event we
             kept wishing existed, so we're just building it ourselves. By students,
             for students.
           </p>

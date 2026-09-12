@@ -121,7 +121,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row">
-          <p>In respect to the EHS Hacking & Coding Club · Dublin, CA</p>
+          <p>In respect to the Emerald Hacking and Innovation Club · Dublin, CA</p>
           <p>© 2026 Dublin Hacx</p>
         </div>
       </div>

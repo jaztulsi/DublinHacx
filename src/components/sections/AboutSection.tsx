@@ -202,7 +202,7 @@ export function AboutSection() {
             leave with something you actually built and a few people you didn't know that morning.
           </p>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            Run out of the EHS Hacking & Coding Club at Emerald High. By students, for students.
+            Run out of the Emerald Hacking and Innovation Club at Emerald High. By students, for students.
           </p>
         </motion.div>
 

@@ -387,7 +387,27 @@ export function SponsorsSection() {
 
           {/* Featured sponsors — Dream College Path + Crakd, side by side
               (bigger than the grid, smaller than headline). */}
-          <div className="mt-4 flex justify-center gap-4">
+          <div className="mt-4 flex flex-wrap justify-center gap-4">
+            <a
+              href="https://cywarden.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Cywarden"
+              className="flex w-[calc(50%-0.5rem)] flex-col items-center justify-center gap-2.5 rounded-2xl border border-primary/30 bg-card/20 p-5 transition-colors hover:border-primary/60 md:w-full md:max-w-md md:p-6"
+            >
+              {/* Wide dark wordmark: white tile, capped by height so it doesn't
+                  outgrow the squarer logos beside it. */}
+              <span className="flex w-full items-center justify-center rounded-xl bg-white px-5 py-6">
+                <img
+                  src="/cywarden-logo.webp"
+                  alt="Cywarden"
+                  className="max-h-[76px] w-full object-contain"
+                />
+              </span>
+              <span className="font-pixel text-xs uppercase tracking-widest text-primary">
+                Featured Sponsor
+              </span>
+            </a>
             {/* Not an <a>: the card holds nested tel:/mailto: links, so the
                 logo gets its own anchor and the wrapper stays a div. */}
             <div className="flex w-[calc(50%-0.5rem)] flex-col items-center justify-center gap-2.5 rounded-2xl border border-primary/30 bg-card/20 p-5 md:w-full md:max-w-md md:p-6">
@@ -493,6 +513,7 @@ export function SponsorsSection() {
 // translate loops seamlessly.
 const beltLogos = [
   { src: "/context66-logo.png", alt: "Context66" },
+  { src: "/cywarden-logo.webp", alt: "Cywarden" },
   { src: "/dream-college-path-logo.png", alt: "Dream College Path", dark: true },
   { src: "/codecrafters-logo.png", alt: "CodeCrafters" },
   { src: "/elevenlabs-logo.svg", alt: "ElevenLabs" },

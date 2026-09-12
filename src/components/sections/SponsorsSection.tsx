@@ -561,6 +561,13 @@ export function SponsorsSection() {
               </span>
               <span className="text-xs text-muted-foreground">.xyz</span>
             </a>
+            {/* Kariaa — red background is baked into the SVG, so no tile; just clip the corners. */}
+            <div className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4">
+              <span className="flex w-full items-center justify-center overflow-hidden rounded-lg">
+                <img src="/kariaa-logo.svg" alt="Kariaa" className="w-full object-contain" />
+              </span>
+              <span className="text-xs text-muted-foreground">Kariaa</span>
+            </div>
           </div>
         </motion.div>
       </div>
@@ -595,6 +602,7 @@ const beltLogos = [
   { src: "/incogni-logo.png", alt: "Incogni" },
   { src: "/saily-logo.png", alt: "Saily" },
   { src: "/n8n-logo.png", alt: "n8n", dark: true },
+  { src: "/kariaa-logo.svg", alt: "Kariaa", dark: true },
 ];
 
 function SponsorBelt() {

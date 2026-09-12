@@ -199,6 +199,41 @@ function TierLadder() {
   );
 }
 
+/**
+ * Standard-tier sponsors. Every logo renders into an identically sized box and
+ * is letterboxed with object-contain, so wide wordmarks and square marks read
+ * as the same visual weight instead of each one setting its own scale.
+ */
+const gridSponsors: {
+  name: string;
+  href: string;
+  src: string;
+  /** Backdrop: white for dark marks, dark for light marks, none for logos that
+   *  already bake in their own background. Defaults to white. */
+  tile?: "white" | "dark" | "none";
+  rel?: string;
+}[] = [
+  { name: "Exea Labs", href: "https://www.exealabs.org/", src: "/exea-labs-logo.webp", tile: "none" },
+  { name: "CodeCrafters", href: "https://codecrafters.io/", src: "/codecrafters-logo.png", tile: "none" },
+  { name: "Featherless.ai", href: "https://featherless.ai/", src: "/featherless-logo.svg" },
+  {
+    name: "NordVPN",
+    href: "https://nordvpn.com/hackathons",
+    src: "/nordvpn-logo.png",
+    rel: "noopener noreferrer nofollow sponsored",
+  },
+  { name: "NordPass", href: "https://nordpass.com/", src: "/nordpass-logo.png" },
+  { name: "Coveron", href: "https://coveron.com/", src: "/coveron-logo.png" },
+  { name: "Incogni", href: "https://incogni.com/", src: "/incogni-logo.png" },
+  { name: "Saily", href: "https://saily.com/", src: "/saily-logo.png" },
+  { name: "n8n", href: "https://n8n.io/", src: "/n8n-logo.png", tile: "dark" },
+  { name: "ElevenLabs", href: "https://elevenlabs.io/", src: "/elevenlabs-logo.svg" },
+  { name: "YRI Science", href: "https://www.yriscience.com/", src: "/yri-science-logo.png", tile: "none" },
+  { name: ".xyz", href: "https://gen.xyz/", src: "/xyz-logo.png" },
+  { name: "PCBWay", href: "https://www.pcbway.com/", src: "/pcbway-logo.png" },
+  { name: "Kariaa", href: "https://www.kariaa.com/", src: "/kariaa-logo.svg", tile: "none" },
+];
+
 export function SponsorsSection() {
   return (
     <section id="sponsors" className="relative px-6 pt-24 md:pt-32">
@@ -401,173 +436,33 @@ export function SponsorsSection() {
           </div>
 
           <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-3">
-            {/* Exea Labs — logo is already a black square, so no tile. */}
-            <a
-              href="https://www.exealabs.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Exea Labs"
-              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
-            >
-              <img
-                src="/exea-labs-logo.webp"
-                alt="Exea Labs"
-                className="w-3/4 max-h-28 object-contain"
-              />
-              <span className="text-xs text-muted-foreground">Exea Labs</span>
-            </a>
-            <a
-              href="https://codecrafters.io/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="CodeCrafters"
-              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
-            >
-              <img
-                src="/codecrafters-logo.png"
-                alt="CodeCrafters"
-                className="w-2/3 max-h-24 object-contain"
-              />
-              <span className="text-xs text-muted-foreground">CodeCrafters</span>
-            </a>
-            <a
-              href="https://featherless.ai/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Featherless.ai"
-              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
-            >
-              <span className="flex w-2/3 items-center justify-center rounded-lg bg-white px-4 py-3">
-                <img
-                  src="/featherless-logo.svg"
-                  alt="Featherless.ai"
-                  className="max-h-12 w-full object-contain"
-                />
-              </span>
-              <span className="text-xs text-muted-foreground">Featherless.ai</span>
-            </a>
-            <a
-              href="https://nordvpn.com/hackathons"
-              target="_blank"
-              rel="noopener noreferrer nofollow sponsored"
-              aria-label="NordVPN"
-              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
-            >
-              <span className="flex w-full items-center justify-center rounded-lg bg-white px-3 py-2.5">
-                <img src="/nordvpn-logo.png" alt="NordVPN" className="max-h-14 w-full object-contain" />
-              </span>
-              <span className="text-xs text-muted-foreground">NordVPN</span>
-            </a>
-            <a
-              href="https://nordpass.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="NordPass"
-              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
-            >
-              <span className="flex w-full items-center justify-center rounded-lg bg-white px-3 py-2.5">
-                <img src="/nordpass-logo.png" alt="NordPass" className="max-h-10 w-full object-contain" />
-              </span>
-              <span className="text-xs text-muted-foreground">NordPass</span>
-            </a>
-            <a
-              href="https://coveron.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Coveron"
-              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
-            >
-              <span className="flex w-full items-center justify-center rounded-lg bg-white px-3 py-2.5">
-                <img src="/coveron-logo.png" alt="Coveron" className="max-h-11 w-full object-contain" />
-              </span>
-              <span className="text-xs text-muted-foreground">Coveron</span>
-            </a>
-            <a
-              href="https://incogni.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Incogni"
-              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
-            >
-              <span className="flex w-full items-center justify-center rounded-lg bg-white px-3 py-2.5">
-                <img src="/incogni-logo.png" alt="Incogni" className="max-h-11 w-full object-contain" />
-              </span>
-              <span className="text-xs text-muted-foreground">Incogni</span>
-            </a>
-            <a
-              href="https://saily.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Saily"
-              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
-            >
-              <span className="flex w-full items-center justify-center rounded-lg bg-white px-3 py-2.5">
-                <img src="/saily-logo.png" alt="Saily" className="max-h-12 w-full object-contain" />
-              </span>
-              <span className="text-xs text-muted-foreground">Saily</span>
-            </a>
-            <a
-              href="https://n8n.io/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="n8n"
-              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
-            >
-              {/* n8n brand: white wordmark → dark tile (#040506); icon stays pink. */}
-              <span className="flex w-full items-center justify-center rounded-lg bg-[#040506] px-3 py-2.5">
-                <img src="/n8n-logo.png" alt="n8n" className="max-h-11 w-full object-contain" />
-              </span>
-              <span className="text-xs text-muted-foreground">n8n</span>
-            </a>
-            <a
-              href="https://elevenlabs.io/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="ElevenLabs"
-              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
-            >
-              <span className="flex w-2/3 items-center justify-center rounded-lg bg-white px-4 py-3">
-                <img
-                  src="/elevenlabs-logo.svg"
-                  alt="ElevenLabs"
-                  className="max-h-16 w-full object-contain"
-                />
-              </span>
-              <span className="text-xs text-muted-foreground">ElevenLabs</span>
-            </a>
-            <a
-              href="https://www.yriscience.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="YRI Science"
-              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
-            >
-              <img
-                src="/yri-science-logo.png"
-                alt="YRI Science"
-                className="max-h-28 w-auto object-contain"
-              />
-              <span className="text-xs text-muted-foreground">YRI Science</span>
-            </a>
-            <a
-              href="https://gen.xyz/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label=".xyz"
-              className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
-            >
-              <span className="flex items-center justify-center rounded-lg bg-white px-3 py-2">
-                <img src="/xyz-logo.png" alt=".xyz" className="max-h-16 w-auto object-contain" />
-              </span>
-              <span className="text-xs text-muted-foreground">.xyz</span>
-            </a>
-            {/* Kariaa — red background is baked into the SVG, so no tile; just clip the corners. */}
-            <div className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4">
-              <span className="flex w-full items-center justify-center overflow-hidden rounded-lg">
-                <img src="/kariaa-logo.svg" alt="Kariaa" className="w-full object-contain" />
-              </span>
-              <span className="text-xs text-muted-foreground">Kariaa</span>
-            </div>
+            {gridSponsors.map((s) => (
+              <a
+                key={s.name}
+                href={s.href}
+                target="_blank"
+                rel={s.rel ?? "noopener noreferrer"}
+                aria-label={s.name}
+                className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
+              >
+                <span
+                  className={`flex min-h-0 w-full flex-1 items-center justify-center overflow-hidden rounded-lg ${
+                    s.tile === "none"
+                      ? ""
+                      : s.tile === "dark"
+                        ? "bg-[#040506] px-3 py-2"
+                        : "bg-white px-3 py-2"
+                  }`}
+                >
+                  <img
+                    src={s.src}
+                    alt={s.name}
+                    className="max-h-full max-w-full rounded-md object-contain"
+                  />
+                </span>
+                <span className="text-xs text-muted-foreground">{s.name}</span>
+              </a>
+            ))}
           </div>
         </motion.div>
       </div>
@@ -603,6 +498,7 @@ const beltLogos = [
   { src: "/saily-logo.png", alt: "Saily" },
   { src: "/n8n-logo.png", alt: "n8n", dark: true },
   { src: "/kariaa-logo.svg", alt: "Kariaa", dark: true },
+  { src: "/pcbway-logo.png", alt: "PCBWay" },
 ];
 
 function SponsorBelt() {

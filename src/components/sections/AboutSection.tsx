@@ -28,7 +28,7 @@ const coFounders: Member[] = [
     name: "Jasraj Tulsi",
     role: "Executive Event Manager",
     bio: "Directs the event end to end and serves as the central line of communication across every team — driving sponsorship partnerships and steering the operation wherever it needs to go.",
-    img: "/jasraj-tulsi.png",
+    img: "/jasraj-tulsi.jpg",
   },
   {
     name: "Svanik Thakur",

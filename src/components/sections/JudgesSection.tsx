@@ -161,7 +161,7 @@ const judges: Judge[] = [
       "Cloud Infrastructure",
       "High-Availability Control Planes",
     ],
-    bio: "Staff Software Engineer with deep expertise in distributed systems, Agentic AI platforms, cloud infrastructure, and high-availability control planes. He has architected resilient, large-scale production platforms for mission-critical workloads, focusing recently on multi-pod agentic execution harnesses, Model Context Protocol (MCP) tool integration, multi-model LLM routing, and automated evaluation frameworks. His broader track record spans scale-out workflow orchestration, exabyte-scale metadata tiering, zero-RPO synchronous storage replication, and high-concurrency job scheduling. Nandish enjoys mentoring builders and serving as an industry reviewer and judge, evaluating complex systems for technical depth, operational efficiency, and real-world problem solving.",
+    bio: "Staff Software Engineer with deep expertise in distributed systems, Agentic AI platforms, cloud infrastructure, and high-availability control planes. He has architected resilient, large-scale production platforms for mission-critical workloads, focusing recently on multi-pod agentic execution harnesses, Model Context Protocol (MCP) tool integration, and multi-model LLM routing. Nandish enjoys mentoring builders and serving as an industry reviewer and judge, evaluating complex systems for technical depth and real-world problem solving.",
   },
   {
     name: "Amit Panda",

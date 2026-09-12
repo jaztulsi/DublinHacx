@@ -199,6 +199,14 @@ function TierLadder() {
   );
 }
 
+/** Featured tier: one card and one logo plate shared by all four, so logo-to-box
+ *  ratio stays constant no matter the artwork's native aspect. */
+const featuredCard =
+  "flex w-[calc(50%-0.5rem)] flex-col items-center justify-center gap-2.5 rounded-2xl border border-primary/30 bg-card/20 p-5 transition-colors hover:border-primary/60 md:w-full md:max-w-md md:p-6";
+const featuredPlate =
+  "flex h-24 w-full items-center justify-center overflow-hidden rounded-xl md:h-28";
+const featuredImg = "max-h-full max-w-full object-contain";
+
 /**
  * Standard-tier sponsors. Every logo renders into an identically sized box and
  * is letterboxed with object-contain, so wide wordmarks and square marks read
@@ -211,17 +219,8 @@ const gridSponsors: {
   /** Backdrop: white for dark marks, dark for light marks, none for logos that
    *  already bake in their own background. Defaults to white. */
   tile?: "white" | "dark" | "none";
-  /** Renders at full tile size instead of the slightly reduced default. */
-  full?: boolean;
   rel?: string;
 }[] = [
-  {
-    name: "Exea Labs",
-    href: "https://www.exealabs.org/",
-    src: "/exea-labs-logo.webp",
-    tile: "none",
-    full: true,
-  },
   { name: "CodeCrafters", href: "https://codecrafters.io/", src: "/codecrafters-logo.png", tile: "none" },
   { name: "Featherless.ai", href: "https://featherless.ai/", src: "/featherless-logo.svg" },
   {
@@ -385,24 +384,18 @@ export function SponsorsSection() {
             </span>
           </a>
 
-          {/* Featured sponsors — Dream College Path + Crakd, side by side
-              (bigger than the grid, smaller than headline). */}
+          {/* Featured sponsors — one uniform logo plate each, so a 3:1 wordmark
+              and a 1:1 square land at the same visual weight. */}
           <div className="mt-4 flex flex-wrap justify-center gap-4">
             <a
               href="https://cywarden.com/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Cywarden"
-              className="flex w-[calc(50%-0.5rem)] flex-col items-center justify-center gap-2.5 rounded-2xl border border-primary/30 bg-card/20 p-5 transition-colors hover:border-primary/60 md:w-full md:max-w-md md:p-6"
+              className={featuredCard}
             >
-              {/* Wide dark wordmark: white tile, capped by height so it doesn't
-                  outgrow the squarer logos beside it. */}
-              <span className="flex w-full items-center justify-center rounded-xl bg-white px-5 py-6">
-                <img
-                  src="/cywarden-logo.webp"
-                  alt="Cywarden"
-                  className="max-h-[76px] w-full object-contain"
-                />
+              <span className={`${featuredPlate} bg-white px-5 py-4`}>
+                <img src="/cywarden-logo.webp" alt="Cywarden" className={featuredImg} />
               </span>
               <span className="font-pixel text-xs uppercase tracking-widest text-primary">
                 Featured Sponsor
@@ -410,20 +403,19 @@ export function SponsorsSection() {
             </a>
             {/* Not an <a>: the card holds nested tel:/mailto: links, so the
                 logo gets its own anchor and the wrapper stays a div. */}
-            <div className="flex w-[calc(50%-0.5rem)] flex-col items-center justify-center gap-2.5 rounded-2xl border border-primary/30 bg-card/20 p-5 md:w-full md:max-w-md md:p-6">
+            <div className={featuredCard}>
               <a
                 href="https://www.dreamcollegepath.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Dream College Path"
-                className="rounded-xl transition-opacity hover:opacity-80"
+                className="w-full rounded-xl transition-opacity hover:opacity-80"
               >
-                <span className="flex items-center justify-center rounded-xl bg-[#122335] p-4">
+                <span className={`${featuredPlate} bg-[#122335] px-5 py-4`}>
                   <img
                     src="/dream-college-path-logo.png"
                     alt="Dream College Path"
-                    // Featured tier: taller than the grid logos, shorter than the 96px Context66 headline.
-                    className="h-[88px] w-auto object-contain md:h-[92px]"
+                    className={featuredImg}
                   />
                 </span>
               </a>
@@ -442,20 +434,31 @@ export function SponsorsSection() {
                 </a>
               </div>
             </div>
+            {/* Crakd and Exea Labs bake their own background into the artwork,
+                so they get the bare plate — no tile, just clipped corners. */}
             <a
               href="https://crackd.it/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Crakd"
-              className="flex w-[calc(50%-0.5rem)] flex-col items-center justify-center gap-2.5 rounded-2xl border border-primary/30 bg-card/20 p-5 transition-colors hover:border-primary/60 md:w-full md:max-w-md md:p-6"
+              className={featuredCard}
             >
-              {/* Square logo w/ baked-in white bg: minimal padding so it fills the box. */}
-              <span className="flex items-center justify-center overflow-hidden rounded-xl bg-white">
-                <img
-                  src="/crakd-logo.jpeg"
-                  alt="Crakd"
-                  className="h-[120px] w-auto object-contain md:h-[124px]"
-                />
+              <span className={featuredPlate}>
+                <img src="/crakd-logo.jpeg" alt="Crakd" className={featuredImg} />
+              </span>
+              <span className="font-pixel text-xs uppercase tracking-widest text-primary">
+                Featured Sponsor
+              </span>
+            </a>
+            <a
+              href="https://www.exealabs.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Exea Labs"
+              className={featuredCard}
+            >
+              <span className={featuredPlate}>
+                <img src="/exea-labs-logo.webp" alt="Exea Labs" className={featuredImg} />
               </span>
               <span className="font-pixel text-xs uppercase tracking-widest text-primary">
                 Featured Sponsor
@@ -463,7 +466,7 @@ export function SponsorsSection() {
             </a>
           </div>
 
-          <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-3">
+          <div className="mt-6 grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-5">
             {gridSponsors.map((s) => (
               <a
                 key={s.name}
@@ -471,26 +474,24 @@ export function SponsorsSection() {
                 target="_blank"
                 rel={s.rel ?? "noopener noreferrer"}
                 aria-label={s.name}
-                className="flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card/20 p-4 transition-colors hover:border-primary/50"
+                className="flex aspect-[3/2] flex-col items-center justify-center gap-1.5 rounded-lg border border-border bg-card/20 p-2.5 transition-colors hover:border-primary/50"
               >
                 <span
-                  className={`flex min-h-0 w-full flex-1 items-center justify-center overflow-hidden rounded-lg ${
-                    s.full ? "" : "scale-90"
-                  } ${
+                  className={`flex min-h-0 w-full flex-1 items-center justify-center overflow-hidden rounded ${
                     s.tile === "none"
                       ? ""
                       : s.tile === "dark"
-                        ? "bg-[#040506] px-3 py-2"
-                        : "bg-white px-3 py-2"
+                        ? "bg-[#040506] px-2 py-1.5"
+                        : "bg-white px-2 py-1.5"
                   }`}
                 >
                   <img
                     src={s.src}
                     alt={s.name}
-                    className="max-h-full max-w-full rounded-md object-contain"
+                    className="max-h-full max-w-full rounded-sm object-contain"
                   />
                 </span>
-                <span className="text-xs text-muted-foreground">{s.name}</span>
+                <span className="text-[10px] leading-tight text-muted-foreground">{s.name}</span>
               </a>
             ))}
           </div>

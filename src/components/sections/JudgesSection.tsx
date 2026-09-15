@@ -206,10 +206,64 @@ function JudgeAvatar({ name, img }: { name: string; img?: string }) {
   );
 }
 
+/** One judge card. Fixed width so the belt scrolls at a steady rhythm. */
+function JudgeCard({ j }: { j: Judge }) {
+  return (
+    <article
+      className={`flex w-[300px] shrink-0 flex-col rounded-2xl border bg-card/30 p-5 backdrop-blur-md sm:w-[340px] ${
+        j.emphasize ? "border-primary/40" : "border-border"
+      }`}
+    >
+      <div className="flex items-center gap-3">
+        <JudgeAvatar name={j.name} img={j.img} />
+        <div className="min-w-0">
+          <h3 className="font-display text-base font-bold leading-tight">{j.name}</h3>
+          <p className="text-xs text-primary">
+            {j.title}
+            {j.company ? ` @ ${j.company}` : ""}
+          </p>
+          <p className="mt-0.5 text-[11px] text-muted-foreground">{j.location}</p>
+        </div>
+      </div>
+
+      {/* Clamped so every card is the same height — hover pauses the belt to read. */}
+      <p className="mt-3 line-clamp-6 text-xs leading-relaxed text-muted-foreground">{j.bio}</p>
+    </article>
+  );
+}
+
+/**
+ * Judges scroll as one continuous loop. The list is rendered twice and the
+ * track slides exactly one copy's width, so the seam is invisible; the second
+ * copy is aria-hidden so screen readers hear each judge once.
+ */
+function JudgeBelt() {
+  return (
+    <div className="group relative overflow-hidden py-2 [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
+      <style>{`
+        @keyframes judge-belt { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+        @media (prefers-reduced-motion: reduce) { .judge-belt { animation: none !important } }
+      `}</style>
+      <div
+        className="judge-belt flex w-max group-hover:[animation-play-state:paused]"
+        style={{ animation: "judge-belt 80s linear infinite" }}
+      >
+        {[0, 1].map((copy) => (
+          <div key={copy} className="flex w-max gap-5 pr-5" aria-hidden={copy === 1}>
+            {judges.map((j) => (
+              <JudgeCard key={j.name} j={j} />
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function JudgesSection() {
   return (
-    <section id="judges" className="relative px-6 py-24 md:py-32">
-      <div className="mx-auto max-w-6xl">
+    <section id="judges" className="relative py-24 md:py-32">
+      <div className="mx-auto max-w-6xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -222,33 +276,12 @@ export function JudgesSection() {
             The people judging your <span className="text-gradient-primary">build</span>.
           </h2>
         </motion.div>
+      </div>
 
-        <div className="mx-auto grid max-w-xs grid-cols-1 justify-center gap-6 sm:max-w-2xl sm:grid-cols-2 lg:max-w-4xl lg:grid-cols-3 xl:max-w-6xl xl:grid-cols-4">
-          {judges.map((j, i) => (
-            <motion.div
-              key={j.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="w-full max-w-xs rounded-2xl border border-border bg-card/30 p-5 backdrop-blur-md"
-            >
-              <div className="flex items-center gap-3">
-                <JudgeAvatar name={j.name} img={j.img} />
-                <div className="min-w-0">
-                  <h3 className={`font-display font-bold leading-tight ${j.emphasize ? "text-lg" : "text-base"}`}>{j.name}</h3>
-                  <p className={`text-primary ${j.emphasize ? "text-sm" : "text-xs"}`}>
-                    {j.title}{j.company ? ` @ ${j.company}` : ""}
-                  </p>
-                  <p className={`mt-0.5 text-muted-foreground ${j.emphasize ? "text-xs" : "text-[11px]"}`}>{j.location}</p>
-                </div>
-              </div>
+      {/* Full-bleed: the belt runs edge to edge rather than inside the container. */}
+      <JudgeBelt />
 
-              <p className={`mt-3 leading-relaxed text-muted-foreground ${j.emphasize ? "text-sm" : "text-xs"}`}>{j.bio}</p>
-            </motion.div>
-          ))}
-        </div>
-
+      <div className="mx-auto max-w-6xl px-6">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

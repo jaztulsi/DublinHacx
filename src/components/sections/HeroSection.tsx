@@ -6,7 +6,7 @@ import { FlipboardCountdown } from "@/components/FlipboardCountdown";
 import { EVENT_DATE_TBD } from "@/lib/schedule";
 
 interface Props {
-  onApply: () => void;
+  onFollow: () => void;
   onLearnMore: () => void;
 }
 
@@ -97,7 +97,7 @@ function GlitchText({ children }: { children: string }) {
   );
 }
 
-export function HeroSection({ onApply, onLearnMore }: Props) {
+export function HeroSection({ onFollow, onLearnMore }: Props) {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -217,12 +217,20 @@ export function HeroSection({ onApply, onLearnMore }: Props) {
           initial="hidden"
           animate="show"
           custom={4}
-          className="mt-10 flex flex-wrap justify-center gap-4"
+          className="mt-10 flex flex-col items-center gap-4"
         >
-          <MagneticButton onClick={onApply}>Apply to Hack →</MagneticButton>
-          <MagneticButton onClick={onLearnMore} variant="secondary">
-            What's the deal?
-          </MagneticButton>
+          <div className="rounded-2xl border border-primary/40 bg-card/40 px-6 py-4 backdrop-blur-md">
+            <p className="font-display text-xl font-bold md:text-2xl">Registrations are closed</p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Follow our socials to stay updated. Thank you!
+            </p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-4">
+            <MagneticButton onClick={onFollow}>Follow our socials →</MagneticButton>
+            <MagneticButton onClick={onLearnMore} variant="secondary">
+              What's the deal?
+            </MagneticButton>
+          </div>
         </motion.div>
       </div>
 

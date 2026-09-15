@@ -1,6 +1,3 @@
-const REGISTER_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSdnmbxMou0EOQ4BbJJEeekJ_B7FVXqV9IioHKOfzYSVIGmKNg/viewform";
-
 const VOLUNTEER_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLScdfNpcAJTRDc2Z9PKoUv1vNVHyYfiwte9zLMTC30vcF-0vIw/viewform?usp=dialog";
 
@@ -9,7 +6,7 @@ const JUDGE_URL =
 
 const SOCIALS = [
   { name: "Instagram", href: "https://www.instagram.com/dublin.hacx/", icon: "📷" },
-  { name: "Discord", href: "https://discord.com/invite/agweG2vXS", icon: "💬" },
+  { name: "Discord", href: "https://discord.gg/Xty2HE9Gn", icon: "💬" },
 ];
 
 export function Footer() {
@@ -58,16 +55,7 @@ export function Footer() {
             <div>
               <p className="mb-3 font-pixel text-sm uppercase tracking-widest text-primary">Get involved</p>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <a
-                    href={REGISTER_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-foreground"
-                  >
-                    Sign Up
-                  </a>
-                </li>
+                <li className="text-muted-foreground/70">Registrations closed</li>
                 <li>
                   <a
                     href={VOLUNTEER_URL}

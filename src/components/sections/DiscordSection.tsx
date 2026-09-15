@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 
-const DISCORD_URL = "https://discord.com/invite/agweG2vXS";
+const DISCORD_URL = "https://discord.gg/Xty2HE9Gn";
+const INSTAGRAM_URL = "https://www.instagram.com/dublin.hacx/";
 
 export function DiscordSection() {
   return (
@@ -32,18 +33,28 @@ export function DiscordSection() {
           </h2>
 
           <p className="relative mx-auto mt-5 max-w-xl text-base text-muted-foreground">
-            Announcements, team-finding, and questions answered fast. Everyone
-            coming to Dublin Hacx should be in here.
+            Registrations are closed — follow our socials to stay updated on
+            announcements, team-finding, and everything leading up to the day.
           </p>
 
-          <a
-            href={DISCORD_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative mt-8 inline-block rounded-full bg-primary px-8 py-3 font-sans text-sm font-bold text-white transition hover:bg-primary/90"
-          >
-            Join the Discord
-          </a>
+          <div className="relative mt-8 flex flex-wrap items-center justify-center gap-3">
+            <a
+              href={DISCORD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block rounded-full bg-primary px-8 py-3 font-sans text-sm font-bold text-white transition hover:bg-primary/90"
+            >
+              Join the Discord
+            </a>
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block rounded-full border border-primary/40 px-8 py-3 font-sans text-sm font-bold text-primary transition hover:bg-primary/10"
+            >
+              Follow on Instagram
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>

@@ -67,12 +67,8 @@ function Index() {
 
       <main className="relative z-10">
         <HeroSection
-          onApply={() =>
-            window.open(
-              "https://docs.google.com/forms/d/e/1FAIpQLSdnmbxMou0EOQ4BbJJEeekJ_B7FVXqV9IioHKOfzYSVIGmKNg/viewform",
-              "_blank",
-              "noopener,noreferrer",
-            )
+          onFollow={() =>
+            window.open("https://www.instagram.com/dublin.hacx/", "_blank", "noopener,noreferrer")
           }
           onLearnMore={() => scrollToId("about")}
         />

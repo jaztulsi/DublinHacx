@@ -31,6 +31,12 @@ const coFounders: Member[] = [
     img: "/jasraj-tulsi.jpg",
   },
   {
+    name: "Svanik Thakur",
+    role: "Director of Sponsorship & Partnerships",
+    bio: "Builds and stewards the sponsor relationships that fund the event, from first outreach through partnership.",
+    img: "/svanik-thakur.png",
+  },
+  {
     name: "Rachit Panchal",
     role: "Director of Brand & Communications",
     bio: "Owns the public voice of Dublin Hacx — social presence, promotion, and everything in between.",
@@ -39,12 +45,6 @@ const coFounders: Member[] = [
 ];
 
 const board: Member[] = [
-  {
-    name: "Svanik Thakur",
-    role: "Director of Sponsorship & Partnerships",
-    bio: "Builds and stewards the sponsor relationships that fund the event, from first outreach through partnership.",
-    img: "/svanik-thakur.png",
-  },
   {
     name: "Joseph Shin",
     role: "Executive Director of Venue & Scheduling",

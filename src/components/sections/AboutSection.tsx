@@ -40,6 +40,12 @@ const coFounders: Member[] = [
 
 const board: Member[] = [
   {
+    name: "Svanik Thakur",
+    role: "Director of Sponsorship & Partnerships",
+    bio: "Builds and stewards the sponsor relationships that fund the event, from first outreach through partnership.",
+    img: "/svanik-thakur.png",
+  },
+  {
     name: "Joseph Shin",
     role: "Executive Director of Venue & Scheduling",
     bio: "Secures and manages the venue, and architects the master run-of-show that keeps all twelve hours running to the minute.",

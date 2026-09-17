@@ -38,10 +38,13 @@ const sponsors: Sponsor[] = [
 // Each ring is a fraction of --gd (the outer-ring diameter), itself
 // viewport-relative, so the globe scales fluidly instead of snapping at
 // breakpoints. Angles are spread evenly to keep each ring balanced.
+//
+// Only the top half of each ring is on screen, so roughly half of these slots
+// are visible at any moment — hence several per lane, or the globe reads empty.
 const rings = [
-  { scale: 0.68, duration: 18, angles: [0, 120, 240] },
-  { scale: 0.83, duration: 24, angles: [0, 90, 180, 270] },
-  { scale: 1, duration: 30, angles: [45, 135, 225, 315] },
+  { scale: 0.68, duration: 18, angles: [0, 90, 180, 270] },
+  { scale: 0.83, duration: 24, angles: [36, 108, 180, 252, 324] },
+  { scale: 1, duration: 30, angles: [0, 72, 144, 216, 288] },
 ];
 
 const SLOT_COUNT = rings.reduce((n, r) => n + r.angles.length, 0);

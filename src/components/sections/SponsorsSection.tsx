@@ -214,7 +214,8 @@ const featuredImg = "max-h-full max-w-full object-contain";
  */
 const gridSponsors: {
   name: string;
-  href: string;
+  /** Omitted while a sponsor's site is unconfirmed — the tile renders unlinked. */
+  href?: string;
   src: string;
   /** Backdrop: white for dark marks, dark for light marks, none for logos that
    *  already bake in their own background. Defaults to white. */
@@ -229,6 +230,8 @@ const gridSponsors: {
     src: "/nordvpn-logo.png",
     rel: "noopener noreferrer nofollow sponsored",
   },
+  // Cream background is baked into the artwork, so it takes no tile.
+  { name: "Purpose", src: "/purpose-logo.png", tile: "none" },
   { name: "NordPass", href: "https://nordpass.com/", src: "/nordpass-logo.png" },
   { name: "Coveron", href: "https://coveron.com/", src: "/coveron-logo.png" },
   { name: "Incogni", href: "https://incogni.com/", src: "/incogni-logo.png" },
@@ -524,6 +527,7 @@ const beltLogos = [
   { src: "/exea-labs-logo.webp", alt: "Exea Labs", dark: true },
   { src: "/featherless-logo.svg", alt: "Featherless.ai" },
   { src: "/nordvpn-logo.png", alt: "NordVPN" },
+  { src: "/purpose-logo.png", alt: "Purpose" },
   { src: "/nordpass-logo.png", alt: "NordPass" },
   { src: "/coveron-logo.png", alt: "Coveron" },
   { src: "/incogni-logo.png", alt: "Incogni" },

@@ -467,6 +467,25 @@ export function SponsorsSection() {
                 Featured Sponsor
               </span>
             </a>
+            <a
+              href="https://happycarspadublin.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Happy Car Spa Dublin"
+              className={featuredCard}
+            >
+              {/* Round badge on a white ground — white plate so the two blend. */}
+              <span className={`${featuredPlate} bg-white px-5 py-4`}>
+                <img
+                  src="/happy-car-spa-logo.jpg"
+                  alt="Happy Car Spa Dublin"
+                  className={featuredImg}
+                />
+              </span>
+              <span className="font-pixel text-xs uppercase tracking-widest text-primary">
+                Featured Sponsor
+              </span>
+            </a>
           </div>
 
           <div className="mt-6 grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-5">
@@ -518,6 +537,7 @@ export function SponsorsSection() {
 const beltLogos = [
   { src: "/context66-logo.png", alt: "Context66" },
   { src: "/cywarden-logo.webp", alt: "Cywarden" },
+  { src: "/happy-car-spa-logo.jpg", alt: "Happy Car Spa Dublin" },
   { src: "/dream-college-path-logo.png", alt: "Dream College Path", dark: true },
   { src: "/codecrafters-logo.png", alt: "CodeCrafters" },
   { src: "/elevenlabs-logo.svg", alt: "ElevenLabs" },

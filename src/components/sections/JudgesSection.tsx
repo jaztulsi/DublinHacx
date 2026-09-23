@@ -6,7 +6,8 @@ type Judge = {
   title: string;
   company?: string;
   location: string;
-  education: string;
+  /** Credential line kept with the data; not currently rendered. */
+  education?: string;
   tags: string[];
   bio: string;
   img?: string;
@@ -177,6 +178,15 @@ const judges: Judge[] = [
       "Ads Ranking & Delivery",
     ],
     bio: "Staff Software Engineer at LinkedIn with 10+ years of experience across LinkedIn, Meta, Google, and Yelp, specializing in backend platform engineering, data infrastructure, and large-scale distributed systems. His expertise spans data lakehouse and cataloging platforms, ads ranking and delivery infrastructure, ETL pipelines, and cloud-native backend services. He holds an M.S. in Computer Science from Georgia Tech and has judged and mentored at multiple internal hackathons at LinkedIn and Meta.",
+  },
+  {
+    name: "Prakshal Doshi",
+    title: "Architect",
+    company: "Apple",
+    location: "United States",
+    img: "/prakshal-doshi.jpg",
+    tags: ["Infrastructure", "Reliability & Availability", "Security", "Performance"],
+    bio: "Prakshal Doshi is an architect and builds infrastructure that's reliable, available, secure and performing for Apple.",
   },
 ];
 

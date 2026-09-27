@@ -173,6 +173,26 @@ const judges: Judge[] = [
     tags: ["Infrastructure", "Reliability & Availability", "Security", "Performance"],
     bio: "Prakshal Doshi is an architect and builds infrastructure that's reliable, available, secure and performing for Apple.",
   },
+  {
+    name: "Naveen Prakash",
+    title: "Senior Test Engineer",
+    company: "Yahoo",
+    location: "United States",
+    education: "Published researcher — IEEE Xplore · ACM certified peer reviewer",
+    img: "/naveen-prakash.jpg",
+    tags: ["Quality Engineering", "Test Architecture", "Intelligent Test Automation", "AI in Engineering"],
+    bio: "Senior Test Engineer at Yahoo with over 16 years of experience in quality engineering and test architecture across Yahoo, eBay, and Apple. His expertise includes software reliability, intelligent test automation, and applying artificial intelligence to solve complex engineering challenges. He is a published researcher with work indexed on IEEE Xplore, an ACM certified peer reviewer, and has previously served as a judge for the Claro Awards. He enjoys supporting emerging talent and helping young developers turn creative concepts into practical solutions.",
+  },
+  {
+    name: "Timur Rakhmatullin",
+    title: "Senior Software Engineer & Backend Architect",
+    company: "Softline Solutions",
+    location: "Los Angeles, California",
+    education: "Stanford Continuing Studies — Large Language Models for Business with Python (2026)",
+    img: "/timur-rakhmatullin.jpg",
+    tags: ["AI/ML", "Cloud Platforms", "Backend Architecture", "Awards Judging"],
+    bio: "Senior Software Engineer and Backend Architect at Softline Solutions in Los Angeles, with deep expertise in AI/ML, cloud platforms, and backend systems. He holds an O-1 Extraordinary Ability visa (approved twice) and is completing Stanford Continuing Studies — Large Language Models for Business with Python. He brings extensive judging experience from the Edison Awards, CODiE Leadership Awards, Golden App Awards, the AITEX Summit, and the SiliconANGLE TechForward Awards.",
+  },
 ];
 
 function JudgeAvatar({ name, img }: { name: string; img?: string }) {

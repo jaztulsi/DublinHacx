@@ -369,7 +369,7 @@ export function SponsorsSection() {
             Current Sponsors
           </p>
           <p className="mt-2 text-center text-xs text-muted-foreground">
-            Venue partner: SAP Office, San Ramon
+            Venue partner: SAP Office, 3001 Bishop Dr, Suite 200, San Ramon
           </p>
           {/* Headline sponsor — Context66 */}
           <a

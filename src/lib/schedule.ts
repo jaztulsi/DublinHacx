@@ -10,31 +10,37 @@ export interface ScheduleItem {
 }
 
 /**
- * The event date is final: Saturday, October 3, 2026 at the SAP Office in San Ramon.
+ * The event date is final: Saturday, October 3, 2026 at the SAP Office,
+ * 3001 Bishop Dr, Suite 200, San Ramon, CA 94583.
  * EVENT_DATE_TBD is false, so the live countdown is shown.
  */
 export const EVENT_DATE_TBD = false;
 
 /**
- * Event start anchor: 10:00 AM Pacific (PDT, UTC-7) on October 3, 2026. Used by
- * the relative schedule math and the countdown logic.
+ * Event start anchor: 9:00 AM Pacific (PDT, UTC-7) on October 3, 2026 — when
+ * attendee check-in opens. Drives the relative schedule math and the countdown.
+ * Crew call and setup run before this, so they carry negative offsets.
  */
-export const EVENT_START = new Date("2026-10-03T10:00:00-07:00");
+export const EVENT_START = new Date("2026-10-03T09:00:00-07:00");
+
+/** Minutes past midnight of the anchor above, for offset → clock-time math. */
+export const EVENT_START_MIN_OF_DAY = 9 * 60;
 
 export const schedule: ScheduleItem[] = [
-  { offsetMin: 0,   time: "10:00 AM", title: "Check-In",                    description: "Arrive, sign in, grab your badge & swag bag.",            tag: "Event" },
-  { offsetMin: 30,  time: "10:30 AM", title: "Opening Ceremony",           description: "Sponsors intro, judging criteria, and the green light.", tag: "Event" },
-  { offsetMin: 60,  time: "11:00 AM", title: "Hacking Begins",             description: "12 hours start now. Build, ship, repeat.",               tag: "Event" },
-  { offsetMin: 180, time: "1:00 PM",  title: "Lunch",                      description: "Hot meal to keep you fueled for the afternoon.",         tag: "Food" },
-  { offsetMin: 300, time: "3:00 PM",  title: "Workshops",                  description: "Beginner-friendly sessions on web, AI, and hardware.",   tag: "Fun" },
-  { offsetMin: 480, time: "6:00 PM",  title: "Dinner",                     description: "Refuel for the final stretch of building.",              tag: "Food" },
-  { offsetMin: 600, time: "8:00 PM",  title: "Hacking Ends / Submissions Due", description: "Final commits, demo prep, and devpost uploads.",     tag: "Event" },
-  { offsetMin: 630, time: "8:30 PM",  title: "Judging",                    description: "Show your project to industry mentors.",                 tag: "Event" },
-  { offsetMin: 690, time: "9:30 PM",  title: "Awards Ceremony",            description: "Winners announced. Prizes handed out. Confetti.",        tag: "Event" },
-  { offsetMin: 720, time: "10:00 PM", title: "Event Ends",                 description: "Pack up, say goodbyes, and head home.",                  tag: "Event" },
+  { offsetMin: -120, time: "7:00 AM",  title: "Crew Arrives",                   description: "Volunteers and organizers on site to get the day started.", tag: "Event" },
+  { offsetMin: -60,  time: "8:00 AM",  title: "Setup",                          description: "Tables, signage, wifi, and swag stations go up.",           tag: "Event" },
+  { offsetMin: 0,    time: "9:00 AM",  title: "Check-In",                       description: "Arrive, sign in, grab your badge & swag bag.",              tag: "Event" },
+  { offsetMin: 60,   time: "10:00 AM", title: "Opening Ceremony",               description: "Sponsors intro, judging criteria, and the green light.",    tag: "Event" },
+  { offsetMin: 120,  time: "11:00 AM", title: "Hacking Begins",                 description: "Nine hours on the clock. Build, ship, repeat.",             tag: "Event" },
+  { offsetMin: 210,  time: "12:30 PM", title: "Lunch",                          description: "Hot meal to keep you fueled for the afternoon.",            tag: "Food" },
+  { offsetMin: 600,  time: "7:00 PM",  title: "Dinner",                         description: "Refuel for the final stretch of building.",                 tag: "Food" },
+  { offsetMin: 660,  time: "8:00 PM",  title: "Hacking Ends / Submissions Due", description: "Final commits, demo prep, and devpost uploads.",            tag: "Event" },
+  { offsetMin: 690,  time: "8:30 PM",  title: "Judging",                        description: "Show your project to industry mentors.",                    tag: "Event" },
+  { offsetMin: 750,  time: "9:30 PM",  title: "Awards Ceremony",                description: "Winners announced. Prizes handed out. Confetti.",           tag: "Event" },
+  { offsetMin: 810,  time: "10:30 PM", title: "Event Ends",                     description: "Pack up, say goodbyes, and head home.",                     tag: "Event" },
 ];
 
-export const EVENT_END_MIN = 720; // 10:00 PM — end of the 12-hour day
+export const EVENT_END_MIN = 810; // 10:30 PM — end of the day
 
 export interface LiveStatus {
   /** "before" | "live" | "ended" */

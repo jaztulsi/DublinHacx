@@ -22,7 +22,7 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-3 text-sm text-muted-foreground">
-              Dublin's very first Dublin Hacx. October 3, 2026 at the SAP Office in San Ramon.
+              Dublin's very first Dublin Hacx. October 3, 2026 at the SAP Office, 3001 Bishop Dr, Suite 200, San Ramon, CA 94583.
             </p>
           </div>
 

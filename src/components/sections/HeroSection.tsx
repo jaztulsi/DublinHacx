@@ -174,7 +174,7 @@ export function HeroSection({ onFollow, onLearnMore }: Props) {
           custom={1}
           className="mb-6 font-pixel text-base uppercase tracking-[0.25em] text-primary"
         >
-          SAP Office, San Ramon · Oct 3, 2026
+          SAP Office, 3001 Bishop Dr, Suite 200, San Ramon · Oct 3, 2026
         </motion.p>
 
         <motion.div variants={fadeUp} initial="hidden" animate="show" custom={1.5}>
@@ -208,7 +208,7 @@ export function HeroSection({ onFollow, onLearnMore }: Props) {
           custom={3}
           className="mx-auto mt-8 max-w-2xl text-base text-muted-foreground md:text-lg"
         >
-          Dublin's very first Dublin Hacx. 12 hours, 10am to 10pm. Walk in with an idea. Walk out
+          Dublin's very first Dublin Hacx. 9am to 10:30pm. Walk in with an idea. Walk out
           with something real.
         </motion.p>
 

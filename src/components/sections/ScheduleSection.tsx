@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { type KeyboardEvent, useEffect, useRef, useState } from "react";
-import { schedule } from "@/lib/schedule";
+import { schedule, EVENT_START_MIN_OF_DAY, EVENT_END_MIN } from "@/lib/schedule";
 
 /**
  * Schedule layout:
@@ -25,7 +25,7 @@ export function ScheduleSection() {
             Here's how the day looks.
           </h2>
           <p className="mt-4 text-sm text-muted-foreground">
-            Saturday, October 3, 2026 · SAP Office, San Ramon, CA
+            Saturday, October 3, 2026 · SAP Office, 3001 Bishop Dr, Suite 200, San Ramon, CA 94583
           </p>
         </motion.div>
 
@@ -164,16 +164,16 @@ function ScheduleTrack() {
     };
   }, []);
 
-  // Convert offsetMin (minutes since event start at 10:00 AM) → time-of-day minutes
-  const startOfDayMin = 10 * 60;
+  // Convert offsetMin (minutes since check-in opens) → time-of-day minutes
+  const startOfDayMin = EVENT_START_MIN_OF_DAY;
   const timeLabel = formatMinutes(startOfDayMin + displayMinutes);
   const hour24 =
     (((startOfDayMin + Math.round(displayMinutes)) % (24 * 60)) + 24 * 60) %
     (24 * 60);
   const hour = Math.floor(hour24 / 60);
   const isNight = hour >= 20 || hour < 6;
-  // 0 at 10:00 AM (event start) → 1 at 10:00 PM (event end); drives galaxy color.
-  const progress = Math.min(1, Math.max(0, displayMinutes / 720));
+  // 0 at check-in → 1 at the end of the night; drives galaxy color.
+  const progress = Math.min(1, Math.max(0, displayMinutes / EVENT_END_MIN));
   const activeItem = schedule[activeIdx];
 
   return (

@@ -197,7 +197,7 @@ export function AboutSection() {
         >
           <h3 className="font-display text-3xl font-bold">One day that actually sticks.</h3>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            It's Dublin's very first Dublin Hacx — 10am to 10pm, 170 people from around the Bay
+            It's Dublin's very first Dublin Hacx — 9am to 10:30pm, 170 people from around the Bay
             Area, one room. First time touching code or your tenth project, doesn't matter. You
             leave with something you actually built and a few people you didn't know that morning.
           </p>

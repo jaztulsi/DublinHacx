@@ -24,7 +24,7 @@ const FAQS = [
   },
   {
     q: "Where is the venue?",
-    a: "The SAP Office at 3001 Bishop Drive, San Ramon, CA 94583 (Bishop Ranch). The whole event runs there on Saturday, October 3, 2026.",
+    a: "The SAP Office at 3001 Bishop Dr, Suite 200, San Ramon, CA 94583 (Bishop Ranch). The whole event runs there on Saturday, October 3, 2026.",
   },
   {
     q: "How long is the event?",

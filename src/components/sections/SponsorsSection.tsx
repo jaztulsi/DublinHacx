@@ -245,7 +245,6 @@ const gridSponsors: {
   { name: "ElevenLabs", href: "https://elevenlabs.io/", src: "/elevenlabs-logo.svg" },
   { name: "YRI Science", href: "https://www.yriscience.com/", src: "/yri-science-logo.png", tile: "none" },
   { name: ".xyz", href: "https://gen.xyz/", src: "/xyz-logo.png" },
-  { name: "PCBWay", href: "https://www.pcbway.com/", src: "/pcbway-logo.png" },
   { name: "Kariaa", href: "https://www.kariaa.com/", src: "/kariaa-logo.svg", tile: "none" },
 ];
 
@@ -559,7 +558,6 @@ const beltLogos = [
   { src: "/saily-logo.png", alt: "Saily" },
   { src: "/n8n-logo.png", alt: "n8n", dark: true },
   { src: "/kariaa-logo.svg", alt: "Kariaa", dark: true },
-  { src: "/pcbway-logo.png", alt: "PCBWay" },
 ];
 
 function SponsorBelt() {

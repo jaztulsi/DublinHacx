@@ -31,7 +31,6 @@ const sponsors: Sponsor[] = [
   { src: "/elevenlabs-logo.svg", alt: "ElevenLabs", plate: true },
   { src: "/yri-science-logo.png", alt: "YRI Science", plate: true },
   { src: "/xyz-logo.png", alt: ".xyz", plate: true },
-  { src: "/pcbway-logo.png", alt: "PCBWay", plate: true },
   { src: "/kariaa-logo.svg", alt: "Kariaa", plate: true },
 ];
 

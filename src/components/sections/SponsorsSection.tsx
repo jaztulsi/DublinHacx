@@ -508,6 +508,25 @@ export function SponsorsSection() {
                 Food Sponsor
               </span>
             </a>
+            <a
+              href="https://www.desipizzabitesca.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Desi Pizza Bites"
+              className={featuredCard}
+            >
+              {/* Round badge on a white ground — white plate so the two blend. */}
+              <span className={`${featuredPlate} bg-white px-5 py-4`}>
+                <img
+                  src="/desi-pizza-bites-logo.jpg"
+                  alt="Desi Pizza Bites"
+                  className={featuredImg}
+                />
+              </span>
+              <span className="font-pixel text-xs uppercase tracking-widest text-gold">
+                Food Sponsor
+              </span>
+            </a>
           </div>
 
           <div className="mt-6 grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-5">

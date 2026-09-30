@@ -489,6 +489,25 @@ export function SponsorsSection() {
                 Featured Sponsor
               </span>
             </a>
+            <a
+              href="https://bamboo-gardens.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Inchin's Bamboo Garden"
+              className={featuredCard}
+            >
+              {/* Black wordmark on white — white plate keeps it legible. */}
+              <span className={`${featuredPlate} bg-white px-5 py-4`}>
+                <img
+                  src="/inchins-bamboo-garden-logo.png"
+                  alt="Inchin's Bamboo Garden"
+                  className={featuredImg}
+                />
+              </span>
+              <span className="font-pixel text-xs uppercase tracking-widest text-gold">
+                Food Sponsor
+              </span>
+            </a>
           </div>
 
           <div className="mt-6 grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-5">

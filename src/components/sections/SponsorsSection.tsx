@@ -508,6 +508,30 @@ export function SponsorsSection() {
                 Food Sponsor
               </span>
             </a>
+            {/* Gradient ground is baked into the artwork, so it takes the bare plate.
+                href omitted until we confirm which Mosaic Minds this is. */}
+            <a aria-label="Mosaic Minds" className={featuredCard}>
+              <span className={featuredPlate}>
+                <img src="/mosaic-minds-logo.jpg" alt="Mosaic Minds" className={featuredImg} />
+              </span>
+              <span className="font-pixel text-xs uppercase tracking-widest text-primary">
+                Featured Sponsor
+              </span>
+            </a>
+            <a
+              href="https://www.chaatbhavan.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chaat Bhavan"
+              className={featuredCard}
+            >
+              <span className={`${featuredPlate} bg-white px-5 py-4`}>
+                <img src="/chaat-bhavan-logo.jpg" alt="Chaat Bhavan" className={featuredImg} />
+              </span>
+              <span className="font-pixel text-xs uppercase tracking-widest text-gold">
+                Food Sponsor
+              </span>
+            </a>
             <a
               href="https://www.desipizzabitesca.com/"
               target="_blank"

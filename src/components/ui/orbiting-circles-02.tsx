@@ -31,6 +31,12 @@ const sponsors: Sponsor[] = [
   { src: "/elevenlabs-logo.svg", alt: "ElevenLabs", plate: true },
   { src: "/yri-science-logo.png", alt: "YRI Science", plate: true },
   { src: "/xyz-logo.png", alt: ".xyz", plate: true },
+  { src: "/codewithpurpose-logo.png", alt: "CodeWithPurpose", plate: true },
+  { src: "/happy-car-spa-logo.jpg", alt: "Happy Car Spa Dublin", plate: true },
+  { src: "/mosaic-minds-logo.jpg", alt: "Mosaic Minds", plate: false },
+  { src: "/inchins-bamboo-garden-logo.png", alt: "Inchin's Bamboo Garden", plate: true },
+  { src: "/chaat-bhavan-logo.jpg", alt: "Chaat Bhavan", plate: true },
+  { src: "/desi-pizza-bites-logo.jpg", alt: "Desi Pizza Bites", plate: true },
 ];
 
 // Each ring is a fraction of --gd (the outer-ring diameter), itself
@@ -40,9 +46,9 @@ const sponsors: Sponsor[] = [
 // Only the top half of each ring is on screen, so roughly half of these slots
 // are visible at any moment — hence several per lane, or the globe reads empty.
 const rings = [
-  { scale: 0.68, duration: 18, angles: [0, 90, 180, 270] },
-  { scale: 0.83, duration: 24, angles: [36, 108, 180, 252, 324] },
-  { scale: 1, duration: 30, angles: [0, 72, 144, 216, 288] },
+  { scale: 0.68, duration: 18, angles: [0, 72, 144, 216, 288] },
+  { scale: 0.83, duration: 24, angles: [30, 90, 150, 210, 270, 330] },
+  { scale: 1, duration: 30, angles: [0, 51, 103, 154, 206, 257, 309] },
 ];
 
 const SLOT_COUNT = rings.reduce((n, r) => n + r.angles.length, 0);

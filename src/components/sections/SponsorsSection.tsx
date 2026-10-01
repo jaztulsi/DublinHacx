@@ -202,10 +202,12 @@ function TierLadder() {
 /** Featured tier: one card and one logo plate shared by all four, so logo-to-box
  *  ratio stays constant no matter the artwork's native aspect. */
 const featuredCard =
-  "flex w-[calc(50%-0.5rem)] flex-col items-center justify-center gap-2.5 rounded-2xl border border-primary/30 bg-card/20 p-5 transition-colors hover:border-primary/60 md:w-full md:max-w-md md:p-6";
+  "flex h-full w-full flex-col items-center justify-center gap-2.5 rounded-2xl border border-primary/30 bg-card/20 p-5 transition-colors hover:border-primary/60 md:p-6";
 const featuredPlate =
   "flex h-24 w-full items-center justify-center overflow-hidden rounded-xl md:h-28";
 const featuredImg = "max-h-full max-w-full object-contain";
+const featuredLabel = "font-pixel text-xs uppercase tracking-widest text-primary";
+const foodLabel = "font-pixel text-xs uppercase tracking-widest text-gold";
 
 /**
  * Standard-tier sponsors. Every logo renders into an identically sized box and
@@ -390,9 +392,9 @@ export function SponsorsSection() {
             </span>
           </a>
 
-          {/* Featured sponsors — one uniform logo plate each, so a 3:1 wordmark
-              and a 1:1 square land at the same visual weight. */}
-          <div className="mt-4 flex flex-wrap justify-center gap-4">
+          {/* Featured tier, then food tier — grouped, never interleaved. A grid
+              (not flex-wrap) so rows stay even: 2 up on phones, 3 on desktop. */}
+          <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-3">
             <a
               href="https://cywarden.com/"
               target="_blank"
@@ -403,9 +405,7 @@ export function SponsorsSection() {
               <span className={`${featuredPlate} bg-white px-5 py-4`}>
                 <img src="/cywarden-logo.webp" alt="Cywarden" className={featuredImg} />
               </span>
-              <span className="font-pixel text-xs uppercase tracking-widest text-primary">
-                Featured Sponsor
-              </span>
+              <span className={featuredLabel}>Featured Sponsor</span>
             </a>
             {/* Not an <a>: the card holds nested tel:/mailto: links, so the
                 logo gets its own anchor and the wrapper stays a div. */}
@@ -425,9 +425,7 @@ export function SponsorsSection() {
                   />
                 </span>
               </a>
-              <span className="font-pixel text-xs uppercase tracking-widest text-primary">
-                Featured Sponsor
-              </span>
+              <span className={featuredLabel}>Featured Sponsor</span>
               <div className="flex flex-col items-center gap-0.5 text-xs text-muted-foreground">
                 <a href="tel:+19253077711" className="transition-colors hover:text-primary">
                   +1 925-307-7711
@@ -440,8 +438,8 @@ export function SponsorsSection() {
                 </a>
               </div>
             </div>
-            {/* Crakd and Exea Labs bake their own background into the artwork,
-                so they get the bare plate — no tile, just clipped corners. */}
+            {/* Crakd, Exea Labs and Mosaic Minds bake their own background into
+                the artwork, so they get the bare plate — just clipped corners. */}
             <a
               href="https://crackd.it/"
               target="_blank"
@@ -452,9 +450,7 @@ export function SponsorsSection() {
               <span className={featuredPlate}>
                 <img src="/crakd-logo.jpeg" alt="Crakd" className={featuredImg} />
               </span>
-              <span className="font-pixel text-xs uppercase tracking-widest text-primary">
-                Featured Sponsor
-              </span>
+              <span className={featuredLabel}>Featured Sponsor</span>
             </a>
             <a
               href="https://www.exealabs.org/"
@@ -466,9 +462,7 @@ export function SponsorsSection() {
               <span className={featuredPlate}>
                 <img src="/exea-labs-logo.webp" alt="Exea Labs" className={featuredImg} />
               </span>
-              <span className="font-pixel text-xs uppercase tracking-widest text-primary">
-                Featured Sponsor
-              </span>
+              <span className={featuredLabel}>Featured Sponsor</span>
             </a>
             <a
               href="https://happycarspadublin.com/"
@@ -477,7 +471,6 @@ export function SponsorsSection() {
               aria-label="Happy Car Spa Dublin"
               className={featuredCard}
             >
-              {/* Round badge on a white ground — white plate so the two blend. */}
               <span className={`${featuredPlate} bg-white px-5 py-4`}>
                 <img
                   src="/happy-car-spa-logo.jpg"
@@ -485,10 +478,18 @@ export function SponsorsSection() {
                   className={featuredImg}
                 />
               </span>
-              <span className="font-pixel text-xs uppercase tracking-widest text-primary">
-                Featured Sponsor
-              </span>
+              <span className={featuredLabel}>Featured Sponsor</span>
             </a>
+            {/* href omitted until we confirm which Mosaic Minds this is. */}
+            <a aria-label="Mosaic Minds" className={featuredCard}>
+              <span className={featuredPlate}>
+                <img src="/mosaic-minds-logo.jpg" alt="Mosaic Minds" className={featuredImg} />
+              </span>
+              <span className={featuredLabel}>Featured Sponsor</span>
+            </a>
+          </div>
+
+          <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-3">
             <a
               href="https://bamboo-gardens.com/"
               target="_blank"
@@ -496,7 +497,6 @@ export function SponsorsSection() {
               aria-label="Inchin's Bamboo Garden"
               className={featuredCard}
             >
-              {/* Black wordmark on white — white plate keeps it legible. */}
               <span className={`${featuredPlate} bg-white px-5 py-4`}>
                 <img
                   src="/inchins-bamboo-garden-logo.png"
@@ -504,19 +504,7 @@ export function SponsorsSection() {
                   className={featuredImg}
                 />
               </span>
-              <span className="font-pixel text-xs uppercase tracking-widest text-gold">
-                Food Sponsor
-              </span>
-            </a>
-            {/* Gradient ground is baked into the artwork, so it takes the bare plate.
-                href omitted until we confirm which Mosaic Minds this is. */}
-            <a aria-label="Mosaic Minds" className={featuredCard}>
-              <span className={featuredPlate}>
-                <img src="/mosaic-minds-logo.jpg" alt="Mosaic Minds" className={featuredImg} />
-              </span>
-              <span className="font-pixel text-xs uppercase tracking-widest text-primary">
-                Featured Sponsor
-              </span>
+              <span className={foodLabel}>Food Sponsor</span>
             </a>
             <a
               href="https://www.chaatbhavan.com/"
@@ -528,9 +516,7 @@ export function SponsorsSection() {
               <span className={`${featuredPlate} bg-white px-5 py-4`}>
                 <img src="/chaat-bhavan-logo.jpg" alt="Chaat Bhavan" className={featuredImg} />
               </span>
-              <span className="font-pixel text-xs uppercase tracking-widest text-gold">
-                Food Sponsor
-              </span>
+              <span className={foodLabel}>Food Sponsor</span>
             </a>
             <a
               href="https://www.desipizzabitesca.com/"
@@ -539,7 +525,6 @@ export function SponsorsSection() {
               aria-label="Desi Pizza Bites"
               className={featuredCard}
             >
-              {/* Round badge on a white ground — white plate so the two blend. */}
               <span className={`${featuredPlate} bg-white px-5 py-4`}>
                 <img
                   src="/desi-pizza-bites-logo.jpg"
@@ -547,9 +532,7 @@ export function SponsorsSection() {
                   className={featuredImg}
                 />
               </span>
-              <span className="font-pixel text-xs uppercase tracking-widest text-gold">
-                Food Sponsor
-              </span>
+              <span className={foodLabel}>Food Sponsor</span>
             </a>
           </div>
 

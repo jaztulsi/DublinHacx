@@ -232,13 +232,6 @@ const gridSponsors: {
     src: "/nordvpn-logo.png",
     rel: "noopener noreferrer nofollow sponsored",
   },
-  // Cream background is baked into the artwork, so it takes no tile.
-  {
-    name: "CodeWithPurpose",
-    href: "https://www.codewithpurpose.org/",
-    src: "/codewithpurpose-logo.png",
-    tile: "none",
-  },
   { name: "NordPass", href: "https://nordpass.com/", src: "/nordpass-logo.png" },
   { name: "Coveron", href: "https://coveron.com/", src: "/coveron-logo.png" },
   { name: "Incogni", href: "https://incogni.com/", src: "/incogni-logo.png" },
@@ -499,6 +492,23 @@ export function SponsorsSection() {
                 <img
                   src="/algoverse-logo.jpg"
                   alt="Algoverse AI Research"
+                  className={featuredImg}
+                />
+              </span>
+              <span className={featuredLabel}>Featured Sponsor</span>
+            </a>
+            <a
+              href="https://www.codewithpurpose.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="CodeWithPurpose"
+              className={featuredCard}
+            >
+              {/* Cream ground is baked into the artwork, so it takes the bare plate. */}
+              <span className={featuredPlate}>
+                <img
+                  src="/codewithpurpose-logo.png"
+                  alt="CodeWithPurpose"
                   className={featuredImg}
                 />
               </span>

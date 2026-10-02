@@ -32,6 +32,7 @@ const sponsors: Sponsor[] = [
   { src: "/yri-science-logo.png", alt: "YRI Science", plate: true },
   { src: "/xyz-logo.png", alt: ".xyz", plate: true },
   { src: "/kariaa-logo.svg", alt: "Kariaa", plate: true },
+  { src: "/algoverse-logo.jpg", alt: "Algoverse AI Research", plate: false },
   { src: "/codewithpurpose-logo.png", alt: "CodeWithPurpose", plate: true },
   { src: "/happy-car-spa-logo.jpg", alt: "Happy Car Spa Dublin", plate: true },
   { src: "/mosaic-minds-logo.jpg", alt: "Mosaic Minds", plate: false },

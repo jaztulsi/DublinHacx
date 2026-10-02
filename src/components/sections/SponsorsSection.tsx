@@ -488,6 +488,22 @@ export function SponsorsSection() {
               </span>
               <span className={featuredLabel}>Featured Sponsor</span>
             </a>
+            <a
+              href="https://algoverseairesearch.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Algoverse AI Research"
+              className={featuredCard}
+            >
+              <span className={featuredPlate}>
+                <img
+                  src="/algoverse-logo.jpg"
+                  alt="Algoverse AI Research"
+                  className={featuredImg}
+                />
+              </span>
+              <span className={featuredLabel}>Featured Sponsor</span>
+            </a>
           </div>
 
           <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-3">
@@ -603,6 +619,7 @@ const beltLogos = [
   { src: "/saily-logo.png", alt: "Saily" },
   { src: "/n8n-logo.png", alt: "n8n", dark: true },
   { src: "/kariaa-logo.svg", alt: "Kariaa", dark: true },
+  { src: "/algoverse-logo.jpg", alt: "Algoverse AI Research", dark: true },
 ];
 
 function SponsorBelt() {

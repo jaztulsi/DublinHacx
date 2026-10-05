@@ -26,7 +26,7 @@ type Member = { name: string; role: string; bio: string; img?: string };
 const coFounders: Member[] = [
   {
     name: "Jasraj Tulsi",
-    role: "Executive Event Manager",
+    role: "Lead Organizer & Executive Director of Operations",
     bio: "Leads event coordination from start to finish, connecting teams and helping guide sponsorship and overall direction alongside the team.",
     img: "/jasraj-tulsi.jpg",
   },
@@ -42,9 +42,6 @@ const coFounders: Member[] = [
     bio: "Owns the public voice of Dublin Hacx — social presence, promotion, and everything in between.",
     img: "/rachit-panchal.jpg",
   },
-];
-
-const board: Member[] = [
   {
     name: "Joseph Shin",
     role: "Executive Director of Venue & Scheduling",
@@ -208,7 +205,6 @@ export function AboutSection() {
 
         {/* Team — full-width horizontal rosters, no cards */}
         <Roster title="Co-Founders" people={coFounders} className="mt-20" />
-        <Roster title="The Board" people={board} className="mt-16" />
       </div>
     </section>
   );

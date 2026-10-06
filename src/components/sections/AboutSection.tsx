@@ -38,7 +38,7 @@ const coFounders: Member[] = [
   },
   {
     name: "Rachit Panchal",
-    role: "Director of Brand & Communications",
+    role: "Lead Organizer & Executive Director of Brand & Communications",
     bio: "Owns the public voice of Dublin Hacx — social presence, promotion, and everything in between.",
     img: "/rachit-panchal.jpg",
   },
